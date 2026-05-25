@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OH MY GAT: 한국 전통 문화 요소의 현대적 탈환 - 케이팝데몬헌터스 & 범접 분석 전시">
+  <title>OH MY GAT - Tradition Rewritten</title>
+  
+  <!-- Google Fonts Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --------------------------------------------------
+       1. BASE STYLES & RESET
+       -------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Noto Serif KR', serif;
+      overflow-x: hidden;
+      cursor: none; /* Hide default cursor on desktop */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Scrollbar Styling - Silver/Pearl gradient thumb on dark track */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff;
+    }
+    
+    /* --------------------------------------------------
+       2. TEXTURE & SPECIAL EFFECTS
+       -------------------------------------------------- */
+    /* SVG Noise Grain Overlay - Covers page at all times */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    /* Custom Cursor - Smooth lag (lerp) */
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #C0392B;
+      border-radius: 50%;
+      position: fixed;
+      top: -3px;
+      left: -3px;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.8);
+    }
+    
+    .cursor-ring {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      top: -14px;
+      left: -14px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      background-color: transparent;
+      transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    
+    @media (hover: none) and (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+    
+    /* --------------------------------------------------
+       3. REVEAL SYSTEM (IntersectionObserver)
+       -------------------------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* --------------------------------------------------
+       4. SECTION 1 - HERO
+       -------------------------------------------------- */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #050505;
+    }
+    
+    .hero-bg-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 130%; /* taller for parallax translation space */
+      z-index: 1;
+      pointer-events: none;
+      will-change: transform;
+    }
+    
+    .hero-mountains {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+    }
+    
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    
+    .hero-char {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 3rem;
+      color: #C0392B; /* deep red */
+      margin: 15px 0;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(192, 57, 43, 0.4);
+    }
+    
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: #cfd8dc; /* silver/pearl accent */
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      color: #888888;
+      letter-spacing: 0.2em;
+    }
+    
+    .scroll-arrow {
+      margin-top: 10px;
+      stroke: #888888;
+      animation: pulseArrow 2.5s infinite ease-in-out;
+    }
+    
+    @keyframes pulseArrow {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(8px);
+        opacity: 1;
+      }
+    }
+    
+    /* --------------------------------------------------
+       5. SECTION 2 - INTRODUCTION
+       -------------------------------------------------- */
+    .intro-section {
+      padding: 140px 20px;
+      background-color: #0a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .intro-container {
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      padding: 80px 60px;
+      background: rgba(10, 10, 10, 0.95);
+      border-radius: 4px;
+    }
+    
+    /* Decorative Korean Brackets */
+    .bracket {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: rgba(255, 255, 255, 0.4);
+      border-style: solid;
+      pointer-events: none;
+    }
+    
+    .bracket.tl {
+      top: 0;
+      left: 0;
+      border-width: 1.5px 0 0 1.5px;
+    }
+    
+    .bracket.tr {
+      top: 0;
+      right: 0;
+      border-width: 1.5px 1.5px 0 0;
+    }
+    
+    .bracket.bl {
+      bottom: 0;
+      left: 0;
+      border-width: 0 0 1.5px 1.5px;
+    }
+    
+    .bracket.br {
+      bottom: 0;
+      right: 0;
+      border-width: 0 1.5px 1.5px 0;
+    }
+    
+    .intro-inner {
+      text-align: center;
+    }
+    
+    .intro-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-weight: 300;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+    
+    .intro-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #888888;
+      letter-spacing: 0.05em;
+      margin-bottom: 35px;
+    }
+    
+    .intro-divider {
+      width: 50px;
+      height: 1px;
+      background-color: #C0392B;
+      margin: 0 auto 35px auto;
+    }
+    
+    .intro-body {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #e0e0e0;
+      margin-bottom: 25px;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    
+    .intro-body-sub {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #888888;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    
+    /* --------------------------------------------------
+       6. SECTION 3 - TWO CONTENTS COMPARISON
+       -------------------------------------------------- */
+    .comparison-section {
+      padding: 120px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .section-title-container {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    
+    .section-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      display: block;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+    
+    .cards-container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    /* Elegant card with nacre pearl gradient borders */
+    .card {
+      flex: 1;
+      min-width: 320px;
+      background: linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+                  linear-gradient(135deg, #ffffff 0%, #e2ebf0 25%, #cfd9df 50%, #c3cfe2 75%, #ffffff 100%) border-box;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(195, 207, 226, 0.07), 0 0 20px rgba(255, 255, 255, 0.02);
+    }
+    
+    .card-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+    
+    .card-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    
+    .card-meta {
+      font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+      font-size: 0.85rem;
+      color: #888888;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.05em;
+    }
+    
+    .card-meta span {
+      display: inline-block;
+    }
+    
+    .card-desc {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #b0bec5;
+      margin-bottom: 40px;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    
+    .elements-section {
+      margin-top: auto;
+    }
+    
+    .elements-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: #888888;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    
+    .element-list {
+      list-style: none;
+    }
+    
+    .element-list li {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #cfd8dc;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      word-break: keep-all;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .element-list li strong {
+      color: #ffffff;
+      font-weight: 400;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    
+    .element-list li::before {
+      content: "—";
+      color: #C0392B;
+      margin-right: 10px;
+      font-weight: 700;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    
+    .element-list.visible li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .element-list.visible li:nth-child(1) { transition-delay: 0.1s; }
+    .element-list.visible li:nth-child(2) { transition-delay: 0.2s; }
+    .element-list.visible li:nth-child(3) { transition-delay: 0.3s; }
+    .element-list.visible li:nth-child(4) { transition-delay: 0.4s; }
+    .element-list.visible li:nth-child(5) { transition-delay: 0.5s; }
+    
+    /* --------------------------------------------------
+       7. SECTION 4 - ANALYSIS: WHY IT WORKS
+       -------------------------------------------------- */
+    .analysis-section {
+      padding: 100px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Diamond Divider Knot */
+    .analysis-divider-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 90px;
+      width: 100%;
+    }
+    
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15) 50%, transparent);
+    }
+    
+    .divider-diamond {
+      opacity: 0.8;
+      display: block;
+      flex-shrink: 0;
+    }
+    
+    .analysis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
+      margin-top: 90px;
+    }
+    
+    .analysis-item {
+      display: flex;
+      gap: 45px;
+      align-items: flex-start;
+      border-left: 1.5px solid rgba(192, 57, 43, 0.3);
+      padding-left: 35px;
+    }
+    
+    .analysis-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 300;
+      color: rgba(192, 57, 43, 0.45); /* faded red */
+      line-height: 0.8;
+      user-select: none;
+      min-width: 60px;
+    }
+    
+    .analysis-content {
+      flex: 1;
+    }
+    
+    .analysis-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.45rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+    
+    .analysis-body {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.98rem;
+      line-height: 1.85;
+      color: #b0bec5;
+      margin: 0;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    
+    /* --------------------------------------------------
+       8. SECTION 5 - CLOSING STATEMENT
+       -------------------------------------------------- */
+    .closing-section {
+      height: 90vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 0 20px;
+      background-color: #0a0a0a;
+    }
+    
+    /* Floating background watermark Han-hon */
+    .closing-bg-char {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Noto Serif KR', serif;
+      font-size: 24rem;
+      font-weight: 700;
+      color: #8B0000;
+      opacity: 0.04;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 1.5s ease;
+    }
+    
+    .closing-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .closing-quote-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-style: italic;
+      color: #ffffff;
+      margin-bottom: 25px;
+      font-weight: 300;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+    }
+    
+    .closing-quote-ko {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      color: #cfd8dc;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+    
+    .closing-divider {
+      width: 40px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin: 45px auto;
+    }
+    
+    .closing-credits {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.85rem;
+      color: #888888;
+      letter-spacing: 0.05em;
+      margin: 0;
+      font-weight: 300;
+    }
+    
+    /* --------------------------------------------------
+       9. FOOTER
+       -------------------------------------------------- */
+    .footer-section {
+      background-color: #000000;
+      padding: 50px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 3;
+    }
+    
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #666666;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    
+    /* --------------------------------------------------
+       10. RESPONSIVE DESIGN (Media Queries)
+       -------------------------------------------------- */
+    @media (max-width: 768px) {
+      /* Hero */
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      .hero-char {
+        font-size: 2.2rem;
+        margin: 10px 0;
+      }
+      .hero-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+      }
+      
+      /* Introduction */
+      .intro-section {
+        padding: 90px 15px;
+      }
+      .intro-container {
+        padding: 50px 30px;
+      }
+      .intro-title {
+        font-size: 1.6rem;
+      }
+      .intro-subtitle {
+        font-size: 1.05rem;
+        margin-bottom: 25px;
+      }
+      .intro-body {
+        font-size: 0.98rem;
+        line-height: 1.8;
+      }
+      .intro-body-sub {
+        font-size: 0.88rem;
+      }
+      .bracket {
+        width: 25px;
+        height: 25px;
+      }
+      
+      /* Comparison */
+      .comparison-section {
+        padding: 80px 15px;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .cards-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .card {
+        padding: 40px 30px;
+        min-width: 100%;
+      }
+      .card-title {
+        font-size: 1.6rem;
+      }
+      
+      /* Analysis */
+      .analysis-section {
+        padding: 80px 15px;
+      }
+      .analysis-item {
+        flex-direction: column;
+        gap: 15px;
+        padding-left: 20px;
+      }
+      .analysis-num {
+        font-size: 2.8rem;
+      }
+      .analysis-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+      
+      /* Closing */
+      .closing-section {
+        height: 80vh;
+      }
+      .closing-bg-char {
+        font-size: 12rem;
+      }
+      .closing-quote-en {
+        font-size: 2rem;
+      }
+      .closing-quote-ko {
+        font-size: 1rem;
+      }
+      .closing-divider {
+        margin: 30px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Subtle Noise Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="exhibition-container">
+    
+    <!-- SECTION 1: HERO -->
+    <section class="hero-section">
+      <div class="hero-bg-container">
+        <!-- Minimalist vector peaks simulating an oriental mountain range painting -->
+        <svg class="hero-mountains" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#050505" />
+              <stop offset="60%" stop-color="#0a0a0a" />
+              <stop offset="100%" stop-color="#121212" />
+            </linearGradient>
+            <linearGradient id="mtnGrad1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1c1d22" />
+              <stop offset="100%" stop-color="#0a0a0a" />
+            </linearGradient>
+            <linearGradient id="mtnGrad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#141518" />
+              <stop offset="100%" stop-color="#070708" />
+            </linearGradient>
+            <linearGradient id="mtnGrad3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d0e10" />
+              <stop offset="100%" stop-color="#050506" />
+            </linearGradient>
+            <linearGradient id="pearlLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.05" />
+              <stop offset="50%" stop-color="#c3cfe2" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#a1c4fd" stop-opacity="0.05" />
+            </linearGradient>
+          </defs>
+          
+          <rect width="1440" height="900" fill="url(#skyGrad)" />
+          
+          <!-- Stylized Sun/Moon -->
+          <circle cx="720" cy="330" r="140" fill="#8B0000" opacity="0.12" filter="blur(25px)" />
+          <circle cx="720" cy="330" r="90" fill="none" stroke="#C0392B" stroke-width="1" opacity="0.3" />
+          <circle cx="720" cy="330" r="96" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="6, 12" opacity="0.15" />
+
+          <!-- Back Mountains -->
+          <path d="M 0 900 L 0 520 Q 200 340 400 500 T 800 420 Q 1000 370 1200 480 T 1440 400 L 1440 900 Z" fill="url(#mtnGrad3)" stroke="url(#pearlLine)" stroke-width="1.2" opacity="0.5" />
+
+          <!-- Mid Mountains -->
+          <path d="M 0 900 L 0 620 Q 260 480 520 620 T 1040 560 Q 1240 470 1440 580 L 1440 900 Z" fill="url(#mtnGrad2)" stroke="url(#pearlLine)" stroke-width="1" opacity="0.7" />
+
+          <!-- Front Mountains -->
+          <path d="M 0 900 L 0 720 Q 320 620 640 730 T 1280 670 Q 1360 650 1440 680 L 1440 900 Z" fill="url(#mtnGrad1)" stroke="url(#pearlLine)" stroke-width="1.8" opacity="0.9" />
+          
+          <!-- Cloud outlines -->
+          <path d="M 150 250 Q 180 235 210 250 T 270 250 Q 300 265 330 250" fill="none" stroke="#666" stroke-width="0.8" opacity="0.2" stroke-dasharray="4, 4" />
+          <path d="M 1150 220 Q 1180 205 1210 220 T 1270 220 Q 1300 235 1330 220" fill="none" stroke="#666" stroke-width="0.8" opacity="0.2" stroke-dasharray="4, 4" />
+        </svg>
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title hero-animate">OH MY GAT</h1>
+        <div class="hero-char hero-animate">韓魂</div>
+        <p class="hero-subtitle hero-animate">TRADITION REWRITTEN</p>
+      </div>
+      
+      <div class="hero-scroll hero-animate">
+        <span>SCROLL</span>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none">
+          <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTRODUCTION -->
+    <section class="intro-section reveal">
+      <div class="intro-container">
+        <!-- Large Decorative Bracket Corners -->
+        <div class="bracket tl"></div>
+        <div class="bracket tr"></div>
+        <div class="bracket bl"></div>
+        <div class="bracket br"></div>
+        
+        <div class="intro-inner">
+          <h2 class="intro-title">고루함을 벗고 역동성을 입다</h2>
+          <p class="intro-subtitle">Reclaiming the Korean Image</p>
+          <div class="intro-divider"></div>
+          <p class="intro-body">
+            한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 전통 요소를 현대적 감각으로 탈환한 두 가지 선도적 사례를 분석합니다.
+          </p>
+          <p class="intro-body-sub">
+            전통은 박물관의 유리창 너머에 박제된 정적인 유산이 아닙니다. 오늘날의 아티스트들은 이를 탈취하여 생동하는 무대 위에서 가장 역동적인 미학으로 재창조해 내고 있습니다. 본 전시는 애니메이션과 스트릿 댄스라는 전혀 다른 현대 매체 속에서 살아 숨 쉬는 우리 문화의 뿌리를 조명합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TWO CONTENTS COMPARISON -->
+    <section class="comparison-section reveal">
+      <div class="section-title-container">
+        <span class="section-tag">EXHIBITION 01</span>
+        <h2 class="section-title">두 개의 시선: 현대적 번역</h2>
+      </div>
+      
+      <div class="cards-container">
+        <!-- Left Card: KDH -->
+        <div class="card card-left">
+          <div class="card-tag">DESIGN</div>
+          <h3 class="card-title">케이팝데몬헌터스</h3>
+          <div class="card-meta">
+            <span class="card-year">2025</span>
+            <span class="card-sep">&middot;</span>
+            <span class="card-medium">넷플릭스 애니메이션</span>
+          </div>
+          <p class="card-desc">
+            글로벌 스트리밍 플랫폼에서 시도된 퓨전 동양 판타지로, 한국 전통 미술과 공예 요소가 네온 컬러의 일러스트 및 미래적 그래픽 디자인과 어떻게 공존할 수 있는지를 보여줍니다.
+          </p>
+          <div class="elements-section">
+            <h4 class="elements-title">CORE ELEMENTS</h4>
+            <ul class="element-list">
+              <li><strong>자개 (Mother-of-Pearl)</strong> — 다채롭게 반짝이는 나전 빛깔을 현대적 네온 홀로그램 비주얼로 전이</li>
+              <li><strong>산수화 (Landscape Painting)</strong> — 수묵화 특유의 여백의 미와 유려한 붓놀림을 디지털 배경 디자인에 도입</li>
+              <li><strong>달 (Moon Symbolism)</strong> — 밤의 숲과 사냥을 주관하는 신비로운 동양적 영적 주술의 에너지를 암시</li>
+              <li><strong>십장생 (Ten Longevity symbols)</strong> — 영원히 늙지 않는 불사(不死)의 동식물 도안을 메인 테마 요소로 가공</li>
+              <li><strong>전통 문양 (Traditional Patterns)</strong> — 한옥의 창살 및 기하학적 격자 패턴을 연출 곳곳의 UI 요소로 재해석</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Right Card: Beomjeob -->
+        <div class="card card-right">
+          <div class="card-tag">PERFORMANCE</div>
+          <h3 class="card-title">범접</h3>
+          <div class="card-meta">
+            <span class="card-year">2023</span>
+            <span class="card-sep">&middot;</span>
+            <span class="card-medium">스트릿 우먼 파이터 2</span>
+          </div>
+          <p class="card-desc">
+            서브컬처 스트릿 댄서들이 대규모 군무를 통해 한국 무속 신앙(굿)의 신성한 에너지와 전통 연희의 풍자적 해학을 압도적인 무대 예술로 정립해 낸 퍼포먼스적 이정표입니다.
+          </p>
+          <div class="elements-section">
+            <h4 class="elements-title">CORE ELEMENTS</h4>
+            <ul class="element-list">
+              <li><strong>부채춤 (Fan Dance)</strong> — 부채가 만들어내는 극적인 물결과 유기적인 형태 변화를 파도처럼 형상화</li>
+              <li><strong>한복 (Hanbok)</strong> — 전통 복식의 깃과 소매 자락이 흩날리는 동적 실루엣을 무용의 궤적에 최적화</li>
+              <li><strong>굿 (Shamanic Ritual)</strong> — 한풀이와 주술적 도구(신칼 등)를 사용하여 무대를 신성한 의식의 현장으로 변모</li>
+              <li><strong>탈춤 (Mask Dance)</strong> — 묵은 억압을 씻어내는 날것 그대로의 본능적인 몸짓과 얼굴의 이면성을 풍자</li>
+              <li><strong>장단 (Traditional Rhythm)</strong> — 꽹과리와 북 등 국악 타악의 파열음을 메탈릭 힙합 루프와 충돌시킨 비트</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
+    <section class="analysis-section">
+      <!-- Decorative Diamond Divider -->
+      <div class="analysis-divider-container reveal">
+        <div class="divider-line"></div>
+        <svg class="divider-diamond" viewBox="0 0 24 24" width="24" height="24">
+          <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="none" stroke="#C0392B" stroke-width="1.5"/>
+          <rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)" fill="#C0392B" />
+        </svg>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="section-title-container reveal">
+        <span class="section-tag">EXHIBITION 02</span>
+        <h2 class="section-title">해석: 전통이 작동하는 방식</h2>
+      </div>
+
+      <div class="analysis-list">
+        <!-- Point 1 -->
+        <div class="analysis-item reveal">
+          <div class="analysis-num">01</div>
+          <div class="analysis-content">
+            <h3 class="analysis-title">이미지 탈환 (Image Reclamation)</h3>
+            <p class="analysis-body">
+              과거의 전통 요소가 단지 '낡고 지루한 것'으로 치부되던 고정관념에서 벗어났습니다. 자개, 산수화, 굿 등 고착화되었던 전통 기법들을 네온 비주얼과 압도적인 100인 군무 등 현대적 감각의 외형과 융합하여 주체적이고 힙한 미적 자산으로 완전히 탈환(Reclaim)해 냈습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 2 -->
+        <div class="analysis-item reveal">
+          <div class="analysis-num">02</div>
+          <div class="analysis-content">
+            <h3 class="analysis-title">매체의 다양성 (Diversity of Media)</h3>
+            <p class="analysis-body">
+              전통의 재해석은 특정 장르에 머물지 않습니다. 넷플릭스 2D 애니메이션이라는 '디지털 영상 미디어'와 스트릿 우먼 파이터 2라는 '라이브 댄스 퍼포먼스'라는 전혀 다른 두 축을 통해 시너지를 내며, 전 세계 대중들에게 다양한 채널을 통해 입체적이고 다각적인 영감을 불어넣고 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 3 -->
+        <div class="analysis-item reveal">
+          <div class="analysis-num">03</div>
+          <div class="analysis-content">
+            <h3 class="analysis-title">글로벌 공명 (Global Resonance)</h3>
+            <p class="analysis-body">
+              가장 한국적인 것이 가장 세계적인 것임을 증명합니다. 단순한 에스닉(Ethnic) 요소의 나열을 넘어, 굿의 격동적인 샤머니즘적 분출과 자개의 영롱한 퓨처리즘적 광택은 전 세계 누구나 시각적&middot;청각적 카타르시스를 느낄 수 있는 보편적 예술 언어로 확장되어 큰 울림을 전달합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CLOSING STATEMENT -->
+    <section class="closing-section reveal">
+      <div class="closing-bg-char">韓魂</div>
+      
+      <div class="closing-content">
+        <blockquote class="closing-quote-en">
+          "Tradition does not fade. It transforms."
+        </blockquote>
+        <p class="closing-quote-ko">
+          전통은 사라지지 않는다. 변주될 뿐이다.
+        </p>
+        <div class="closing-divider"></div>
+        <p class="closing-credits">
+          문화콘텐츠기초 &middot; 이름있는조 / 황도영 이동재 김서연 이화영 편나경
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+      <p class="footer-text">OH MY GAT &middot; TRADITION REWRITTEN &middot; 2025</p>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // 1. PAGE LOAD HERO ANIMATION STAGGER
+    window.addEventListener('DOMContentLoaded', () => {
+      const heroElements = document.querySelectorAll('.hero-animate');
+      
+      // Delay before staggered animations start
+      setTimeout(() => {
+        heroElements.forEach((el, index) => {
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            
+            // Set transitions inline to preserve control
+            el.style.transition = 'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+          }, index * 300); // 0.3s stagger delay
+        });
+      }, 200);
+    });
+
+    // 2. PARALLAX SCROLL EFFECT ON HERO BACKGROUND
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroBg = document.querySelector('.hero-bg-container');
+      if (heroBg) {
+        // Slow vertical shift relative to scroll height
+        heroBg.style.transform = `translate3d(0, ${scrolled * 0.35}px, 0)`;
+      }
+    });
+
+    // 3. SCROLL REVEAL (IntersectionObserver)
+    const revealOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // If the element has stagger-revealed lists inside, trigger them
+          const staggerLists = entry.target.querySelectorAll('.element-list');
+          staggerLists.forEach(list => {
+            list.classList.add('visible');
+          });
+          
+          // Stop observing to make performance lightweight after entrance
+          observer.unobserve(entry.target);
+        }
+      });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // 4. CUSTOM LERP CURSOR CODE
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let ringX = 0, ringY = 0;
+    let isMoving = false;
+    let scale = 1;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+        dotX = mouseX;
+        dotY = mouseY;
+        ringX = mouseX;
+        ringY = mouseY;
+        isMoving = true;
+      }
+    });
+
+    // Handle cursor leaving the window
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      if (isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+      }
+    });
+
+    function tickCursor() {
+      if (isMoving) {
+        // Dot follows cursor quickly (lerp: 0.25)
+        dotX += (mouseX - dotX) * 0.25;
+        dotY += (mouseY - dotY) * 0.25;
+        
+        // Outer ring follows cursor slowly (lerp: 0.12)
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+
+        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${scale})`;
+      }
+      
+      requestAnimationFrame(tickCursor);
+    }
+    requestAnimationFrame(tickCursor);
+
+    // Bind interactive elements to cursor scaling
+    document.querySelectorAll('a, .card, [role="button"], .element-list li').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        scale = 1.5;
+        cursorRing.style.borderColor = '#C0392B';
+        cursorRing.style.backgroundColor = 'rgba(192, 57, 43, 0.05)';
+      });
+      el.addEventListener('mouseleave', () => {
+        scale = 1;
+        cursorRing.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        cursorRing.style.backgroundColor = 'transparent';
+      });
+    });
+  </script>
+</body>
+</html>
