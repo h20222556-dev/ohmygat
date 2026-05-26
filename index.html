@@ -659,6 +659,159 @@
     }
     
     /* --------------------------------------------------
+       9.5. STORYTELLING SECTION
+       -------------------------------------------------- */
+    .story-section {
+      padding: 150px 20px;
+      background-color: #0b0b0b;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .story-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .story-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 80px;
+      margin-bottom: 150px;
+    }
+    
+    .story-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .story-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .story-image-wrap {
+      flex: 1;
+      width: 50%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .story-item:nth-child(odd) .story-image-wrap {
+      transform: translateX(-50px);
+    }
+    
+    .story-item:nth-child(even) .story-image-wrap {
+      transform: translateX(50px);
+    }
+    
+    .story-image-placeholder {
+      width: 100%;
+      padding-top: 62.5%; /* 16:10 Ratio */
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .story-image-placeholder-1 {
+      background: linear-gradient(135deg, #0f1013 0%, #1a1c23 60%, #303545 100%);
+    }
+    
+    .story-image-placeholder-2 {
+      background: linear-gradient(135deg, #0c090a 0%, #221415 50%, #44181c 100%);
+    }
+    
+    .story-image-placeholder-3 {
+      background: linear-gradient(135deg, #15181b 0%, #202b33 50%, #354a54 100%);
+    }
+    
+    .story-image-wrap:hover .story-image-placeholder {
+      transform: scale(1.05);
+    }
+    
+    .story-text-wrap {
+      flex: 1;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: 0.3s;
+    }
+    
+    .story-meta-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .story-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #C0392B;
+      letter-spacing: 0.1em;
+    }
+    
+    .story-line {
+      height: 1px;
+      background-color: rgba(192, 57, 43, 0.4);
+      flex-grow: 1;
+      max-width: 60px;
+    }
+    
+    .story-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 25px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      position: relative;
+      word-break: keep-all;
+    }
+    
+    .story-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 20px;
+      height: 2px;
+      background-color: #C0392B;
+    }
+    
+    .story-desc {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #cfd8dc;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    
+    /* Active entrance animations */
+    .story-item.visible .story-image-wrap {
+      opacity: 1;
+      transform: translateX(0) !important;
+    }
+    
+    .story-item.visible .story-text-wrap {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* --------------------------------------------------
        10. RESPONSIVE DESIGN (Media Queries)
        -------------------------------------------------- */
     @media (max-width: 768px) {
@@ -735,6 +888,31 @@
       .analysis-title {
         font-size: 1.25rem;
         margin-bottom: 10px;
+      }
+      
+      /* Storytelling Section */
+      .story-section {
+        padding: 80px 15px;
+      }
+      .story-item {
+        flex-direction: column !important;
+        gap: 30px;
+        margin-bottom: 80px;
+      }
+      .story-image-wrap, .story-text-wrap {
+        width: 100%;
+      }
+      /* On mobile, slide image up and fade in */
+      .story-item:nth-child(odd) .story-image-wrap,
+      .story-item:nth-child(even) .story-image-wrap {
+        transform: translateY(30px);
+      }
+      .story-item.visible .story-image-wrap {
+        transform: translateY(0) !important;
+      }
+      .story-title {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
       }
       
       /* Closing */
@@ -968,6 +1146,69 @@
       </div>
     </section>
 
+    <!-- SECTION 4.5: STORYTELLING SECTION (EXHIBITION 03) -->
+    <section class="story-section">
+      <div class="story-container">
+        
+        <div class="section-title-container reveal" style="margin-bottom: 100px;">
+          <span class="section-tag">EXHIBITION 03</span>
+          <h2 class="section-title">기록: 전통을 전이하는 이야기</h2>
+        </div>
+
+        <!-- Story Item 1 -->
+        <div class="story-item">
+          <div class="story-image-wrap">
+            <div class="story-image-placeholder story-image-placeholder-1"></div>
+          </div>
+          <div class="story-text-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">01</span>
+              <span class="story-line"></span>
+            </div>
+            <h3 class="story-title">한복의 해체와 스트릿웨어</h3>
+            <p class="story-desc">
+              춤이라는 가장 역동적인 언어를 위해 전통 복식의 깃과 품이 해체되고 재구성됩니다. 넓은 소매자락은 브레이킹의 속도감을 배가하는 스트릿 아우터로 진화하며, 흩날리는 옷고름은 춤의 궤적을 그리는 유기적 그래픽 요소가 되어 무대 위를 수놓습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Item 2 -->
+        <div class="story-item">
+          <div class="story-image-wrap">
+            <div class="story-image-placeholder story-image-placeholder-2"></div>
+          </div>
+          <div class="story-text-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">02</span>
+              <span class="story-line"></span>
+            </div>
+            <h3 class="story-title">샤머니즘적 에너지의 시각화</h3>
+            <p class="story-desc">
+              무속 신앙의 주술적 굿판이 현대 레이저 프로젝션과 네온 라이팅을 통해 디지털 제의 공간으로 확장됩니다. 묵직하게 심장을 울리는 타악 장단에 맞춰 왜곡되는 빛의 물결은, 보이지 않는 영적 에너지를 시각화하며 보는 이에게 현대적 카타르시스를 선사합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Item 3 -->
+        <div class="story-item">
+          <div class="story-image-wrap">
+            <div class="story-image-placeholder story-image-placeholder-3"></div>
+          </div>
+          <div class="story-text-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">03</span>
+              <span class="story-line"></span>
+            </div>
+            <h3 class="story-title">디지털 자개와 홀로그램 퓨처리즘</h3>
+            <p class="story-desc">
+              빛의 입사각에 따라 다채로운 영롱함을 뿜어내는 천연 자개의 질감이 3D 실시간 레이트레이싱 셰이더로 정교하게 구현됩니다. 가상의 공간에서 재창조된 자개 패턴은 공상과학적 네온 테크 비주얼과 만나 동양적인 미래주의 미학을 새롭게 정립합니다.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- SECTION 5: CLOSING STATEMENT -->
     <section class="closing-section reveal">
       <div class="closing-bg-char">韓魂</div>
@@ -1051,6 +1292,26 @@
       revealObserver.observe(el);
     });
 
+    // 3.5. STORYTELLING INTERSECTION OBSERVER
+    const storyOptions = {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.15
+    };
+
+    const storyObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, storyOptions);
+
+    document.querySelectorAll('.story-item').forEach(item => {
+      storyObserver.observe(item);
+    });
+
     // 4. CUSTOM LERP CURSOR CODE
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');
@@ -1108,7 +1369,7 @@
     requestAnimationFrame(tickCursor);
 
     // Bind interactive elements to cursor scaling
-    document.querySelectorAll('a, .card, [role="button"], .element-list li').forEach(el => {
+    document.querySelectorAll('a, .card, [role="button"], .element-list li, .story-image-wrap').forEach(el => {
       el.addEventListener('mouseenter', () => {
         scale = 1.5;
         cursorRing.style.borderColor = '#C0392B';
