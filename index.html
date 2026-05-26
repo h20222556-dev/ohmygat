@@ -686,7 +686,7 @@
       margin-bottom: 0;
     }
     
-    .story-item:nth-child(even) {
+    .story-item-reverse {
       flex-direction: row-reverse;
     }
     
@@ -699,39 +699,17 @@
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 20px 40px rgba(0, 0, 0, 0.6);
       opacity: 0;
       transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .story-item:nth-child(odd) .story-image-wrap {
+      background-color: #111112;
+      padding: 50px 40px;
       transform: translateX(-50px);
     }
     
-    .story-item:nth-child(even) .story-image-wrap {
+    .story-item-reverse .story-image-wrap {
       transform: translateX(50px);
     }
     
-    .story-image-placeholder {
-      width: 100%;
-      padding-top: 62.5%; /* 16:10 Ratio */
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .story-image-placeholder-1 {
-      background: linear-gradient(135deg, #0f1013 0%, #1a1c23 60%, #303545 100%);
-    }
-    
-    .story-image-placeholder-2 {
-      background: linear-gradient(135deg, #0c090a 0%, #221415 50%, #44181c 100%);
-    }
-    
-    .story-image-placeholder-3 {
-      background: linear-gradient(135deg, #15181b 0%, #202b33 50%, #354a54 100%);
-    }
-    
-    .story-image-wrap:hover .story-image-placeholder {
-      transform: scale(1.05);
+    .story-image-wrap:hover {
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 25px 50px rgba(0, 0, 0, 0.8);
     }
     
     .story-text-wrap {
@@ -902,10 +880,12 @@
       .story-image-wrap, .story-text-wrap {
         width: 100%;
       }
-      /* On mobile, slide image up and fade in */
-      .story-item:nth-child(odd) .story-image-wrap,
-      .story-item:nth-child(even) .story-image-wrap {
-        transform: translateY(30px);
+      .story-image-wrap {
+        padding: 30px 25px;
+        transform: translateY(30px) !important;
+      }
+      .story-item-reverse .story-image-wrap {
+        transform: translateY(30px) !important;
       }
       .story-item.visible .story-image-wrap {
         transform: translateY(0) !important;
@@ -1150,58 +1130,160 @@
     <section class="story-section">
       <div class="story-container">
         
-        <div class="section-title-container reveal" style="margin-bottom: 100px;">
+        <!-- INTRO -->
+        <div class="section-title-container reveal" style="margin-bottom: 120px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
           <span class="section-tag">EXHIBITION 03</span>
-          <h2 class="section-title">기록: 전통을 전이하는 이야기</h2>
+          <h2 class="section-title" style="font-size: 2.8rem; margin-bottom: 30px; font-family: 'Noto Serif KR', serif; font-weight: 300;">전통의 탈환</h2>
+          <p class="story-desc" style="font-size: 1.1rem; line-height: 1.95; color: #cfd8dc; font-weight: 300; word-break: keep-all;">
+            드라마로 시작된 한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 전통 요소를 디자인과 몸짓을 통해 현대적 감각으로 '탈환'한 두 가지 선도적 사례를 분석해 전통의 현대적 공존 가능성을 모색하고자 한다.
+          </p>
         </div>
 
-        <!-- Story Item 1 -->
+        <!-- SUB-SECTION A: 범접 (Beomjeob) -->
+        <div class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+          <span class="story-subsection-num" style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #C0392B; font-weight: 300; display: block; line-height: 1;">01</span>
+          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
+          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
+        </div>
+
+        <!-- Item A-1 -->
         <div class="story-item">
           <div class="story-image-wrap">
-            <div class="story-image-placeholder story-image-placeholder-1"></div>
-          </div>
-          <div class="story-text-wrap">
             <div class="story-meta-header">
-              <span class="story-num">01</span>
+              <span class="story-num">A-1</span>
               <span class="story-line"></span>
             </div>
-            <h3 class="story-title">한복의 해체와 스트릿웨어</h3>
+            <h4 class="story-title">미션</h4>
+          </div>
+          <div class="story-text-wrap">
             <p class="story-desc">
-              춤이라는 가장 역동적인 언어를 위해 전통 복식의 깃과 품이 해체되고 재구성됩니다. 넓은 소매자락은 브레이킹의 속도감을 배가하는 스트릿 아우터로 진화하며, 흩날리는 옷고름은 춤의 궤적을 그리는 유기적 그래픽 요소가 되어 무대 위를 수놓습니다.
+              스우파2에서 범접이 받은 미션은 춤으로 자신의 나라를 표현하는 것이었다.
             </p>
           </div>
         </div>
 
-        <!-- Story Item 2 -->
-        <div class="story-item">
+        <!-- Item A-2 -->
+        <div class="story-item story-item-reverse">
           <div class="story-image-wrap">
-            <div class="story-image-placeholder story-image-placeholder-2"></div>
-          </div>
-          <div class="story-text-wrap">
             <div class="story-meta-header">
-              <span class="story-num">02</span>
+              <span class="story-num">A-2</span>
               <span class="story-line"></span>
             </div>
-            <h3 class="story-title">샤머니즘적 에너지의 시각화</h3>
+            <h4 class="story-title">의상 — 음양의 언어</h4>
+          </div>
+          <div class="story-text-wrap">
             <p class="story-desc">
-              무속 신앙의 주술적 굿판이 현대 레이저 프로젝션과 네온 라이팅을 통해 디지털 제의 공간으로 확장됩니다. 묵직하게 심장을 울리는 타악 장단에 맞춰 왜곡되는 빛의 물결은, 보이지 않는 영적 에너지를 시각화하며 보는 이에게 현대적 카타르시스를 선사합니다.
+              조선 시대 남성 복식의 상징인 갓을 스트릿 스타일로 변형해 의상으로 활용했다. 태극기에서 착안해 음양의 색상인 흰, 검은 의상을 착용하고, 태극기의 태극 문양인 빨간색과 파란색은 부채를 사용해 색감을 더했다. 검은 실루엣과 얼굴이 보이지 않는 연출로 악몽과 저승사자라는 무형의 주제를 잘 드러냈다.
             </p>
           </div>
         </div>
 
-        <!-- Story Item 3 -->
+        <!-- Item A-3 -->
         <div class="story-item">
           <div class="story-image-wrap">
-            <div class="story-image-placeholder story-image-placeholder-3"></div>
-          </div>
-          <div class="story-text-wrap">
             <div class="story-meta-header">
-              <span class="story-num">03</span>
+              <span class="story-num">A-3</span>
               <span class="story-line"></span>
             </div>
-            <h3 class="story-title">디지털 자개와 홀로그램 퓨처리즘</h3>
+            <h4 class="story-title">춤 — 부채춤과 풍물놀이</h4>
+          </div>
+          <div class="story-text-wrap">
             <p class="story-desc">
-              빛의 입사각에 따라 다채로운 영롱함을 뿜어내는 천연 자개의 질감이 3D 실시간 레이트레이싱 셰이더로 정교하게 구현됩니다. 가상의 공간에서 재창조된 자개 패턴은 공상과학적 네온 테크 비주얼과 만나 동양적인 미래주의 미학을 새롭게 정립합니다.
+              한국 전통 무용인 부채춤을 차용해 대칭 구조, 꽃 모양, 부채를 이용한 곡선 흐름, 집단 군무 등을 현대화했다. 풍물놀이의 요소로 상모돌리기와 원형이 강조되는 동선을 사용해 한국의 풍물놀이를 잘 녹여냈다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item A-4 -->
+        <div class="story-item story-item-reverse">
+          <div class="story-image-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">A-4</span>
+              <span class="story-line"></span>
+            </div>
+            <h4 class="story-title">노래 — 굿판의 분위기</h4>
+          </div>
+          <div class="story-text-wrap">
+            <p class="story-desc">
+              초반에 음산한 분위기를 지나 후반으로 갈수록 점점 고조되는 음악은 한국의 '굿판'에서 나타나는 분위기와 유사하다.
+            </p>
+          </div>
+        </div>
+
+        <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) -->
+        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+          <span class="story-subsection-num" style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #C0392B; font-weight: 300; display: block; line-height: 1;">02</span>
+          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
+          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
+        </div>
+
+        <!-- Item B-1 -->
+        <div class="story-item">
+          <div class="story-image-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">B-1</span>
+              <span class="story-line"></span>
+            </div>
+            <h4 class="story-title">작품 소개</h4>
+          </div>
+          <div class="story-text-wrap">
+            <p class="story-desc">
+              케이팝데몬헌터스는 3명의 주인공이 악령을 물리치는 아이돌이라는 중심 소재로 진정한 나를 찾아가는 여정을 그린 영화이다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item B-2 -->
+        <div class="story-item story-item-reverse">
+          <div class="story-image-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">B-2</span>
+              <span class="story-line"></span>
+            </div>
+            <h4 class="story-title">무기 — 전통의 형상</h4>
+          </div>
+          <div class="story-text-wrap">
+            <p class="story-desc">
+              루미의 무기는 사인검으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 벽사용 도검이다. 조이의 무기는 무당이 굿을 할 때 사용하는 대신칼에서 따온 소형 칼이다. 미라의 무기는 가야 때 월도를 모티브로 제작되었다. 고대 헌터들의 무기는 석장, 쌍검, 각궁으로 각각 깊은 역사와 전통적 맥락을 담고 있다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item B-3 -->
+        <div class="story-item">
+          <div class="story-image-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">B-3</span>
+              <span class="story-line"></span>
+            </div>
+            <h4 class="story-title">노리개 — 방울과 매듭</h4>
+          </div>
+          <div class="story-text-wrap">
+            <p class="story-desc">
+              헌트릭스에게 달려있는 노리개는 무당의 상징인 방울들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. 루미, 미라, 조이의 노리개에는 도래 매듭, 가락지 매듭, 국화 매듭 등 다양한 전통 매듭이 사용되었다.
+            </p>
+          </div>
+        </div>
+
+        <!-- CLOSING ITEM (shown after both sub-sections) -->
+        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+          <span class="story-subsection-num" style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #C0392B; font-weight: 300; display: block; line-height: 1;">03</span>
+          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">결론 (Conclusion)</h3>
+          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">전통을 재해석하고 현대 예술로 탈환해 낸 두 시선의 접점입니다.</p>
+        </div>
+
+        <!-- Closing Item -->
+        <div class="story-item story-item-reverse">
+          <div class="story-image-wrap">
+            <div class="story-meta-header">
+              <span class="story-num">C-1</span>
+              <span class="story-line"></span>
+            </div>
+            <h4 class="story-title" style="font-size: 1.8rem;">범접 vs 케데헌 — 전통을 대하는 두 가지 방식</h4>
+          </div>
+          <div class="story-text-wrap">
+            <p class="story-desc">
+              케데헌은 조선시대 무기, 단청 무대 등 유형의 전통적 요소를 시각적으로 활용한 반면, 범접은 저승사자라는 무형의 주제를 바탕으로 시청각적으로 한국을 표현했다. 하나는 형태로, 하나는 감각으로 전통을 현대에 되살렸다.
             </p>
           </div>
         </div>
