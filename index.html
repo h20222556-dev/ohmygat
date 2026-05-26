@@ -712,6 +712,22 @@
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 25px 50px rgba(0, 0, 0, 0.8);
     }
     
+    .story-image-wrap.story-image-has-file {
+      padding: 0 !important;
+      background-color: transparent;
+    }
+    
+    .story-image-el {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .story-image-wrap:hover .story-image-el {
+      transform: scale(1.05);
+    }
+    
     .story-text-wrap {
       flex: 1;
       width: 50%;
@@ -1219,14 +1235,15 @@
 
         <!-- Item B-1 -->
         <div class="story-item">
-          <div class="story-image-wrap">
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/kdh_intro.png" alt="작품 소개" class="story-image-el">
+          </div>
+          <div class="story-text-wrap">
             <div class="story-meta-header">
               <span class="story-num">B-1</span>
               <span class="story-line"></span>
             </div>
             <h4 class="story-title">작품 소개</h4>
-          </div>
-          <div class="story-text-wrap">
             <p class="story-desc">
               케이팝데몬헌터스는 3명의 주인공이 악령을 물리치는 아이돌이라는 중심 소재로 진정한 나를 찾아가는 여정을 그린 영화이다.
             </p>
@@ -1235,14 +1252,15 @@
 
         <!-- Item B-2 -->
         <div class="story-item story-item-reverse">
-          <div class="story-image-wrap">
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/kdh_weapons.jpg" alt="무기 — 전통의 형상" class="story-image-el">
+          </div>
+          <div class="story-text-wrap">
             <div class="story-meta-header">
               <span class="story-num">B-2</span>
               <span class="story-line"></span>
             </div>
             <h4 class="story-title">무기 — 전통의 형상</h4>
-          </div>
-          <div class="story-text-wrap">
             <p class="story-desc">
               루미의 무기는 사인검으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 벽사용 도검이다. 조이의 무기는 무당이 굿을 할 때 사용하는 대신칼에서 따온 소형 칼이다. 미라의 무기는 가야 때 월도를 모티브로 제작되었다. 고대 헌터들의 무기는 석장, 쌍검, 각궁으로 각각 깊은 역사와 전통적 맥락을 담고 있다.
             </p>
@@ -1251,14 +1269,15 @@
 
         <!-- Item B-3 -->
         <div class="story-item">
-          <div class="story-image-wrap">
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/kdh_norigae.png" alt="노리개 — 방울과 매듭" class="story-image-el">
+          </div>
+          <div class="story-text-wrap">
             <div class="story-meta-header">
               <span class="story-num">B-3</span>
               <span class="story-line"></span>
             </div>
             <h4 class="story-title">노리개 — 방울과 매듭</h4>
-          </div>
-          <div class="story-text-wrap">
             <p class="story-desc">
               헌트릭스에게 달려있는 노리개는 무당의 상징인 방울들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. 루미, 미라, 조이의 노리개에는 도래 매듭, 가락지 매듭, 국화 매듭 등 다양한 전통 매듭이 사용되었다.
             </p>
