@@ -93,6 +93,11 @@
       transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     }
     
+    .side-panel:hover ~ .cursor-dot,
+    .side-panel:hover ~ .cursor-ring {
+      opacity: 0 !important;
+    }
+    
     @media (hover: none) and (pointer: coarse) {
       body {
         cursor: auto;
@@ -1022,6 +1027,7 @@
       flex-direction: column;
       overflow-y: auto;
       box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      cursor: default;
     }
     
     .side-panel.active {
@@ -1098,6 +1104,7 @@
       letter-spacing: 0.05em;
       transition: color 0.3s ease;
       word-break: keep-all;
+      cursor: pointer;
     }
     
     .panel-link:hover {

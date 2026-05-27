@@ -238,12 +238,6 @@
       width: calc(480px / 1.414); /* 339.46px */
     }
     
-    /* Area 2: twice the width of Area 1, same height */
-    .area-horizontal {
-      height: 480px;
-      width: calc((480px / 1.414) * 2); /* 678.92px */
-    }
-    
     .area-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.75rem;
@@ -284,10 +278,6 @@
         height: 400px;
         width: calc(400px / 1.414); /* 282.88px */
       }
-      .area-horizontal {
-        height: 400px;
-        width: calc((400px / 1.414) * 2); /* 565.77px */
-      }
     }
     
     @media (max-width: 900px) {
@@ -295,18 +285,11 @@
         flex-direction: column;
         gap: 40px;
       }
-      .area-vertical, .area-horizontal {
-        width: 80vw;
-      }
       .area-vertical {
+        width: 80vw;
         height: calc(80vw * 1.414);
         max-width: 320px;
         max-height: calc(320px * 1.414);
-      }
-      .area-horizontal {
-        height: calc(80vw * 0.707);
-        max-width: 640px;
-        max-height: calc(640px * 0.707);
       }
     }
   </style>
@@ -337,11 +320,6 @@
       <!-- Area 1 (Vertical A2) -->
       <div class="poster-area area-vertical">
         <span class="area-label">A2 Vertical</span>
-      </div>
-      
-      <!-- Area 2 (Horizontal - Double Width) -->
-      <div class="poster-area area-horizontal">
-        <span class="area-label">A2 Side-by-Side</span>
       </div>
     </div>
   </main>
