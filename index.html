@@ -1128,6 +1128,35 @@
         border-left: none;
       }
     }
+    
+    .view-poster-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 20px;
+      background-color: #0a0a0a;
+    }
+    
+    .view-poster-btn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 16px 45px;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+      background-color: transparent;
+    }
+    
+    .view-poster-btn:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.6);
+      background-color: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
   </style>
 </head>
 <body>
@@ -1549,9 +1578,12 @@
       </div>
     </section>
 
-    
+    <!-- VIEW POSTER BUTTON -->
+    <div class="view-poster-container reveal">
+      <a href="poster.html" class="view-poster-btn">VIEW POSTER</a>
+    </div>
 
-<!-- SECTION 5: CLOSING STATEMENT -->
+    <!-- SECTION 5: CLOSING STATEMENT -->
     <section class="closing-section reveal">
       <div class="closing-bg-char">韓魂</div>
       
