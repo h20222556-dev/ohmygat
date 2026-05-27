@@ -200,12 +200,12 @@
     .poster-area {
       position: relative;
       background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.03) 100%);
-      border: 1px dashed rgba(255, 255, 255, 0.12);
       border-radius: 4px;
       transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
     
     .poster-area::before {
@@ -292,6 +292,13 @@
         max-height: calc(320px * 1.414);
       }
     }
+    
+    .poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -319,7 +326,7 @@
     <div class="showcase-grid">
       <!-- Area 1 (Vertical A2) -->
       <div class="poster-area area-vertical">
-        <span class="area-label">A2 Vertical</span>
+        <img src="images/poster.png" alt="OH MY GAT — TRADITION REWRITTEN Poster" class="poster-img">
       </div>
     </div>
   </main>
