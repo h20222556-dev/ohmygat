@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OH MY GAT: POSTER EXHIBITION">
+  <title>OH MY GAT - Poster Exhibition</title>
+  
+  <!-- Google Fonts Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Noto Serif KR', serif;
+      overflow-x: hidden;
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff;
+    }
+    
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #C0392B;
+      border-radius: 50%;
+      position: fixed;
+      top: -3px;
+      left: -3px;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.8);
+    }
+    
+    .cursor-ring {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      top: -14px;
+      left: -14px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      background-color: transparent;
+      transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    
+    @media (hover: none) and (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+    
+    /* Navbar styling matching index.html */
+    .navbar {
+      width: 100%;
+      height: 60px;
+      background-color: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    .navbar-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .navbar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      color: #C0392B;
+    }
+    
+    .back-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .back-link:hover {
+      color: #ffffff;
+    }
+    
+    /* Poster Container Layout */
+    .poster-container {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: #C0392B;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      text-align: center;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Showcase Areas */
+    .showcase-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      width: 100%;
+    }
+    
+    /* Standard vertical A2 height base is 480px on desktop */
+    .poster-area {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .poster-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      pointer-events: none;
+      transition: border-color 0.4s ease;
+    }
+    
+    .poster-area:hover {
+      border-color: rgba(192, 57, 43, 0.5);
+      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(192, 57, 43, 0.15);
+      transform: translateY(-5px);
+    }
+    
+    .poster-area:hover::before {
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Area 1: 1:1.414 (A2 Proportions) */
+    .area-vertical {
+      height: 480px;
+      width: calc(480px / 1.414); /* 339.46px */
+    }
+    
+    .area-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.2);
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: color 0.4s ease;
+    }
+    
+    .poster-area:hover .area-label {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Footer styling matching index.html */
+    .footer-section {
+      background-color: #000000;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: auto;
+    }
+    
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #666666;
+      text-transform: uppercase;
+    }
+    
+    /* Responsive Styling */
+    @media (max-width: 1024px) {
+      .showcase-grid {
+        gap: 30px;
+      }
+      .area-vertical {
+        height: 400px;
+        width: calc(400px / 1.414); /* 282.88px */
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .showcase-grid {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .area-vertical {
+        width: 80vw;
+        height: calc(80vw * 1.414);
+        max-width: 320px;
+        max-height: calc(320px * 1.414);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">OH MY GAT</a>
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg); margin-right: 4px;">
+          <path d="M7 10l5 5 5-5"/>
+        </svg>
+        <span>BACK</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Subtle Noise Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- MAIN POSTER DISPLAY -->
+  <main class="poster-container">
+    <h1 class="page-title">POSTER</h1>
+    
+    <div class="showcase-grid">
+      <!-- Area 1 (Vertical A2) -->
+      <div class="poster-area area-vertical">
+        <span class="area-label">A2 Vertical</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-section">
+    <p class="footer-text">OH MY GAT &middot; TRADITION REWRITTEN</p>
+  </footer>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // 1. CUSTOM LERP CURSOR CODE
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let ringX = 0, ringY = 0;
+    let isMoving = false;
+    let scale = 1;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+        dotX = mouseX;
+        dotY = mouseY;
+        ringX = mouseX;
+        ringY = mouseY;
+        isMoving = true;
+      }
+    });
+
+    // Handle cursor leaving the window
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      if (isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+      }
+    });
+
+    function tickCursor() {
+      if (isMoving) {
+        // Dot follows cursor quickly (lerp: 0.25)
+        dotX += (mouseX - dotX) * 0.25;
+        dotY += (mouseY - dotY) * 0.25;
+        
+        // Outer ring follows cursor slowly (lerp: 0.12)
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+
+        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${scale})`;
+      }
+      
+      requestAnimationFrame(tickCursor);
+    }
+    requestAnimationFrame(tickCursor);
+
+    // Bind interactive elements to cursor scaling
+    document.querySelectorAll('a, .poster-area').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        scale = 1.5;
+        cursorRing.style.borderColor = '#C0392B';
+        cursorRing.style.backgroundColor = 'rgba(192, 57, 43, 0.05)';
+      });
+      el.addEventListener('mouseleave', () => {
+        scale = 1;
+        cursorRing.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        cursorRing.style.backgroundColor = 'transparent';
+      });
+    });
+  </script>
+</body>
+</html>

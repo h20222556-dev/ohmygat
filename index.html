@@ -93,6 +93,11 @@
       transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     }
     
+    .side-panel:hover ~ .cursor-dot,
+    .side-panel:hover ~ .cursor-ring {
+      opacity: 0 !important;
+    }
+    
     @media (hover: none) and (pointer: coarse) {
       body {
         cursor: auto;
@@ -129,6 +134,7 @@
       align-items: center;
       overflow: hidden;
       background-color: #050505;
+      padding-top: 60px; /* offset for fixed navbar */
     }
     
     .hero-bg-container {
@@ -928,9 +934,256 @@
         margin: 30px auto;
       }
     }
+    
+    /* --------------------------------------------------
+       9.6. FIXED NAVIGATION BAR
+       -------------------------------------------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+    
+    .navbar-left {
+      /* Empty */
+    }
+    
+    .navbar-center {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .navbar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      color: #C0392B;
+    }
+    
+    .navbar-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    
+    .menu-toggle {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10000;
+    }
+    
+    .hamburger-bar {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Side Panel Styles */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100vh;
+      background-color: #070708;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10005;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 80px 30px 40px 30px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    
+    .side-panel.active {
+      transform: translateX(0);
+    }
+    
+    .panel-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+    
+    .panel-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+    
+    .side-panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .side-panel-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .panel-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .panel-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .panel-chapter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .panel-link {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      word-break: keep-all;
+      cursor: pointer;
+    }
+    
+    .panel-link:hover {
+      color: #ffffff;
+    }
+    
+    @media (max-width: 1024px) {
+      .navbar-inner {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .navbar-left {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .side-panel {
+        width: 100%;
+        border-left: none;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- FIXED TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-left"></div>
+      <div class="navbar-center">
+        <a href="#" class="navbar-logo" id="nav-logo">OH MY GAT</a>
+      </div>
+      <div class="navbar-right">
+        <button class="menu-toggle" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SLIDE-IN SIDE PANEL MENU -->
+  <div class="side-panel-overlay" id="side-panel-overlay"></div>
+  <div class="side-panel" id="side-panel">
+    <button class="panel-close" id="panel-close" aria-label="메뉴 닫기">&times;</button>
+    <nav class="panel-nav">
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 01</span>
+        <a href="#chapter-1" class="panel-link">고루함을 벗고 역동성을 입다</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 02</span>
+        <a href="#chapter-2" class="panel-link">전통의 탈환</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 03</span>
+        <a href="#chapter-3" class="panel-link">범접</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 04</span>
+        <a href="#chapter-4" class="panel-link">케이팝데몬헌터스</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 05</span>
+        <a href="#chapter-5" class="panel-link">전통이 작동하는 방식</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 06</span>
+        <a href="#chapter-6" class="panel-link">두 개의 시선: 현대적 번역</a>
+      </div>
+      <div class="panel-item" style="margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px;">
+        <span class="panel-chapter">POSTER</span>
+        <a href="poster.html" class="panel-link" style="font-family: 'Cormorant Garamond', serif; letter-spacing: 0.15em; font-weight: 400;">POSTER</a>
+      </div>
+    </nav>
+  </div>
 
   <!-- Custom Cursor Elements -->
   <div class="cursor-dot"></div>
@@ -1009,7 +1262,7 @@
     </section>
 
     <!-- SECTION 2: INTRODUCTION -->
-    <section class="intro-section reveal">
+    <section id="chapter-1" class="intro-section reveal">
       <div class="intro-container">
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl"></div>
@@ -1038,8 +1291,8 @@
 
 
 
-<!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 03) -->
-    <section class="story-section">
+<!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
+    <section id="chapter-2" class="story-section">
       <div class="story-container">
         
         <!-- INTRO -->
@@ -1083,7 +1336,7 @@
 
 
         <!-- SUB-SECTION A: 범접 (Beomjeob) -->
-        <div class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+        <div id="chapter-3" class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 03</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
           <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
@@ -1091,10 +1344,11 @@
 
         <!-- Item A-1 -->
         <div class="story-item">
-          <div class="story-image-wrap">
-            <h4 class="story-title">미션</h4>
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/bj_mission.png" alt="미션" class="story-image-el">
           </div>
           <div class="story-text-wrap">
+            <h4 class="story-title">미션</h4>
             <p class="story-desc">
               스우파2에서 범접이 받은 미션은 춤으로 자신의 나라를 표현하는 것이었다.
             </p>
@@ -1103,10 +1357,11 @@
 
         <!-- Item A-2 -->
         <div class="story-item story-item-reverse">
-          <div class="story-image-wrap">
-            <h4 class="story-title">의상 — 음양의 언어</h4>
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/bj_costume.png" alt="의상 — 음양의 언어" class="story-image-el">
           </div>
           <div class="story-text-wrap">
+            <h4 class="story-title">의상 — 음양의 언어</h4>
             <p class="story-desc">
               조선 시대 남성 복식의 상징인 갓을 스트릿 스타일로 변형해 의상으로 활용했다. 태극기에서 착안해 음양의 색상인 흰, 검은 의상을 착용하고, 태극기의 태극 문양인 빨간색과 파란색은 부채를 사용해 색감을 더했다. 검은 실루엣과 얼굴이 보이지 않는 연출로 악몽과 저승사자라는 무형의 주제를 잘 드러냈다.
             </p>
@@ -1115,10 +1370,11 @@
 
         <!-- Item A-3 -->
         <div class="story-item">
-          <div class="story-image-wrap">
-            <h4 class="story-title">춤 — 부채춤과 풍물놀이</h4>
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/bj_dance.png" alt="춤 — 부채춤과 풍물놀이" class="story-image-el">
           </div>
           <div class="story-text-wrap">
+            <h4 class="story-title">춤 — 부채춤과 풍물놀이</h4>
             <p class="story-desc">
               한국 전통 무용인 부채춤을 차용해 대칭 구조, 꽃 모양, 부채를 이용한 곡선 흐름, 집단 군무 등을 현대화했다. 풍물놀이의 요소로 상모돌리기와 원형이 강조되는 동선을 사용해 한국의 풍물놀이를 잘 녹여냈다.
             </p>
@@ -1127,10 +1383,11 @@
 
         <!-- Item A-4 -->
         <div class="story-item story-item-reverse">
-          <div class="story-image-wrap">
-            <h4 class="story-title">노래 — 굿판의 분위기</h4>
+          <div class="story-image-wrap story-image-has-file">
+            <img src="images/bj_song.png" alt="노래 — 굿판의 분위기" class="story-image-el">
           </div>
           <div class="story-text-wrap">
+            <h4 class="story-title">노래 — 굿판의 분위기</h4>
             <p class="story-desc">
               초반에 음산한 분위기를 지나 후반으로 갈수록 점점 고조되는 음악은 한국의 '굿판'에서 나타나는 분위기와 유사하다.
             </p>
@@ -1138,7 +1395,7 @@
         </div>
 
         <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) -->
-        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+        <div id="chapter-4" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 04</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
           <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
@@ -1183,24 +1440,7 @@
           </div>
         </div>
 
-        <!-- CLOSING ITEM (shown after both sub-sections) -->
-        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
-          <span class="section-tag">CHAPTER 05</span>
-          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">결론 (Conclusion)</h3>
-          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">전통을 재해석하고 현대 예술로 탈환해 낸 두 시선의 접점입니다.</p>
-        </div>
-
-        <!-- Closing Item -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap">
-            <h4 class="story-title" style="font-size: 1.8rem;">범접 vs 케데헌 — 전통을 대하는 두 가지 방식</h4>
-          </div>
-          <div class="story-text-wrap">
-            <p class="story-desc">
-              케데헌은 조선시대 무기, 단청 무대 등 유형의 전통적 요소를 시각적으로 활용한 반면, 범접은 저승사자라는 무형의 주제를 바탕으로 시청각적으로 한국을 표현했다. 하나는 형태로, 하나는 감각으로 전통을 현대에 되살렸다.
-            </p>
-          </div>
-        </div>
+        <!-- Conclusion Item Removed -->
 
       </div>
     </section>
@@ -1210,7 +1450,7 @@
 
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
-    <section class="analysis-section">
+    <section id="chapter-5" class="analysis-section">
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal">
         <div class="divider-line"></div>
@@ -1222,7 +1462,7 @@
       </div>
 
       <div class="section-title-container reveal">
-        <span class="section-tag">CHAPTER 06</span>
+        <span class="section-tag">CHAPTER 05</span>
         <h2 class="section-title">전통이 작동하는 방식</h2>
       </div>
 
@@ -1269,9 +1509,9 @@
 
 
 <!-- SECTION 3: TWO CONTENTS COMPARISON -->
-    <section class="comparison-section reveal">
+    <section id="chapter-6" class="comparison-section reveal">
       <div class="section-title-container">
-        <span class="section-tag">CHAPTER 07</span>
+        <span class="section-tag">CHAPTER 06</span>
         <h2 class="section-title">두 개의 시선: 현대적 번역</h2>
       </div>
       
@@ -1331,7 +1571,9 @@
 
     <!-- FOOTER -->
     <footer class="footer-section">
-      <p class="footer-text">OH MY GAT &middot; TRADITION REWRITTEN &middot; 2025</p>
+      <p class="footer-text">
+        <a href="#" id="footer-logo" style="color: inherit; text-decoration: none; transition: color 0.3s ease;">OH MY GAT</a> &middot; TRADITION REWRITTEN
+      </p>
     </footer>
 
   </main>
@@ -1471,7 +1713,104 @@
     requestAnimationFrame(tickCursor);
 
     // Bind interactive elements to cursor scaling
-    document.querySelectorAll('a, .card, [role="button"], .element-list li, .story-image-wrap').forEach(el => {
+    document.querySelectorAll('a, .card, [role="button"], .element-list li, .story-image-wrap, .menu-toggle').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        scale = 1.5;
+        cursorRing.style.borderColor = '#C0392B';
+        cursorRing.style.backgroundColor = 'rgba(192, 57, 43, 0.05)';
+      });
+      el.addEventListener('mouseleave', () => {
+        scale = 1;
+        cursorRing.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        cursorRing.style.backgroundColor = 'transparent';
+      });
+    });
+
+    // 5. NAVBAR, SIDE MENU, & FOOTER SCROLL & INTERACTION CODE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidePanel = document.getElementById('side-panel');
+    const sidePanelOverlay = document.getElementById('side-panel-overlay');
+    const panelClose = document.getElementById('panel-close');
+    const panelLinks = document.querySelectorAll('.panel-link');
+
+    function openSideMenu() {
+      sidePanel.classList.add('active');
+      sidePanelOverlay.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeSideMenu() {
+      sidePanel.classList.remove('active');
+      sidePanelOverlay.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Toggle click listeners
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        if (sidePanel.classList.contains('active')) {
+          closeSideMenu();
+        } else {
+          openSideMenu();
+        }
+      });
+    }
+
+    if (panelClose) {
+      panelClose.addEventListener('click', closeSideMenu);
+    }
+
+    if (sidePanelOverlay) {
+      sidePanelOverlay.addEventListener('click', closeSideMenu);
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSideMenu();
+      }
+    });
+
+    // Smooth scroll to sections with offset
+    panelLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+            
+            // Close side menu before scrolling
+            closeSideMenu();
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Navbar logo & Footer logo click smooth scroll to top
+    const scrollToTopElements = [document.getElementById('nav-logo'), document.getElementById('footer-logo')];
+    scrollToTopElements.forEach(el => {
+      if (el) {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          closeSideMenu();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+
+    // Bind interactive elements to cursor scaling
+    document.querySelectorAll('.panel-close, .panel-link').forEach(el => {
       el.addEventListener('mouseenter', () => {
         scale = 1.5;
         cursorRing.style.borderColor = '#C0392B';
