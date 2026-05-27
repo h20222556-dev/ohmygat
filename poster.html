@@ -154,7 +154,6 @@
     /* Poster Container Layout */
     .poster-container {
       flex: 1;
-      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
       padding: 80px 40px;
@@ -234,8 +233,9 @@
     
     /* Area 1: 1:1.414 (A2 Proportions) */
     .area-vertical {
-      height: 480px;
-      width: calc(480px / 1.414); /* 339.46px */
+      height: 100vh;
+      width: auto;
+      max-width: 100vw;
     }
     
     .area-label {
@@ -274,10 +274,6 @@
       .showcase-grid {
         gap: 30px;
       }
-      .area-vertical {
-        height: 400px;
-        width: calc(400px / 1.414); /* 282.88px */
-      }
     }
     
     @media (max-width: 900px) {
@@ -285,18 +281,13 @@
         flex-direction: column;
         gap: 40px;
       }
-      .area-vertical {
-        width: 80vw;
-        height: calc(80vw * 1.414);
-        max-width: 320px;
-        max-height: calc(320px * 1.414);
-      }
     }
     
     .poster-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: auto;
+      height: 100vh;
+      max-width: 100vw;
+      object-fit: contain;
       display: block;
     }
   </style>
