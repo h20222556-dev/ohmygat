@@ -129,6 +129,7 @@
       align-items: center;
       overflow: hidden;
       background-color: #050505;
+      padding-top: 60px; /* offset for fixed navbar */
     }
     
     .hero-bg-container {
@@ -928,9 +929,176 @@
         margin: 30px auto;
       }
     }
+    
+    /* --------------------------------------------------
+       9.6. FIXED NAVIGATION BAR
+       -------------------------------------------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+    
+    .navbar-left {
+      /* Empty */
+    }
+    
+    .navbar-center {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .navbar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      color: #C0392B;
+    }
+    
+    .navbar-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 25px;
+    }
+    
+    .nav-link {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10000;
+    }
+    
+    .hamburger-bar {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    @media (max-width: 1024px) {
+      .navbar-inner {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .navbar-left {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 9999;
+      }
+      .nav-menu.active {
+        right: 0;
+      }
+      .nav-link {
+        font-size: 0.9rem;
+      }
+      
+      .menu-toggle.active .hamburger-bar:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      .menu-toggle.active .hamburger-bar:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active .hamburger-bar:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- FIXED TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-left"></div>
+      <div class="navbar-center">
+        <a href="#" class="navbar-logo" id="nav-logo">OH MY GAT</a>
+      </div>
+      <div class="navbar-right">
+        <nav class="nav-menu">
+          <a href="#chapter-1" class="nav-link">고루함을 벗고 역동성을 입다</a>
+          <a href="#chapter-2" class="nav-link">전통의 탈환</a>
+          <a href="#chapter-3" class="nav-link">범접</a>
+          <a href="#chapter-4" class="nav-link">케이팝데몬헌터스</a>
+          <a href="#chapter-5" class="nav-link">결론</a>
+          <a href="#chapter-6" class="nav-link">전통이 작동하는 방식</a>
+          <a href="#chapter-7" class="nav-link">두 개의 시선: 현대적 번역</a>
+        </nav>
+        <button class="menu-toggle" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
   <!-- Custom Cursor Elements -->
   <div class="cursor-dot"></div>
@@ -1009,7 +1177,7 @@
     </section>
 
     <!-- SECTION 2: INTRODUCTION -->
-    <section class="intro-section reveal">
+    <section id="chapter-1" class="intro-section reveal">
       <div class="intro-container">
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl"></div>
@@ -1039,7 +1207,7 @@
 
 
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 03) -->
-    <section class="story-section">
+    <section id="chapter-2" class="story-section">
       <div class="story-container">
         
         <!-- INTRO -->
@@ -1083,7 +1251,7 @@
 
 
         <!-- SUB-SECTION A: 범접 (Beomjeob) -->
-        <div class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+        <div id="chapter-3" class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 03</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
           <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
@@ -1138,7 +1306,7 @@
         </div>
 
         <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) -->
-        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+        <div id="chapter-4" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 04</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
           <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
@@ -1184,7 +1352,7 @@
         </div>
 
         <!-- CLOSING ITEM (shown after both sub-sections) -->
-        <div class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
+        <div id="chapter-5" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 05</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">결론 (Conclusion)</h3>
           <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">전통을 재해석하고 현대 예술로 탈환해 낸 두 시선의 접점입니다.</p>
@@ -1210,7 +1378,7 @@
 
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
-    <section class="analysis-section">
+    <section id="chapter-6" class="analysis-section">
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal">
         <div class="divider-line"></div>
@@ -1269,7 +1437,7 @@
 
 
 <!-- SECTION 3: TWO CONTENTS COMPARISON -->
-    <section class="comparison-section reveal">
+    <section id="chapter-7" class="comparison-section reveal">
       <div class="section-title-container">
         <span class="section-tag">CHAPTER 07</span>
         <h2 class="section-title">두 개의 시선: 현대적 번역</h2>
@@ -1331,7 +1499,9 @@
 
     <!-- FOOTER -->
     <footer class="footer-section">
-      <p class="footer-text">OH MY GAT &middot; TRADITION REWRITTEN &middot; 2025</p>
+      <p class="footer-text">
+        <a href="#" id="footer-logo" style="color: inherit; text-decoration: none; transition: color 0.3s ease;">OH MY GAT</a> &middot; TRADITION REWRITTEN
+      </p>
     </footer>
 
   </main>
@@ -1471,7 +1641,7 @@
     requestAnimationFrame(tickCursor);
 
     // Bind interactive elements to cursor scaling
-    document.querySelectorAll('a, .card, [role="button"], .element-list li, .story-image-wrap').forEach(el => {
+    document.querySelectorAll('a, .card, [role="button"], .element-list li, .story-image-wrap, .menu-toggle').forEach(el => {
       el.addEventListener('mouseenter', () => {
         scale = 1.5;
         cursorRing.style.borderColor = '#C0392B';
@@ -1483,6 +1653,58 @@
         cursorRing.style.backgroundColor = 'transparent';
       });
     });
+
+    // 5. NAVBAR & FOOTER SCROLL & INTERACTION CODE
+    // Smooth scroll to sections with offset
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Mobile menu auto close
+          const navMenu = document.querySelector('.nav-menu');
+          const menuToggle = document.querySelector('.menu-toggle');
+          if (navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+
+    // Navbar logo & Footer logo click smooth scroll to top
+    const scrollToTopElements = [document.getElementById('nav-logo'), document.getElementById('footer-logo')];
+    scrollToTopElements.forEach(el => {
+      if (el) {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+
+    // Mobile Hamburger Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+    }
   </script>
 </body>
 </html>
