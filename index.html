@@ -1157,6 +1157,43 @@
       background-color: rgba(255, 255, 255, 0.02);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     }
+
+    /* Poster Preview & Element Sections */
+    .poster-preview-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px 50px 20px;
+      background-color: #0a0a0a;
+    }
+    
+    .poster-preview-link {
+      display: block;
+      max-width: 200px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      background-color: #000000;
+    }
+    
+    .poster-preview-link:hover {
+      transform: scale(1.04);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    
+    .poster-preview-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .poster-elements-container {
+      padding: 50px 20px 100px 20px;
+      background-color: #0a0a0a;
+    }
   </style>
 </head>
 <body>
@@ -1376,7 +1413,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">미션</h4>
             <p class="story-desc">
-              스우파2에서 범접이 받은 미션은 춤으로 자신의 나라를 표현하는 것이었다.
+              스우파2에서 범접이 받은 미션은 춤으로 <strong>자신의 나라를 표현</strong>하는 것이었습니다. 한국의 <strong>전통 이미지</strong>를 퍼포먼스 언어로 변환하는 출발점이 된 과제입니다.
             </p>
           </div>
         </div>
@@ -1389,7 +1426,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">갓</h4>
             <p class="story-desc">
-              범접 무대에서 가장 인상적으로 드러나는 전통 요소입니다. 저승사자 콘셉트와 결합되어 한국적인 분위기를 강하게 형성합니다.
+              범접 무대에서 가장 인상적으로 드러나는 <strong>전통 요소</strong>입니다. <strong>저승사자 콘셉트</strong>와 결합되어 한국적인 분위기를 강하게 형성합니다.
             </p>
           </div>
         </div>
@@ -1402,7 +1439,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">저승사자 콘셉트</h4>
             <p class="story-desc">
-              한국 전통 설화 속 사후 세계 이미지를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 서사적인 몰입감을 높이는 역할을 합니다.
+              한국 전통 설화 속 <strong>사후 세계 이미지</strong>를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 <strong>서사적인 몰입감</strong>을 높이는 역할을 합니다.
             </p>
           </div>
         </div>
@@ -1415,7 +1452,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">부채와 소품 활용</h4>
             <p class="story-desc">
-              전통 춤에서 자주 사용되는 소품의 감각을 안무에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
+              <strong>전통 춤</strong>에서 자주 사용되는 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
             </p>
           </div>
         </div>
@@ -1428,7 +1465,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">전통적 군무 구성</h4>
             <p class="story-desc">
-              여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 전통 공연에서 느껴지는 집단미와 정교함을 현대적으로 재해석한 방식입니다.
+              여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 전통 공연에서 느껴지는 <strong>집단미</strong>와 <strong>정교함</strong>을 현대적으로 재해석한 방식입니다.
             </p>
           </div>
         </div>
@@ -1441,7 +1478,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무속적 분위기</h4>
             <p class="story-desc">
-              음악, 조명, 의상 전반에서 무속적 긴장감이 표현됩니다. 전통 신앙의 이미지를 현대 퍼포먼스로 확장한 사례로 볼 수 있습니다.
+              음악, 조명, 의상 전반에서 <strong>무속적 긴장감</strong>이 표현됩니다. 전통 신앙의 이미지를 <strong>현대 퍼포먼스</strong>로 확장한 사례로 볼 수 있습니다.
             </p>
           </div>
         </div>
@@ -1461,7 +1498,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무기 — 전통의 형상</h4>
             <p class="story-desc">
-              루미의 무기는 사인검으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 벽사용 도검이다. 조이의 무기는 무당이 굿을 할 때 사용하는 대신칼에서 따온 소형 칼이다. 미라의 무기는 가야 때 월도를 모티브로 제작되었다. 고대 헌터들의 무기는 석장, 쌍검, 각궁으로 각각 깊은 역사와 전통적 맥락을 담고 있다.
+              루미의 무기는 <strong>사인검</strong>으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 벽사용 도검이다. 조이의 무기는 무당이 굿을 할 때 사용하는 <strong>대신칼</strong>에서 따온 소형 칼이다. 미라의 무기는 가야 때 <strong>월도</strong>를 모티브로 제작되었다. 고대 헌터들의 무기는 석장, 쌍검, 각궁으로 각각 깊은 역사와 전통적 맥락을 담고 있다.
             </p>
           </div>
         </div>
@@ -1474,7 +1511,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">까치호랑이 민화</h4>
             <p class="story-desc">
-              한국 민화 특유의 상징성과 해학을 보여주는 요소입니다. 호랑이와 까치의 조합을 통해 전통 미감을 자연스럽게 드러냅니다.
+              <strong>한국 민화</strong> 특유의 상징성과 해학을 보여주는 요소입니다. 호랑이와 까치의 조합을 통해 <strong>전통 미감</strong>을 자연스럽게 드러냅니다.
             </p>
           </div>
         </div>
@@ -1487,7 +1524,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">노리개 — 방울과 매듭</h4>
             <p class="story-desc">
-              헌트릭스에게 달려있는 노리개는 무당의 상징인 방울들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. 루미, 미라, 조이의 노리개에는 도래 매듭, 가락지 매듭, 국화 매듭 등 다양한 전통 매듭이 사용되었다.
+              헌트릭스에게 달려있는 <strong>노리개</strong>는 무당의 상징인 방울들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. 루미, 미라, 조이의 노리개에는 도래 매듭, 가락지 매듭, 국화 매듭 등 다양한 <strong>전통 매듭</strong>이 사용되었다.
             </p>
           </div>
         </div>
@@ -1500,7 +1537,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무속·퇴마 설정</h4>
             <p class="story-desc">
-              악령을 상대하는 이야기 구조가 한국 무속 신앙과 연결되어 있습니다. 전통 설화를 기반으로 한 독창적인 판타지 세계관을 형성합니다.
+              악령을 상대하는 이야기 구조가 <strong>한국 무속 신앙</strong>과 연결되어 있습니다. 전통 설화를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
             </p>
           </div>
         </div>
@@ -1513,7 +1550,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">전통 건축과 미장센</h4>
             <p class="story-desc">
-              한옥의 분위기, 단청 색감, 전통 문양 등 시각적 요소가 활용됩니다. 배경 자체가 한국 전통문화의 정서를 전달하는 역할을 합니다.
+              <strong>한옥의 분위기</strong>, 단청 색감, 전통 문양 등 시각적 요소가 활용됩니다. 배경 자체가 <strong>한국 전통문화의 정서</strong>를 전달하는 역할을 합니다.
             </p>
           </div>
         </div>
@@ -1592,6 +1629,16 @@
     <div class="view-poster-container reveal">
       <a href="poster.html" class="view-poster-btn">VIEW POSTER</a>
     </div>
+
+    <!-- POSTER PREVIEW -->
+    <div class="poster-preview-container reveal">
+      <a href="poster.html" class="poster-preview-link">
+        <img src="images/poster.png" alt="OH MY GAT Poster Preview" class="poster-preview-img">
+      </a>
+    </div>
+
+    <!-- POSTER ELEMENT DESCRIPTIONS -->
+    <div class="poster-elements-container reveal"></div>
 
     <!-- SECTION 5: CLOSING STATEMENT -->
     <section class="closing-section reveal">
