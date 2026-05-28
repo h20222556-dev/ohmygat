@@ -307,7 +307,7 @@
     
     .intro-body {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1.1rem;
+      font-size: 1.225rem;
       line-height: 1.9;
       color: #e0e0e0;
       margin-bottom: 25px;
@@ -317,7 +317,7 @@
     
     .intro-body-sub {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.95rem;
+      font-size: 1.075rem;
       line-height: 1.8;
       color: #888888;
       font-weight: 400;
@@ -420,7 +420,7 @@
     
     .card-desc {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.95rem;
+      font-size: 1.075rem;
       line-height: 1.8;
       color: #b0bec5;
       margin-bottom: 40px;
@@ -496,6 +496,7 @@
       max-width: 900px;
       margin: 0 auto;
       width: 100%;
+      position: relative;
     }
     
     /* Diamond Divider Knot */
@@ -559,7 +560,7 @@
     
     .analysis-body {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       line-height: 1.85;
       color: #b0bec5;
       margin: 0;
@@ -619,7 +620,7 @@
     
     .closing-quote-ko {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1.3rem;
+      font-size: 1.425rem;
       color: #cfd8dc;
       margin: 0;
       font-weight: 400;
@@ -635,7 +636,7 @@
     
     .closing-credits {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: #888888;
       letter-spacing: 0.05em;
       margin: 0;
@@ -793,7 +794,7 @@
     
     .story-desc {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1rem;
+      font-size: 1.125rem;
       line-height: 1.9;
       color: #cfd8dc;
       font-weight: 400;
@@ -1191,6 +1192,7 @@
     }
     
     .poster-elements-container {
+      position: relative;
       max-width: 800px;
       margin: 0 auto;
       padding: 50px 20px 100px 20px;
@@ -1203,6 +1205,76 @@
     .poster-element-entry {
       border-left: 1.5px solid rgba(192, 57, 43, 0.3);
       padding-left: 30px;
+    }
+
+    /* Decorative Traditional Patterns */
+    .bg-pattern {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      color: #ffffff;
+      opacity: 0.045; /* Faint opacity (4.5% is between 3% and 8%) */
+      transition: opacity 0.5s ease;
+    }
+    
+    .pattern-dancheong {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .pattern-peaks {
+      width: 360px;
+      height: 180px;
+    }
+    
+    .pattern-tl {
+      top: 40px;
+      left: 40px;
+    }
+    
+    .pattern-tr {
+      top: 40px;
+      right: 40px;
+    }
+    
+    .pattern-bl {
+      bottom: 40px;
+      left: 40px;
+    }
+    
+    .pattern-br {
+      bottom: 40px;
+      right: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .bg-pattern {
+        opacity: 0.03; /* even lower opacity on mobile */
+      }
+      .pattern-dancheong {
+        width: 140px;
+        height: 140px;
+      }
+      .pattern-peaks {
+        width: 200px;
+        height: 100px;
+      }
+      .pattern-tl {
+        top: 20px;
+        left: 20px;
+      }
+      .pattern-tr {
+        top: 20px;
+        right: 20px;
+      }
+      .pattern-bl {
+        bottom: 20px;
+        left: 20px;
+      }
+      .pattern-br {
+        bottom: 20px;
+        right: 20px;
+      }
     }
   </style>
 </head>
@@ -1336,6 +1408,28 @@
 
     <!-- SECTION 2: INTRODUCTION -->
     <section id="chapter-1" class="intro-section reveal">
+      <!-- Background Patterns -->
+      <svg class="bg-pattern pattern-dancheong pattern-tl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" />
+        <path d="M50,10 A40,40 0 0,1 90,50" />
+        <path d="M50,10 A40,40 0 0,0 10,50" />
+        <path d="M10,50 A40,40 0 0,0 50,90" />
+        <path d="M90,50 A40,40 0 0,0 50,90" />
+        <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" fill="none" />
+        <circle cx="50" cy="50" r="15" fill="none" />
+        <path d="M50,0 L50,100 M0,50 L100,50" />
+      </svg>
+      <svg class="bg-pattern pattern-dancheong pattern-br" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" />
+        <path d="M50,10 A40,40 0 0,1 90,50" />
+        <path d="M50,10 A40,40 0 0,0 10,50" />
+        <path d="M10,50 A40,40 0 0,0 50,90" />
+        <path d="M90,50 A40,40 0 0,0 50,90" />
+        <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" fill="none" />
+        <circle cx="50" cy="50" r="15" fill="none" />
+        <path d="M50,0 L50,100 M0,50 L100,50" />
+      </svg>
+      
       <div class="intro-container">
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl"></div>
@@ -1366,13 +1460,41 @@
 
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
     <section id="chapter-2" class="story-section">
+      <!-- Background Patterns -->
+      <svg class="bg-pattern pattern-peaks pattern-tr" viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,90 Q30,40 60,70 T120,50 T180,80 T200,90" />
+        <path d="M20,90 Q50,55 80,75 T140,55 T190,90" />
+        <circle cx="150" cy="30" r="15" fill="none" />
+        <circle cx="150" cy="30" r="19" stroke-dasharray="3, 3" fill="none" />
+        <path d="M0,95 Q10,92 20,95 T40,95 T60,95 T80,95 T100,95 T120,95 T140,95 T160,95 T180,95 T200,95" />
+        <path d="M0,98 Q10,95 20,98 T40,98 T60,98 T80,98 T100,98 T120,98 T140,98 T160,98 T180,98 T200,98" />
+      </svg>
+      <svg class="bg-pattern pattern-dancheong pattern-tl" style="top: 45%;" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" />
+        <path d="M50,10 A40,40 0 0,1 90,50" />
+        <path d="M50,10 A40,40 0 0,0 10,50" />
+        <path d="M10,50 A40,40 0 0,0 50,90" />
+        <path d="M90,50 A40,40 0 0,0 50,90" />
+        <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" fill="none" />
+        <circle cx="50" cy="50" r="15" fill="none" />
+        <path d="M50,0 L50,100 M0,50 L100,50" />
+      </svg>
+      <svg class="bg-pattern pattern-peaks pattern-br" viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,90 Q30,40 60,70 T120,50 T180,80 T200,90" />
+        <path d="M20,90 Q50,55 80,75 T140,55 T190,90" />
+        <circle cx="150" cy="30" r="15" fill="none" />
+        <circle cx="150" cy="30" r="19" stroke-dasharray="3, 3" fill="none" />
+        <path d="M0,95 Q10,92 20,95 T40,95 T60,95 T80,95 T100,95 T120,95 T140,95 T160,95 T180,95 T200,95" />
+        <path d="M0,98 Q10,95 20,98 T40,98 T60,98 T80,98 T100,98 T120,98 T140,98 T160,98 T180,98 T200,98" />
+      </svg>
+      
       <div class="story-container">
         
         <!-- INTRO -->
         <div class="section-title-container reveal" style="margin-bottom: 120px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
           <span class="section-tag">CHAPTER 02</span>
           <h2 class="section-title" style="font-size: 2.8rem; margin-bottom: 30px; font-family: 'Noto Serif KR', serif; font-weight: 300;">전통의 탈환</h2>
-          <p class="story-desc" style="font-size: 1.1rem; line-height: 1.95; color: #cfd8dc; font-weight: 400; word-break: keep-all;">
+          <p class="story-desc" style="font-size: 1.225rem; line-height: 1.95; color: #cfd8dc; font-weight: 400; word-break: keep-all;">
             드라마로 시작된 한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 전통 요소를 디자인과 몸짓을 통해 현대적 감각으로 '탈환'한 두 가지 선도적 사례를 분석해 전통의 현대적 공존 가능성을 모색하고자 한다.
           </p>
         </div>
@@ -1412,7 +1534,7 @@
         <div id="chapter-3" class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 03</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
-          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 400;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
+          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 400;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
         </div>
 
         <!-- Item A-1 -->
@@ -1497,7 +1619,7 @@
         <div id="chapter-4" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 04</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
-          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 400;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
+          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 400;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
         </div>
 
         <!-- Item B-1 (New) -->
@@ -1576,6 +1698,18 @@
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section">
+      <!-- Background Patterns -->
+      <svg class="bg-pattern pattern-dancheong pattern-bl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" />
+        <path d="M50,10 A40,40 0 0,1 90,50" />
+        <path d="M50,10 A40,40 0 0,0 10,50" />
+        <path d="M10,50 A40,40 0 0,0 50,90" />
+        <path d="M90,50 A40,40 0 0,0 50,90" />
+        <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" fill="none" />
+        <circle cx="50" cy="50" r="15" fill="none" />
+        <path d="M50,0 L50,100 M0,50 L100,50" />
+      </svg>
+      
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal">
         <div class="divider-line"></div>
@@ -1649,13 +1783,24 @@
 
     <!-- POSTER ELEMENT DESCRIPTIONS -->
     <div class="poster-elements-container reveal">
+      <!-- Background Patterns -->
+      <svg class="bg-pattern pattern-dancheong pattern-br" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" />
+        <path d="M50,10 A40,40 0 0,1 90,50" />
+        <path d="M50,10 A40,40 0 0,0 10,50" />
+        <path d="M10,50 A40,40 0 0,0 50,90" />
+        <path d="M90,50 A40,40 0 0,0 50,90" />
+        <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" fill="none" />
+        <circle cx="50" cy="50" r="15" fill="none" />
+        <path d="M50,0 L50,100 M0,50 L100,50" />
+      </svg>
       
       <!-- ENTRY 1 -->
       <div class="poster-element-entry">
         <span class="section-tag">TITLE</span>
         <h3 class="analysis-title">OH MY GAT</h3>
         <p class="analysis-body">
-          영어 감탄사 'Oh my God'의 발음을 빌려, God 자리에 조선시대 전통 모자 갓(GAT)을 넣은 언어유희다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 '전통의 재해석'을 첫 글자부터 담아낸다.
+          영어 감탄사 'Oh my God'의 발음을 빌려, God 자리에 조선시대 전통 모자 <strong>갓(GAT)</strong>을 넣은 언어유희다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 <strong>'전통의 재해석'</strong>을 첫 글자부터 담아낸다.
         </p>
       </div>
 
@@ -1664,7 +1809,7 @@
         <span class="section-tag">BACKGROUND</span>
         <h3 class="analysis-title">자개 일월오봉도</h3>
         <p class="analysis-body">
-          조선 왕실의 상징인 일월오봉도를 배경으로 사용했다. 원본의 채색화 형식 대신 나전칠기(자개) 특유의 광택과 흑백 톤으로 재해석해, 전통 소재를 현대적 감각으로 새롭게 표현했다.
+          조선 왕실의 상징인 <strong>일월오봉도</strong>를 배경으로 사용했다. 원본의 채색화 형식 대신 <strong>나전칠기(자개)</strong> 특유의 광택과 흑백 톤으로 재해석해, 전통 소재를 현대적 감각으로 새롭게 표현했다.
         </p>
       </div>
 
@@ -1673,7 +1818,7 @@
         <span class="section-tag">SYMBOL</span>
         <h3 class="analysis-title">韓魂 — 한혼</h3>
         <p class="analysis-body">
-          한국 한(韓)과 넋 혼(魂)을 결합한 조어로, '한국의 영혼'을 뜻한다. 한류가 단순한 유행이 아닌 오랜 문화적 감수성에서 비롯되었다는 의미를 담았다. 전통에서 벽사와 생명력을 상징하는 붉은색으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었다.
+          한국 한(韓)과 넋 혼(魂)을 결합한 조어로, <strong>'한국의 영혼'</strong>을 뜻한다. 한류가 단순한 유행이 아닌 오랜 문화적 감수성에서 비롯되었다는 의미를 담았다. 전통에서 벽사와 생명력을 상징하는 <strong>붉은색</strong>으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었다.
         </p>
       </div>
 
@@ -1682,7 +1827,7 @@
         <span class="section-tag">SUBTITLE</span>
         <h3 class="analysis-title">TRADITION REWRITTEN</h3>
         <p class="analysis-body">
-          포스터의 부제이자 프로젝트 전체의 논지를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 매 시대의 언어로 끊임없이 다시 쓰인다.
+          포스터의 부제이자 프로젝트 전체의 논지를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 <strong>매 시대의 언어로 끊임없이 다시 쓰인다</strong>.
         </p>
       </div>
 
@@ -1691,7 +1836,7 @@
         <span class="section-tag">DETAIL</span>
         <h3 class="analysis-title">모서리 장식 — 창살 문양</h3>
         <p class="analysis-body">
-          한국 전통 건축의 창살 문양에서 착안한 프레임 장식이다. 시선을 자연스럽게 중앙으로 유도하는 동시에, 전통 공예의 섬세함을 레이아웃 안에 녹여내는 역할을 한다.
+          한국 전통 건축의 <strong>창살 문양</strong>에서 착안한 프레임 장식이다. 시선을 자연스럽게 중앙으로 유도하는 동시에, 전통 공예의 섬세함을 레이아웃 안에 녹여내는 역할을 한다.
         </p>
       </div>
 
