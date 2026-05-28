@@ -747,6 +747,7 @@
       transform: translateY(40px);
       transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0.3s;
+      background: transparent; /* Explicitly ensure transparency for overlapping backgrounds */
     }
     
     .story-meta-header {
@@ -1224,9 +1225,24 @@
       stroke-width: 1px !important;
       fill: none !important;
     }
+    
+    /* Decorative PNG Background Patterns */
+    .bg-pattern-png {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12; /* faint watermark */
+      user-select: none;
+      transition: opacity 0.5s ease;
+      background: transparent !important; /* Explicitly set transparent background */
+    }
+    
     @media (max-width: 768px) {
       .bg-pattern {
         opacity: 0.25; /* slightly lower on mobile */
+      }
+      .bg-pattern-png {
+        display: none !important; /* Hide PNG patterns on mobile */
       }
     }
 
@@ -1296,37 +1312,7 @@
     
     <!-- SECTION 1: HERO -->
     <section class="hero-section" style="position:relative; overflow:hidden;">
-      <!-- Pattern 1 — 산수 산 (Mountain landscape) -->
-      <svg class="bg-pattern" aria-hidden="true" 
-           style="position:absolute; right:-40px; bottom:-20px; width:350px; height:auto; 
-                  opacity:0.45; z-index:0; pointer-events:none;"
-           viewBox="0 0 350 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Center Main Peak (Tallest) -->
-        <path d="M 80,230 L 180,50 L 280,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 100,230 L 180,75 L 260,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 120,230 L 180,100 L 240,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 140,230 L 180,125 L 220,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 160,230 L 180,150 L 200,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- Left Peak (Medium) -->
-        <path d="M 20,230 L 70,110 L 130,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 35,230 L 70,135 L 110,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 50,230 L 70,160 L 90,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- Right Peak (Small-Medium) -->
-        <path d="M 220,230 L 290,120 L 340,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 235,230 L 290,140 L 325,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 250,230 L 290,160 L 310,230" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- Sun circle -->
-        <circle cx="310" cy="70" r="15" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-
-        <!-- Water wavy lines at base -->
-        <path d="M 10,235 C 90,232 170,238 250,235 C 280,233.5 310,236.5 340,235" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-        <path d="M 30,240 C 100,237 180,243 260,240 C 280,238.5 300,241.5 320,240" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-        <path d="M 50,245 C 110,242 190,248 270,245 C 280,243.5 290,246.5 300,245" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-        <path d="M 20,248 C 95,245 170,251 245,248 C 275,246.5 305,249.5 330,248" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-      </svg>
+      
       <div class="hero-bg-container">
         <!-- Minimalist vector peaks simulating an oriental mountain range painting -->
         <svg class="hero-mountains" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -1391,41 +1377,9 @@
       </div>
     </section>
 
-    <!-- SECTION 2: INTRODUCTION -->
-    <section id="chapter-1" class="intro-section reveal">
-      <div class="intro-container" style="position:relative; overflow:hidden; z-index:1;">
-        <!-- Pattern 2 — 청파 (Fan-shaped wave / 청파문) -->
-        <svg class="bg-pattern" aria-hidden="true" 
-             style="position:absolute; right:10px; top:10px; width:200px; height:auto; 
-                    opacity:0.4; z-index:0; pointer-events:none;"
-             viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Row 1 (y = 130) -->
-          <path d="M -5,130 A 25,25 0 0,1 45,130 M 3,130 A 17,17 0 0,1 37,130 M 11,130 A 9,9 0 0,1 29,130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 35,130 A 25,25 0 0,1 85,130 M 43,130 A 17,17 0 0,1 77,130 M 51,130 A 9,9 0 0,1 69,130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 75,130 A 25,25 0 0,1 125,130 M 83,130 A 17,17 0 0,1 117,130 M 91,130 A 9,9 0 0,1 109,130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 115,130 A 25,25 0 0,1 165,130 M 123,130 A 17,17 0 0,1 157,130 M 131,130 A 9,9 0 0,1 149,130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 155,130 A 25,25 0 0,1 205,130 M 163,130 A 17,17 0 0,1 197,130 M 171,130 A 9,9 0 0,1 189,130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          
-          <!-- Row 2 (y = 100) -->
-          <path d="M 15,100 A 25,25 0 0,1 65,100 M 23,100 A 17,17 0 0,1 57,100 M 31,100 A 9,9 0 0,1 49,100" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 55,100 A 25,25 0 0,1 105,100 M 63,100 A 17,17 0 0,1 97,100 M 71,100 A 9,9 0 0,1 89,100" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 95,100 A 25,25 0 0,1 145,100 M 103,100 A 17,17 0 0,1 137,100 M 111,100 A 9,9 0 0,1 129,100" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 135,100 A 25,25 0 0,1 185,100 M 143,100 A 17,17 0 0,1 177,100 M 151,100 A 9,9 0 0,1 169,100" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          
-          <!-- Row 3 (y = 70) -->
-          <path d="M -5,70 A 25,25 0 0,1 45,70 M 3,70 A 17,17 0 0,1 37,70 M 11,70 A 9,9 0 0,1 29,70" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 35,70 A 25,25 0 0,1 85,70 M 43,70 A 17,17 0 0,1 77,70 M 51,70 A 9,9 0 0,1 69,70" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 75,70 A 25,25 0 0,1 125,70 M 83,70 A 17,17 0 0,1 117,70 M 91,70 A 9,9 0 0,1 109,70" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 115,70 A 25,25 0 0,1 165,70 M 123,70 A 17,17 0 0,1 157,70 M 131,70 A 9,9 0 0,1 149,70" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 155,70 A 25,25 0 0,1 205,70 M 163,70 A 17,17 0 0,1 197,70 M 171,70 A 9,9 0 0,1 189,70" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <!-- SECTION 2: INTR        
+        <img src="images2/Gemini_Generated_Image_6kmnny6kmnny6kmn.png" class="bg-pattern-png" aria-hidden="true" style="left:20px; bottom:20px; width:140px; height:auto;" />
 
-          <!-- Row 4 (y = 40) -->
-          <path d="M 15,40 A 25,25 0 0,1 65,40 M 23,40 A 17,17 0 0,1 57,40 M 31,40 A 9,9 0 0,1 49,40" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 55,40 A 25,25 0 0,1 105,40 M 63,40 A 17,17 0 0,1 97,40 M 71,40 A 9,9 0 0,1 89,40" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-          <path d="M 95,40 A 25,25 0 0,1 145,40 M 103,40 A 17,17 0 0,1 137,40 M 111,40 A 9,9 0 0,1 129,40" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-          <path d="M 135,40 A 25,25 0 0,1 185,40 M 143,40 A 17,17 0 0,1 177,40 M 151,40 A 9,9 0 0,1 169,40" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        </svg>
-        
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl" style="z-index:1;"></div>
         <div class="bracket tr" style="z-index:1;"></div>
@@ -1454,8 +1408,10 @@
 
 
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
-    <section id="chapter-2" class="story-section">
-      <div class="story-container">
+    <section id="chapter-2" class="story-section" style="position:relative; overflow:hidden;">
+      
+
+      <div class="story-container" style="position:relative; z-index:1;">
         
         <!-- INTRO -->
         <div class="section-title-container reveal" style="margin-bottom: 120px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
@@ -1469,21 +1425,7 @@
         <div class="cards-container reveal" style="margin-bottom: 120px;">
           <!-- Left Card: Beomjeob -->
           <div class="card card-left" style="position:relative; overflow:hidden;">
-            <!-- Pattern 7 — 꽃 기하 문양 (Flower Medallion) -->
-            <svg class="bg-pattern" aria-hidden="true" 
-                 style="position:absolute; right:15px; bottom:15px; width:120px; height:auto; 
-                        opacity:0.4; z-index:0; pointer-events:none;"
-                 viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <rect x="36" y="36" width="28" height="28" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,35 C 35,15 65,15 65,35" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,65 C 35,85 65,85 65,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,35 C 15,35 15,65 35,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 65,35 C 85,35 85,65 65,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <circle cx="50" cy="50" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </svg>
+            
             <div style="position:relative; z-index:1;">
               <div class="card-tag">PERFORMANCE</div>
               <h3 class="card-title">범접</h3>
@@ -1500,21 +1442,7 @@
 
           <!-- Right Card: KDH -->
           <div class="card card-right" style="position:relative; overflow:hidden;">
-            <!-- Pattern 7 — 꽃 기하 문양 (Flower Medallion) -->
-            <svg class="bg-pattern" aria-hidden="true" 
-                 style="position:absolute; left:15px; bottom:15px; width:120px; height:auto; 
-                        opacity:0.4; z-index:0; pointer-events:none;"
-                 viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="30" y="30" width="40" height="40" transform="rotate(45 50 50)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <rect x="36" y="36" width="28" height="28" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,35 C 35,15 65,15 65,35" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,65 C 35,85 65,85 65,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 35,35 C 15,35 15,65 35,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 65,35 C 85,35 85,65 65,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <circle cx="50" cy="50" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </svg>
+            
             <div style="position:relative; z-index:1;">
               <div class="card-tag">DESIGN</div>
               <h3 class="card-title">케이팝데몬헌터스</h3>
@@ -1532,53 +1460,8 @@
 
 
         <!-- SECTION 3 (CHAPTER 03) WRAPPER -->
-        <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
-          <!-- Pattern 3 — 동심결 매듭 (Dongsimgyeol) -->
-          <svg class="bg-pattern" aria-hidden="true" 
-               style="position:absolute; right:10px; top:25%; width:180px; height:auto; 
-                      opacity:0.45; z-index:0; pointer-events:none;"
-               viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Center Lattice Interlock -->
-            <rect x="75" y="75" width="30" height="30" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="85" y1="75" x2="85" y2="105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="95" y1="75" x2="95" y2="105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="75" y1="85" x2="105" y2="85" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="75" y1="95" x2="105" y2="95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-
-            <!-- Straight extending vertical/horizontal lines -->
-            <line x1="85" y1="45" x2="85" y2="75" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="95" y1="45" x2="95" y2="75" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="85" y1="105" x2="85" y2="135" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="95" y1="105" x2="95" y2="135" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="45" y1="85" x2="75" y2="85" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="45" y1="95" x2="75" y2="95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="105" y1="85" x2="135" y2="85" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="105" y1="95" x2="135" y2="95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-
-            <!-- Loops at 4 Ends (Outer Loop Arcs) -->
-            <!-- Top Loop -->
-            <path d="M 85,45 C 80,15 100,15 95,45" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Bottom Loop -->
-            <path d="M 85,135 C 80,165 100,165 95,135" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Left Loop -->
-            <path d="M 45,85 C 15,80 15,100 45,95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Right Loop -->
-            <path d="M 135,85 C 165,80 165,100 135,95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-
-            <!-- 4 Corner Loop Ears (Traditional Dongsimgyeol Ears) -->
-            <!-- Top-Left -->
-            <path d="M 75,75 C 65,65 50,65 50,75 C 50,85 65,85 75,75" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Top-Right -->
-            <path d="M 105,75 C 115,65 130,65 130,75 C 130,85 115,85 105,75" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Bottom-Left -->
-            <path d="M 75,105 C 65,115 50,115 50,105 C 50,95 65,95 75,105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-            <!-- Bottom-Right -->
-            <path d="M 105,105 C 115,115 130,115 130,105 C 130,95 115,95 105,105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-linecap="round"/>
-
-            <!-- Hanging Tassels (Bottom) -->
-            <line x1="88" y1="135" x2="88" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="92" y1="135" x2="92" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-          </svg>
+        <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
+          
           
           <!-- SUB-SECTION A: 범접 (Beomjeob) Header -->
           <div id="chapter-3" class="story-subsection-header reveal" style="position:relative; margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
@@ -1606,22 +1489,7 @@
               <img src="images/bj_gat.png" alt="갓" class="story-image-el">
             </div>
             <div class="story-text-wrap" style="position:relative; overflow:hidden;">
-              <!-- Pattern 8 — 매화 매듭 (Maehwa maedeup) -->
-              <svg class="bg-pattern" aria-hidden="true" 
-                   style="position:absolute; right:10px; bottom:10px; width:100px; height:auto; 
-                          opacity:0.4; z-index:0; pointer-events:none;"
-                   viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="40" r="14" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="50" cy="40" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="35" cy="55" r="14" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="35" cy="55" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="65" cy="55" r="14" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="65" cy="55" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="50" cy="70" r="14" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <circle cx="50" cy="70" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="47" y1="84" x2="47" y2="115" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="53" y1="84" x2="53" y2="115" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              </svg>
+                  
               <div style="position:relative; z-index:1;">
                 <h4 class="story-title">갓</h4>
                 <p class="story-desc">
@@ -1649,11 +1517,15 @@
             <div class="story-image-wrap story-image-has-file">
               <img src="images/bj_fan.png" alt="부채와 소품 활용" class="story-image-el">
             </div>
-            <div class="story-text-wrap">
-              <h4 class="story-title">부채와 소품 활용</h4>
-              <p class="story-desc">
-                <strong>전통 춤</strong>에서 자주 사용되는 <strong>부채</strong>와 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
-              </p>
+            <div class="story-text-wrap" style="position:relative; overflow:hidden;">
+              
+
+              <div style="position:relative; z-index:1;">
+                <h4 class="story-title">부채와 소품 활용</h4>
+                <p class="story-desc">
+                  <strong>전통 춤</strong>에서 자주 사용되는 <strong>부채</strong>와 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -1676,23 +1548,7 @@
               <img src="images/bj_shaman.png" alt="무속적 분위기" class="story-image-el">
             </div>
             <div class="story-text-wrap" style="position:relative; overflow:hidden;">
-              <!-- Pattern 3 — 동심결 매듭 (Dongsimgyeol) -->
-              <svg class="bg-pattern" aria-hidden="true" 
-                   style="position:absolute; left:10px; bottom:10px; width:90px; height:auto; 
-                          opacity:0.4; z-index:0; pointer-events:none;"
-                   viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="75" y="75" width="30" height="30" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="85" y1="75" x2="85" y2="105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="95" y1="75" x2="95" y2="105" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="75" y1="85" x2="105" y2="85" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="75" y1="95" x2="105" y2="95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 85,45 C 80,15 100,15 95,45" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 85,135 C 80,165 100,165 95,135" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 45,85 C 15,80 15,100 45,95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 135,85 C 165,80 165,100 135,95" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="88" y1="135" x2="88" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <line x1="92" y1="135" x2="92" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              </svg>
+              
               <div style="position:relative; z-index:1;">
                 <h4 class="story-title">무속적 분위기</h4>
                 <p class="story-desc">
@@ -1704,56 +1560,8 @@
         </div>
 
         <!-- SECTION 4 (CHAPTER 04) WRAPPER -->
-        <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
-          <!-- Pattern 4 — 국화 매듭 (Gukwa maedeup) -->
-          <svg class="bg-pattern" aria-hidden="true" 
-               style="position:absolute; right:20px; bottom:20px; width:180px; height:auto; 
-                      opacity:0.45; z-index:0; pointer-events:none;"
-               viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="rotate(0 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(45 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(90 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(135 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(180 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(225 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(270 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <g transform="rotate(315 90 90)">
-              <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <!-- Center lattice structure (rotated square and lines) -->
-            <g transform="rotate(45 90 90)">
-              <rect x="78" y="78" width="24" height="24" rx="2" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="84" y1="78" x2="84" y2="102" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="96" y1="78" x2="96" y2="102" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="78" y1="84" x2="102" y2="84" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              <line x1="78" y1="96" x2="102" y2="96" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            </g>
-            <!-- Hanging tassels -->
-            <line x1="88" y1="150" x2="88" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-            <line x1="92" y1="150" x2="92" y2="175" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-          </svg>
+        <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
+          
 
           <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) Header -->
           <div id="chapter-4" class="story-subsection-header reveal" style="position:relative; margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
@@ -1794,19 +1602,7 @@
               <img src="images/kdh_norigae_accessories.png" alt="노리개 — 방울과 매듭" class="story-image-el">
             </div>
             <div class="story-text-wrap" style="position:relative; overflow:hidden;">
-              <!-- Pattern 9 — 암나비 매듭 (Amnabi maedeup) -->
-              <svg class="bg-pattern" aria-hidden="true" 
-                   style="position:absolute; right:10px; bottom:10px; width:110px; height:auto; 
-                          opacity:0.4; z-index:0; pointer-events:none;"
-                   viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="60" cy="50" r="8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 55,45 C 35,20 15,35 45,50 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 55,55 C 30,75 20,60 45,52 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 65,45 C 85,20 105,35 75,50 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 65,55 C 90,75 100,60 75,52 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 57,40 Q 55,25 48,27" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                <path d="M 63,40 Q 65,25 72,27" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-              </svg>
+                  
               <div style="position:relative; z-index:1;">
                 <h4 class="story-title">노리개 — 방울과 매듭</h4>
                 <p class="story-desc">
@@ -1821,11 +1617,15 @@
             <div class="story-image-wrap story-image-has-file">
               <img src="images/kdh_hanbok_glowing.png" alt="무속·퇴마 설정" class="story-image-el">
             </div>
-            <div class="story-text-wrap">
-              <h4 class="story-title">무속·퇴마 설정</h4>
-              <p class="story-desc">
-                악령을 상대하는 이야기 구조가 한국 <strong>무속</strong> 신앙과 연결되어 있습니다. <strong>전통 설화</strong>를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
-              </p>
+            <div class="story-text-wrap" style="position:relative; overflow:hidden;">
+              
+
+              <div style="position:relative; z-index:1;">
+                <h4 class="story-title">무속·퇴마 설정</h4>
+                <p class="story-desc">
+                  악령을 상대하는 이야기 구조가 한국 <strong>무속</strong> 신앙과 연결되어 있습니다. <strong>전통 설화</strong>를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -1835,47 +1635,7 @@
               <img src="images/kdh_palace.png" alt="전통 건축과 미장센" class="story-image-el">
             </div>
             <div class="story-text-wrap" style="position:relative; overflow:hidden;">
-              <!-- Pattern 4 — 국화 매듭 (Gukwa maedeup) -->
-              <svg class="bg-pattern" aria-hidden="true" 
-                   style="position:absolute; left:10px; bottom:10px; width:100px; height:auto; 
-                          opacity:0.4; z-index:0; pointer-events:none;"
-                   viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g transform="rotate(0 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(45 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(90 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(135 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(180 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(225 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(270 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(315 90 90)">
-                  <path d="M 90,90 C 80,55 80,25 90,25 C 100,25 100,55 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                  <path d="M 90,90 C 85,68 85,45 90,45 C 95,45 95,68 90,90" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-                <g transform="rotate(45 90 90)">
-                  <rect x="78" y="78" width="24" height="24" rx="2" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-                </g>
-              </svg>
+                  
               <div style="position:relative; z-index:1;">
                 <h4 class="story-title">전통 건축과 미장센</h4>
                 <p class="story-desc">
@@ -1897,22 +1657,7 @@
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section" style="position:relative; overflow:hidden;">
-      <!-- Pattern 5 — 창살 문양 (Window lattice) -->
-      <svg class="bg-pattern" aria-hidden="true" 
-           style="position:absolute; left:20px; top:10%; width:160px; height:auto; 
-                  opacity:0.4; z-index:0; pointer-events:none;"
-           viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="140" height="140" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5"/>
-        <rect x="25" y="25" width="110" height="110" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="80" cy="80" r="40" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="80" cy="80" r="15" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="80" y1="10" x2="80" y2="150" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="10" y1="80" x2="150" y2="80" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="42" cy="42" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="118" cy="42" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="42" cy="118" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="118" cy="118" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-      </svg>
+      
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal" style="position:relative; z-index:1;">
         <div class="divider-line"></div>
@@ -1986,23 +1731,7 @@
 
     <!-- POSTER ELEMENT DESCRIPTIONS -->
     <div class="poster-elements-container reveal" style="position:relative; overflow:hidden;">
-      <!-- Pattern 10 — 잠자리 매듭 (Jamjari maedeup) -->
-      <svg class="bg-pattern" aria-hidden="true" 
-           style="position:absolute; right:20px; top:15%; width:120px; height:auto; 
-                  opacity:0.4; z-index:0; pointer-events:none;"
-           viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 50,35 C 20,20 10,35 50,42 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 50,45 C 25,48 20,58 50,50 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 70,35 C 100,20 110,35 70,42 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 70,45 C 95,48 100,58 70,50 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <rect x="54" y="42" width="12" height="65" rx="5" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="54" y1="55" x2="66" y2="55" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="54" y1="70" x2="66" y2="70" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="54" y1="85" x2="66" y2="85" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 60,35 C 50,20 70,20 60,35 Z" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="57" y1="107" x2="57" y2="120" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="63" y1="107" x2="63" y2="120" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-      </svg>
+      
       
       <!-- ENTRY 1 -->
       <div class="poster-element-entry" style="position:relative; z-index:1;">
@@ -2049,22 +1778,7 @@
         </p>
       </div>
 
-      <!-- Pattern 5 — 창살 문양 (Window lattice) 하단 배치 -->
-      <svg class="bg-pattern" aria-hidden="true" 
-           style="position:absolute; left:20px; bottom:5%; width:110px; height:auto; 
-                  opacity:0.35; z-index:0; pointer-events:none;"
-           viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="140" height="140" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5"/>
-        <rect x="25" y="25" width="110" height="110" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="80" cy="80" r="40" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="80" cy="80" r="15" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="80" y1="10" x2="80" y2="150" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <line x1="10" y1="80" x2="150" y2="80" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="42" cy="42" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="118" cy="42" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="42" cy="118" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <circle cx="118" cy="118" r="6" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-      </svg>
+      
 
     </div>
 
@@ -2088,17 +1802,7 @@
 
     <!-- FOOTER -->
     <footer class="footer-section" style="position:relative; overflow:hidden;">
-      <!-- Pattern 6 — 파도/물결 (Wave lines) -->
-      <svg class="bg-pattern" aria-hidden="true" 
-           style="position:absolute; left:0; bottom:0; width:100%; height:80px; 
-                  opacity:0.35; z-index:0; pointer-events:none;"
-           viewBox="0 0 1000 80" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,25 Q 125,10 250,25 T 500,25 T 750,25 T 1000,25" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 0,35 Q 125,20 250,35 T 500,35 T 750,35 T 1000,35" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 0,45 Q 125,30 250,45 T 500,45 T 750,45 T 1000,45" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 0,55 Q 125,40 250,55 T 500,55 T 750,55 T 1000,55" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-        <path d="M 0,65 Q 125,50 250,65 T 500,65 T 750,65 T 1000,65" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
-      </svg>
+      
       <p class="footer-text" style="position:relative; z-index:1;">
         <a href="#" id="footer-logo" style="color: inherit; text-decoration: none; transition: color 0.3s ease;">OH MY GAT</a> &middot; TRADITION REWRITTEN
       </p>
