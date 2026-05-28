@@ -1286,15 +1286,6 @@
       }
     }
 
-    .pattern,
-    .decoration,
-    .ornament,
-    .bg-pattern,
-    .background-svg,
-    [class*="pattern"],
-    [class*="decor"] {
-      display: none !important;
-    }
   </style>
 </head>
 <body>
@@ -1360,7 +1351,22 @@
   <main class="chapter-container">
     
     <!-- SECTION 1: HERO -->
-    <section class="hero-section">
+    <section class="hero-section" style="position:relative; overflow:hidden;">
+      <!-- Mountain SVG at bottom-right -->
+      <svg class="bg-pattern" aria-hidden="true" 
+           style="position:absolute; right:20px; bottom:20px; width:300px; height:200px; 
+                  opacity:0.5; z-index:0; pointer-events:none;"
+           viewBox="0 0 200 133" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 10,130 L 40,70 L 70,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 20,130 L 40,90 L 60,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 50,130 L 110,30 L 170,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 65,130 L 110,60 L 155,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 80,130 L 110,90 L 140,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 130,130 L 165,60 L 200,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 142,130 L 165,85 L 188,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="150" cy="35" r="10" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+        <path d="M 0,130 C 50,128 150,128 200,130" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+      </svg>
       <div class="hero-bg-container">
         <!-- Minimalist vector peaks simulating an oriental mountain range painting -->
         <svg class="hero-mountains" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -1499,160 +1505,256 @@
         </div>
 
 
-        <!-- SUB-SECTION A: 범접 (Beomjeob) -->
-        <div id="chapter-3" class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
-          <span class="section-tag">CHAPTER 03</span>
-          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
-          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500;"><strong>스트릿 댄서</strong> 특유의 독창적이고 파격적인 에너지로 <strong>한국적 요소</strong>를 무대 위에 녹여냈습니다.</p>
-        </div>
+        <!-- SECTION 3 (CHAPTER 03) WRAPPER -->
+        <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
+          <!-- Gukwa knot background SVG (cropped at boundary) -->
+          <svg class="bg-pattern" aria-hidden="true" 
+               style="position:absolute; right:-60px; top:40%; width:240px; height:240px; 
+                      opacity:0.5; z-index:0; pointer-events:none;"
+               viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 50,44 C 40,15 60,15 50,44" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 50,40 C 43,20 57,20 50,40" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 46,46 C 65,25 79,39 46,46" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 47,47 C 61,31 71,41 47,47" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 44,50 C 75,40 75,60 44,50" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 40,50 C 65,43 65,57 40,50" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 46,54 C 65,75 79,61 46,54" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 47,53 C 61,69 71,59 47,53" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 50,56 C 40,85 60,85 50,56" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 50,60 C 43,80 57,80 50,60" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 54,54 C 35,75 21,61 54,54" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 53,53 C 39,69 29,59 53,53" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 56,50 C 25,40 25,60 56,50" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 60,50 C 35,43 35,57 60,50" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <path d="M 54,46 C 35,25 21,39 54,46" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M 53,47 C 39,31 29,41 53,47" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0" stroke-linecap="round"/>
+            <rect x="42" y="42" width="16" height="16" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2" rx="2"/>
+            <line x1="42" y1="47" x2="58" y2="47" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="42" y1="53" x2="58" y2="53" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="47" y1="42" x2="47" y2="58" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="53" y1="42" x2="53" y2="58" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="48" y1="80" x2="48" y2="95" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="52" y1="80" x2="52" y2="95" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+          </svg>
+          
+          <!-- SUB-SECTION A: 범접 (Beomjeob) Header -->
+          <div id="chapter-3" class="story-subsection-header reveal" style="position:relative; margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
+            <!-- 창살 pattern at right edge only -->
+            <svg class="bg-pattern" aria-hidden="true" 
+                 style="position:absolute; right:10px; bottom:10px; width:60px; height:60px; 
+                        opacity:0.4; z-index:0; pointer-events:none;"
+                 viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="90" height="90" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+              <rect x="15" y="15" width="70" height="70" rx="8" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="50" cy="50" r="14" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+              <circle cx="50" cy="50" r="6" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="50" y1="5" x2="50" y2="36" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="50" y1="64" x2="50" y2="95" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="5" y1="50" x2="36" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="64" y1="50" x2="95" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="25" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="75" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="25" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="75" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+            </svg>
+            <span class="section-tag" style="position:relative; z-index:1;">CHAPTER 03</span>
+            <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400; position:relative; z-index:1;">범접 (Beomjeob)</h3>
+            <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500; position:relative; z-index:1;"><strong>스트릿 댄서</strong> 특유의 독창적이고 파격적인 에너지로 <strong>한국적 요소</strong>를 무대 위에 녹여냈습니다.</p>
+          </div>
 
-        <!-- Item A-1 -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_mission.png" alt="미션" class="story-image-el">
+          <!-- Item A-1 -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_mission.png" alt="미션" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">미션</h4>
+              <p class="story-desc">
+                <strong>스우파2</strong>에서 <strong>범접</strong>이 받은 <strong>미션</strong>은 춤으로 <strong>자신의 나라를 표현</strong>하는 것이었습니다. 한국의 <strong>전통 이미지</strong>를 퍼포먼스 언어로 변환하는 출발점이 된 과제입니다.
+              </p>
+            </div>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">미션</h4>
-            <p class="story-desc">
-              <strong>스우파2</strong>에서 <strong>범접</strong>이 받은 <strong>미션</strong>은 춤으로 <strong>자신의 나라를 표현</strong>하는 것이었습니다. 한국의 <strong>전통 이미지</strong>를 퍼포먼스 언어로 변환하는 출발점이 된 과제입니다.
-            </p>
-          </div>
-        </div>
 
-        <!-- Item A-2 (New) -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_gat.png" alt="갓" class="story-image-el">
+          <!-- Item A-2 (New) -->
+          <div class="story-item story-item-reverse">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_gat.png" alt="갓" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">갓</h4>
+              <p class="story-desc">
+                <strong>범접</strong> 무대에서 가장 인상적으로 드러나는 <strong>전통 요소</strong>이자 <strong>갓(GAT)</strong>입니다. <strong>저승사자 콘셉트</strong>와 결합되어 한국적인 분위기를 강하게 형성합니다.
+              </p>
+            </div>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">갓</h4>
-            <p class="story-desc">
-              <strong>범접</strong> 무대에서 가장 인상적으로 드러나는 <strong>전통 요소</strong>이자 <strong>갓(GAT)</strong>입니다. <strong>저승사자 콘셉트</strong>와 결합되어 한국적인 분위기를 강하게 형성합니다.
-            </p>
-          </div>
-        </div>
 
-        <!-- Item A-3 (New) -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_grimreaper.png" alt="저승사자 콘셉트" class="story-image-el">
+          <!-- Item A-3 (New) -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_grimreaper.png" alt="저승사자 콘셉트" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">저승사자 콘셉트</h4>
+              <p class="story-desc">
+                한국 <strong>전통 설화</strong> 속 <strong>사후 세계 이미지</strong>와 <strong>저승사자</strong>를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 <strong>서사적인 몰입감</strong>을 높이는 역할을 합니다.
+              </p>
+            </div>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">저승사자 콘셉트</h4>
-            <p class="story-desc">
-              한국 <strong>전통 설화</strong> 속 <strong>사후 세계 이미지</strong>와 <strong>저승사자</strong>를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 <strong>서사적인 몰입감</strong>을 높이는 역할을 합니다.
-            </p>
-          </div>
-        </div>
 
-        <!-- Item A-4 (New) -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_fan.png" alt="부채와 소품 활용" class="story-image-el">
+          <!-- Item A-4 (New) -->
+          <div class="story-item story-item-reverse">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_fan.png" alt="부채와 소품 활용" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">부채와 소품 활용</h4>
+              <p class="story-desc">
+                <strong>전통 춤</strong>에서 자주 사용되는 <strong>부채</strong>와 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
+              </p>
+            </div>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">부채와 소품 활용</h4>
-            <p class="story-desc">
-              <strong>전통 춤</strong>에서 자주 사용되는 <strong>부채</strong>와 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
-            </p>
-          </div>
-        </div>
 
-        <!-- Item A-5 (New) -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_groupdance.png" alt="전통적 군무 구성" class="story-image-el">
+          <!-- Item A-5 (New) -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_groupdance.png" alt="전통적 군무 구성" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">전통적 군무 구성</h4>
+              <p class="story-desc">
+                여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 <strong>전통 공연</strong>에서 느껴지는 <strong>집단미</strong>와 <strong>정교함</strong>을 현대적으로 재해석한 방식입니다.
+              </p>
+            </div>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">전통적 군무 구성</h4>
-            <p class="story-desc">
-              여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 <strong>전통 공연</strong>에서 느껴지는 <strong>집단미</strong>와 <strong>정교함</strong>을 현대적으로 재해석한 방식입니다.
-            </p>
-          </div>
-        </div>
 
-        <!-- Item A-6 (New) -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/bj_shaman.png" alt="무속적 분위기" class="story-image-el">
-          </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">무속적 분위기</h4>
-            <p class="story-desc">
-              음악, 조명, 의상 전반에서 <strong>무속적 긴장감</strong>이 표현됩니다. <strong>전통 신앙</strong>의 이미지를 <strong>현대 퍼포먼스</strong>로 확장한 사례로 볼 수 있습니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) -->
-        <div id="chapter-4" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
-          <span class="section-tag">CHAPTER 04</span>
-          <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
-          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500;">글로벌 트렌드 속에서 한국의 <strong>정체성</strong>을 가장 효과적이고 세련되게 시각화한 <strong>그래픽/디자인 아트</strong>를 선보입니다.</p>
-        </div>
-
-        <!-- Item B-1 (New) -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/kdh_streetwear.png" alt="무기 — 전통의 형상" class="story-image-el">
-          </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">무기 — 전통의 형상</h4>
-            <p class="story-desc">
-              <strong>루미</strong>의 무기는 <strong>사인검</strong>으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 <strong>벽사</strong>용 도검이다. <strong>조이</strong>의 무기는 무당이 <strong>굿</strong>을 할 때 사용하는 <strong>대신칼</strong>에서 따온 소형 칼이다. <strong>미라</strong>의 무기는 가야 때 <strong>월도</strong>를 모티브로 제작되었다. 고대 헌터들의 무기는 <strong>석장</strong>, <strong>쌍검</strong>, <strong>각궁</strong>으로 각각 깊은 역사와 <strong>전통</strong>적 맥락을 담고 있다.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item B-2 (New) -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/kdh_tiger.png" alt="까치호랑이 민화" class="story-image-el">
-          </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">까치호랑이 민화</h4>
-            <p class="story-desc">
-              <strong>한국 민화</strong> 특유의 상징성과 해학을 보여주는 <strong>까치호랑이 민화</strong> 요소입니다. <strong>호랑이</strong>와 <strong>까치</strong>의 조합을 통해 <strong>전통 미감</strong>을 자연스럽게 드러냅니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item B-3 (New) -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/kdh_norigae_accessories.png" alt="노리개 — 방울과 매듭" class="story-image-el">
-          </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">노리개 — 방울과 매듭</h4>
-            <p class="story-desc">
-              <strong>헌트릭스</strong>에게 달려있는 <strong>노리개</strong>는 <strong>무당</strong>의 상징인 <strong>방울</strong>들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. <strong>루미</strong>, <strong>미라</strong>, <strong>조이</strong>의 노리개에는 <strong>도래 매듭</strong>, <strong>가락지 매듭</strong>, <strong>국화 매듭</strong> 등 다양한 <strong>전통 매듭</strong>이 사용되었다.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item B-4 (New) -->
-        <div class="story-item story-item-reverse">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/kdh_hanbok_glowing.png" alt="무속·퇴마 설정" class="story-image-el">
-          </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">무속·퇴마 설정</h4>
-            <p class="story-desc">
-              악령을 상대하는 이야기 구조가 한국 <strong>무속</strong> 신앙과 연결되어 있습니다. <strong>전통 설화</strong>를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
-            </p>
+          <!-- Item A-6 (New) -->
+          <div class="story-item story-item-reverse">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/bj_shaman.png" alt="무속적 분위기" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">무속적 분위기</h4>
+              <p class="story-desc">
+                음악, 조명, 의상 전반에서 <strong>무속적 긴장감</strong>이 표현됩니다. <strong>전통 신앙</strong>의 이미지를 <strong>현대 퍼포먼스</strong>로 확장한 사례로 볼 수 있습니다.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Item B-5 (New) -->
-        <div class="story-item">
-          <div class="story-image-wrap story-image-has-file">
-            <img src="images/kdh_palace.png" alt="전통 건축과 미장센" class="story-image-el">
+        <!-- SECTION 4 (CHAPTER 04) WRAPPER -->
+        <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
+          <!-- Dongsimgyeol knot background SVG (cropped at boundary) -->
+          <svg class="bg-pattern" aria-hidden="true" 
+               style="position:absolute; left:-40px; bottom:-40px; width:260px; height:260px; 
+                      opacity:0.5; z-index:0; pointer-events:none;"
+               viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="43" y1="4" x2="43" y2="43" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="57" y1="4" x2="57" y2="43" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="43" y1="77" x2="43" y2="117" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="57" y1="77" x2="57" y2="117" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="4" y1="43" x2="37" y2="43" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="4" y1="57" x2="37" y2="57" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="63" y1="43" x2="96" y2="43" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="63" y1="57" x2="96" y2="57" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <rect x="37" y="43" width="26" height="34" rx="2" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <line x1="43" y1="43" x2="43" y2="77" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="57" y1="43" x2="57" y2="77" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="37" y1="53" x2="63" y2="53" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <line x1="37" y1="67" x2="63" y2="67" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.0"/>
+            <path d="M 37,43 C 32,37 26,37 26,43 C 26,49 32,49 37,49" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <path d="M 63,43 C 68,37 74,37 74,43 C 74,49 68,49 63,49" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <path d="M 37,77 C 32,83 26,83 26,77 C 26,71 32,71 37,71" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+            <path d="M 63,77 C 68,83 74,83 74,77 C 74,71 68,71 63,71" stroke="rgba(180, 30, 30, 0.07)" stroke-width="1.2"/>
+          </svg>
+
+          <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) Header -->
+          <div id="chapter-4" class="story-subsection-header reveal" style="position:relative; margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
+            <!-- 창살 pattern at right edge only -->
+            <svg class="bg-pattern" aria-hidden="true" 
+                 style="position:absolute; right:10px; bottom:10px; width:60px; height:60px; 
+                        opacity:0.4; z-index:0; pointer-events:none;"
+                 viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="5" width="90" height="90" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+              <rect x="15" y="15" width="70" height="70" rx="8" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="50" cy="50" r="14" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+              <circle cx="50" cy="50" r="6" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="50" y1="5" x2="50" y2="36" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="50" y1="64" x2="50" y2="95" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="5" y1="50" x2="36" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <line x1="64" y1="50" x2="95" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="25" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="75" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="25" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+              <circle cx="75" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+            </svg>
+            <span class="section-tag" style="position:relative; z-index:1;">CHAPTER 04</span>
+            <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400; position:relative; z-index:1;">케이팝데몬헌터스 (KDH)</h3>
+            <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500; position:relative; z-index:1;">글로벌 트렌드 속에서 한국의 <strong>정체성</strong>을 가장 효과적이고 세련되게 시각화한 <strong>그래픽/디자인 아트</strong>를 선보입니다.</p>
           </div>
-          <div class="story-text-wrap">
-            <h4 class="story-title">전통 건축과 미장센</h4>
-            <p class="story-desc">
-              <strong>한옥의 분위기</strong>, <strong>단청</strong> 색감, <strong>전통 문양</strong> 등 시각적 요소가 활용됩니다. 배경 자체가 <strong>한국 전통문화의 정서</strong>를 전달하는 역할을 합니다.
-            </p>
+
+          <!-- Item B-1 (New) -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/kdh_streetwear.png" alt="무기 — 전통의 형상" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">무기 — 전통의 형상</h4>
+              <p class="story-desc">
+                <strong>루미</strong>의 무기는 <strong>사인검</strong>으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 <strong>벽사</strong>용 도검이다. <strong>조이</strong>의 무기는 무당이 <strong>굿</strong>을 할 때 사용하는 <strong>대신칼</strong>에서 따온 소형 칼이다. <strong>미라</strong>의 무기는 가야 때 <strong>월도</strong>를 모티브로 제작되었다. 고대 헌터들의 무기는 <strong>석장</strong>, <strong>쌍검</strong>, <strong>각궁</strong>으로 각각 깊은 역사와 <strong>전통</strong>적 맥락을 담고 있다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item B-2 (New) -->
+          <div class="story-item story-item-reverse">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/kdh_tiger.png" alt="까치호랑이 민화" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">까치호랑이 민화</h4>
+              <p class="story-desc">
+                <strong>한국 민화</strong> 특유의 상징성과 해학을 보여주는 <strong>까치호랑이 민화</strong> 요소입니다. <strong>호랑이</strong>와 <strong>까치</strong>의 조합을 통해 <strong>전통 미감</strong>을 자연스럽게 드러냅니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item B-3 (New) -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/kdh_norigae_accessories.png" alt="노리개 — 방울과 매듭" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">노리개 — 방울과 매듭</h4>
+              <p class="story-desc">
+                <strong>헌트릭스</strong>에게 달려있는 <strong>노리개</strong>는 <strong>무당</strong>의 상징인 <strong>방울</strong>들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. <strong>루미</strong>, <strong>미라</strong>, <strong>조이</strong>의 노리개에는 <strong>도래 매듭</strong>, <strong>가락지 매듭</strong>, <strong>국화 매듭</strong> 등 다양한 <strong>전통 매듭</strong>이 사용되었다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item B-4 (New) -->
+          <div class="story-item story-item-reverse">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/kdh_hanbok_glowing.png" alt="무속·퇴마 설정" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">무속·퇴마 설정</h4>
+              <p class="story-desc">
+                악령을 상대하는 이야기 구조가 한국 <strong>무속</strong> 신앙과 연결되어 있습니다. <strong>전통 설화</strong>를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item B-5 (New) -->
+          <div class="story-item">
+            <div class="story-image-wrap story-image-has-file">
+              <img src="images/kdh_palace.png" alt="전통 건축과 미장센" class="story-image-el">
+            </div>
+            <div class="story-text-wrap">
+              <h4 class="story-title">전통 건축과 미장센</h4>
+              <p class="story-desc">
+                <strong>한옥의 분위기</strong>, <strong>단청</strong> 색감, <strong>전통 문양</strong> 등 시각적 요소가 활용됩니다. 배경 자체가 <strong>한국 전통문화의 정서</strong>를 전달하는 역할을 합니다.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -1666,9 +1768,38 @@
 
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
-    <section id="chapter-5" class="analysis-section">
+    <section id="chapter-5" class="analysis-section" style="position:relative; overflow:hidden;">
+      <!-- Wave pattern at very bottom of section -->
+      <svg class="bg-pattern" aria-hidden="true" 
+           style="position:absolute; left:0; bottom:0; width:100%; height:120px; 
+                  opacity:0.6; z-index:0; pointer-events:none;"
+           viewBox="0 0 1000 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,40 Q 125,20 250,40 T 500,40 T 750,40 T 1000,40" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+        <path d="M 0,50 Q 125,30 250,50 T 500,50 T 750,50 T 1000,50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+        <path d="M 0,60 Q 125,40 250,60 T 500,60 T 750,60 T 1000,60" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+        <path d="M 0,70 Q 125,50 250,70 T 500,70 T 750,70 T 1000,70" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+        <path d="M 0,80 Q 125,60 250,80 T 500,80 T 750,80 T 1000,80" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+      </svg>
       <!-- Decorative Diamond Divider -->
-      <div class="analysis-divider-container reveal">
+      <div class="analysis-divider-container reveal" style="position:relative;">
+        <!-- 창살 pattern at right edge only -->
+        <svg class="bg-pattern" aria-hidden="true" 
+             style="position:absolute; right:10px; top:50%; transform:translateY(-50%); width:50px; height:50px; 
+                    opacity:0.4; z-index:0; pointer-events:none;"
+             viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="90" height="90" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+          <rect x="15" y="15" width="70" height="70" rx="8" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <circle cx="50" cy="50" r="14" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.2"/>
+          <circle cx="50" cy="50" r="6" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <line x1="50" y1="5" x2="50" y2="36" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <line x1="50" y1="64" x2="50" y2="95" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <line x1="5" y1="50" x2="36" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <line x1="64" y1="50" x2="95" y2="50" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <circle cx="25" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <circle cx="75" cy="25" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <circle cx="25" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+          <circle cx="75" cy="75" r="4" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1.0"/>
+        </svg>
         <div class="divider-line"></div>
         <svg class="divider-diamond" viewBox="0 0 24 24" width="24" height="24">
           <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)" fill="none" stroke="#C0392B" stroke-width="1.5"/>
