@@ -1230,18 +1230,18 @@
     .bg-pattern-png {
       position: absolute;
       pointer-events: none;
-      z-index: -2; /* Place completely behind all SVG patterns, cards and text to avoid overlapping */
+      z-index: 0; /* Restore z-index to 0 to prevent browser background color hiding the image */
       user-select: none;
       transition: opacity 0.5s ease;
       background: transparent !important; /* Explicitly set transparent background */
     }
     
-    @media (max-width: 1450px) {
+    @media (max-width: 1250px) {
       .bg-pattern {
         opacity: 0.25; /* slightly lower on mobile */
       }
       .bg-pattern-png {
-        display: none !important; /* Hide PNG patterns on screens under 1450px to prevent overlaps */
+        display: none !important; /* Hide PNG patterns on screens under 1250px to prevent overlaps */
       }
     }
 
@@ -1409,10 +1409,10 @@
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
     <section id="chapter-2" class="story-section" style="position:relative; overflow:hidden;">
       <!-- Decorative PNG Pattern 1 -->
-      <img src="images2/Gemini_Generated_Image_5no7km5no7km5no7.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 120px; width: 220px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_5no7km5no7km5no7.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 120px; width: 220px; height: auto; opacity: 0.45;" />
 
       <!-- Decorative PNG Pattern 2 -->
-      <img src="images2/Gemini_Generated_Image_6kmnny6kmnny6kmn.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 400px; width: 200px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_6kmnny6kmnny6kmn.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 400px; width: 200px; height: auto; opacity: 0.45;" />
 
       <div class="story-container" style="position:relative; z-index:1;">
         
@@ -1465,16 +1465,16 @@
         <!-- SECTION 3 (CHAPTER 03) WRAPPER -->
         <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
           <!-- Decorative PNG Pattern 3 -->
-          <img src="images2/Gemini_Generated_Image_ajy7zajy7zajy7za.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 100px; width: 220px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_ajy7zajy7zajy7za.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 100px; width: 220px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 4 -->
-          <img src="images2/Gemini_Generated_Image_ebvs1cebvs1cebvs.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 700px; width: 210px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_ebvs1cebvs1cebvs.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 700px; width: 210px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 5 -->
-          <img src="images2/Gemini_Generated_Image_je8yxje8yxje8yxj.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 1300px; width: 190px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_je8yxje8yxje8yxj.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 1300px; width: 190px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 1 (Reused for balance) -->
-          <img src="images2/Gemini_Generated_Image_5no7km5no7km5no7.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); bottom: 100px; width: 220px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_5no7km5no7km5no7.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); bottom: 100px; width: 220px; height: auto; opacity: 0.45;" />
           <!-- SUB-SECTION A: 범접 (Beomjeob) Header -->
           <div id="chapter-3" class="story-subsection-header reveal" style="position:relative; margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
             <span class="section-tag" style="position:relative; z-index:1;">CHAPTER 03</span>
@@ -1574,16 +1574,16 @@
         <!-- SECTION 4 (CHAPTER 04) WRAPPER -->
         <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
           <!-- Decorative PNG Pattern 6 -->
-          <img src="images2/Gemini_Generated_Image_pzpojppzpojppzpo.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 100px; width: 220px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_pzpojppzpojppzpo.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 100px; width: 220px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 7 -->
-          <img src="images2/Gemini_Generated_Image_rciqnxrciqnxrciq.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 650px; width: 200px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_rciqnxrciqnxrciq.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 650px; width: 200px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 2 (Reused for balance) -->
-          <img src="images2/Gemini_Generated_Image_6kmnny6kmnny6kmn.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 1200px; width: 200px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_6kmnny6kmnny6kmn.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 1200px; width: 200px; height: auto; opacity: 0.45;" />
 
           <!-- Decorative PNG Pattern 3 (Reused for balance) -->
-          <img src="images2/Gemini_Generated_Image_ajy7zajy7zajy7za.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); bottom: 80px; width: 220px; height: auto; opacity: 0.45;" />
+          <img src="images2/Gemini_Generated_Image_ajy7zajy7zajy7za.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); bottom: 80px; width: 220px; height: auto; opacity: 0.45;" />
 
           <!-- SUB-SECTION B: 케이팝데몬헌터스 (KDH) Header -->
           <div id="chapter-4" class="story-subsection-header reveal" style="position:relative; margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px; overflow:hidden;">
@@ -1680,10 +1680,10 @@
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section" style="position:relative; overflow:hidden;">
       <!-- Decorative PNG Pattern 8 -->
-      <img src="images2/Gemini_Generated_Image_s1d04ts1d04ts1d0.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 150px; width: 230px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_s1d04ts1d04ts1d0.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 150px; width: 230px; height: auto; opacity: 0.45;" />
 
       <!-- Decorative PNG Pattern 4 (Reused for balance) -->
-      <img src="images2/Gemini_Generated_Image_ebvs1cebvs1cebvs.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 400px; width: 210px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_ebvs1cebvs1cebvs.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 400px; width: 210px; height: auto; opacity: 0.45;" />
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal" style="position:relative; z-index:1;">
         <div class="divider-line"></div>
@@ -1758,10 +1758,10 @@
     <!-- POSTER ELEMENT DESCRIPTIONS -->
     <div class="poster-elements-container reveal" style="position:relative; overflow:hidden;">
       <!-- Decorative PNG Pattern 9 -->
-      <img src="images2/Gemini_Generated_Image_t38n1nt38n1nt38n.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 730px); top: 150px; width: 210px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_t38n1nt38n1nt38n.png" class="bg-pattern-png" aria-hidden="true" style="left: calc(50% - 700px); top: 150px; width: 210px; height: auto; opacity: 0.45;" />
 
       <!-- Decorative PNG Pattern 6 (Reused for balance) -->
-      <img src="images2/Gemini_Generated_Image_pzpojppzpojppzpo.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 730px); top: 450px; width: 220px; height: auto; opacity: 0.45;" />
+      <img src="images2/Gemini_Generated_Image_pzpojppzpojppzpo.png" class="bg-pattern-png" aria-hidden="true" style="right: calc(50% - 700px); top: 450px; width: 220px; height: auto; opacity: 0.45;" />
       <!-- ENTRY 1 -->
       <div class="poster-element-entry" style="position:relative; z-index:1;">
         <span class="section-tag">TITLE</span>
