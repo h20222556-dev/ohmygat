@@ -29,6 +29,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-weight: 500;
     }
     
     /* Scrollbar Styling */
@@ -290,6 +291,68 @@
       object-fit: contain;
       display: block;
     }
+
+    .poster-display {
+      margin-bottom: 50px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(192, 57, 43, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .poster-display:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(192, 57, 43, 0.25);
+    }
+
+    .poster-description {
+      max-width: 800px;
+      width: 100%;
+      margin-top: 20px;
+      background: rgba(10, 10, 10, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      padding: 40px;
+    }
+
+    .poster-desc-item {
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .poster-desc-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .poster-desc-item:first-child {
+      padding-top: 0;
+    }
+
+    .poster-desc-item h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .poster-desc-item p {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #cfd8dc;
+      font-weight: 500;
+      word-break: keep-all;
+    }
+
+    .poster-desc-item p strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -314,12 +377,38 @@
   <main class="poster-container">
     <h1 class="page-title">POSTER</h1>
     
-    <div class="showcase-grid">
-      <!-- Area 1 (Vertical A2) -->
-      <div class="poster-area area-vertical">
-        <img src="images/poster.png" alt="OH MY GAT — TRADITION REWRITTEN Poster" class="poster-img">
-      </div>
+    <div class="poster-display">
+      <img src="images/poster.png" alt="OH MY GAT 포스터" style="width:400px; max-width:100%; display:block; margin:0 auto;" />
     </div>
+
+    <section class="poster-description">
+
+      <div class="poster-desc-item">
+        <h3><strong>타이틀 — OH MY GAT</strong></h3>
+        <p>영어 감탄사 <strong>"Oh my God"</strong>의 발음을 빌려, God 자리에 조선시대 전통 모자 <strong>갓(GAT)</strong>을 넣은 <strong>언어유희</strong>다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 <strong>'전통의 재해석'</strong>을 첫 글자부터 담아낸다.</p>
+      </div>
+
+      <div class="poster-desc-item">
+        <h3><strong>배경 — 자개 일월오봉도</strong></h3>
+        <p>조선 왕실의 상징인 <strong>일월오봉도</strong>를 배경으로 사용했다. 원본의 채색화 형식 대신 <strong>나전칠기(자개)</strong> 특유의 <strong>광택과 흑백 톤</strong>으로 재해석해, 전통 소재를 <strong>현대적 감각</strong>으로 새롭게 표현했다.</p>
+      </div>
+
+      <div class="poster-desc-item">
+        <h3><strong>韓魂 — 한혼</strong></h3>
+        <p>한국 <strong>한(韓)</strong>과 넋 <strong>혼(魂)</strong>을 결합한 조어로, <strong>'한국의 영혼'</strong>을 뜻한다. <strong>한류</strong>가 단순한 유행이 아닌 오랜 <strong>문화적 감수성</strong>에서 비롯되었다는 의미를 담았다. 전통에서 <strong>벽사와 생명력</strong>을 상징하는 <strong>붉은색</strong>으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었다.</p>
+      </div>
+
+      <div class="poster-desc-item">
+        <h3><strong>부제 — TRADITION REWRITTEN</strong></h3>
+        <p>포스터의 부제이자 <strong>프로젝트 전체의 논지</strong>를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 <strong>매 시대의 언어</strong>로 끊임없이 <strong>다시 쓰인다</strong>.</p>
+      </div>
+
+      <div class="poster-desc-item">
+        <h3><strong>모서리 장식 — 창살 문양</strong></h3>
+        <p>한국 전통 건축의 <strong>창살 문양</strong>에서 착안한 <strong>프레임 장식</strong>이다. 시선을 자연스럽게 <strong>중앙으로 유도</strong>하는 동시에, 전통 공예의 <strong>섬세함</strong>을 레이아웃 안에 녹여내는 역할을 한다.</p>
+      </div>
+
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -390,7 +479,7 @@
     requestAnimationFrame(tickCursor);
 
     // Bind interactive elements to cursor scaling
-    document.querySelectorAll('a, .poster-area').forEach(el => {
+    document.querySelectorAll('a, .poster-display').forEach(el => {
       el.addEventListener('mouseenter', () => {
         scale = 1.5;
         cursorRing.style.borderColor = '#C0392B';
