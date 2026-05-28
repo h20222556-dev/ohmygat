@@ -1417,38 +1417,45 @@
     <!-- SECTION 2: INTRODUCTION -->
     <section id="chapter-1" class="intro-section reveal">
       <!-- Background Patterns -->
-      <!-- Pattern A1: Wave arch (파도 아치, 300x150px, top-right of CHAPTER 01) -->
-      <svg class="bg-pattern" style="width: 300px; height: 150px; top: 5%; right: -80px;" viewBox="0 0 140 70" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 5,70 A 65,65 0 0,1 135,70" />
-        <path d="M 25,70 A 45,45 0 0,1 115,70" />
-        <path d="M 45,70 A 25,25 0 0,1 95,70" />
+      <!-- Dongsimgyeol maedeup (동심결 매듭) — cross/eternity knot, top-right corner, ~240px -->
+      <svg
+        style="position:absolute; width:240px; height:290px; top:5%; right:-55px; pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 100 121"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Upper vertical arm: two parallel lines -->
+        <line x1="43" y1="4" x2="43" y2="43"/>
+        <line x1="57" y1="4" x2="57" y2="43"/>
+        <!-- Lower vertical arm: two parallel lines -->
+        <line x1="43" y1="77" x2="43" y2="117"/>
+        <line x1="57" y1="77" x2="57" y2="117"/>
+        <!-- Left horizontal arm: two parallel lines -->
+        <line x1="4" y1="43" x2="37" y2="43"/>
+        <line x1="4" y1="57" x2="37" y2="57"/>
+        <!-- Right horizontal arm: two parallel lines -->
+        <line x1="63" y1="43" x2="96" y2="43"/>
+        <line x1="63" y1="57" x2="96" y2="57"/>
+        <!-- Center body: the woven knot rectangle -->
+        <rect x="37" y="43" width="26" height="34" rx="2"/>
+        <!-- Inner crossing lines showing the weave -->
+        <line x1="43" y1="43" x2="43" y2="77"/>
+        <line x1="57" y1="43" x2="57" y2="77"/>
+        <line x1="37" y1="53" x2="63" y2="53"/>
+        <line x1="37" y1="67" x2="63" y2="67"/>
+        <!-- Top-left loop at arm junction -->
+        <path d="M 37,43 C 32,37 26,37 26,43 C 26,49 32,49 37,49"/>
+        <!-- Top-right loop at arm junction -->
+        <path d="M 63,43 C 68,37 74,37 74,43 C 74,49 68,49 63,49"/>
+        <!-- Bottom-left loop at arm junction -->
+        <path d="M 37,77 C 32,83 26,83 26,77 C 26,71 32,71 37,71"/>
+        <!-- Bottom-right loop at arm junction -->
+        <path d="M 63,77 C 68,83 74,83 74,77 C 74,71 68,71 63,71"/>
       </svg>
-      <!-- Pattern A3: Interlocking diamond knot (300x225px, right margin of CHAPTER 01) -->
-      <svg class="bg-pattern" style="width: 300px; height: 225px; bottom: 10%; right: -80px;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="15" y="20" width="20" height="20" transform="rotate(45 25 30)" />
-        <rect x="30" y="20" width="20" height="20" transform="rotate(45 40 30)" />
-        <rect x="45" y="20" width="20" height="20" transform="rotate(45 55 30)" />
-      </svg>
-      <!-- Mountain Pattern 1: layered peaks with sun & cloud (450x250px, Chapter 01 right edge, vertically centered) -->
-      <svg class="bg-pattern" style="width: 450px; height: 250px; top: 50%; transform: translateY(-50%); right: -150px;" viewBox="0 0 500 280" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="210" cy="50" r="18" />
-        <path d="M 50,40 H 120 M 100,30 H 160 M 350,55 H 420 M 380,45 H 450" />
-        <!-- Left mountain -->
-        <path d="M 30,220 L 80,110 L 120,150 L 160,90 L 220,220" />
-        <path d="M 50,220 L 80,130 L 110,170" />
-        <path d="M 70,220 L 85,150 L 100,190" />
-        <path d="M 140,220 L 160,115 L 180,160" />
-        <path d="M 155,220 L 165,140 L 175,180" />
-        <!-- Right mountain -->
-        <path d="M 180,220 L 250,70 L 310,130 L 360,60 L 440,220" />
-        <path d="M 210,220 L 250,95 L 290,165" />
-        <path d="M 230,220 L 250,120 L 270,185" />
-        <path d="M 330,220 L 360,85 L 390,165" />
-        <path d="M 345,220 L 360,110 L 375,175" />
-        <!-- Water waves at base -->
-        <path d="M 10,220 H 480 M 40,230 H 450 M 80,240 H 410 M 120,250 H 370 M 160,260 H 330" />
-      </svg>
-      
       <div class="intro-container">
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl"></div>
@@ -1480,155 +1487,47 @@
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
     <section id="chapter-2" class="story-section">
       <!-- Background Patterns -->
-      <!-- Pattern A2: Flower rosette (꽃 로제트, 300x300px, left margin of CHAPTER 02) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; top: 15%; left: -100px;" viewBox="0 0 80 80" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="38" />
-        <circle cx="40" cy="40" r="12" />
-        <g transform="translate(40, 40)">
-          <circle cx="10" cy="0" r="16" />
-          <circle cx="7.07" cy="7.07" r="16" />
-          <circle cx="0" cy="10" r="16" />
-          <circle cx="-7.07" cy="7.07" r="16" />
-          <circle cx="-10" cy="0" r="16" />
-          <circle cx="-7.07" cy="-7.07" r="16" />
-          <circle cx="0" cy="-10" r="16" />
-          <circle cx="7.07" cy="-7.07" r="16" />
-        </g>
+      <!-- Byeongari maedeup (병아리 매듭) — chick/woven body knot, middle-right edge, ~130px -->
+      <svg
+        style="position:absolute; width:130px; height:163px; top:50%; right:-28px; transform:translateY(-50%); pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 80 100"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Top head loop -->
+        <path d="M 37,7 C 28,3 26,14 34,17 C 39,19 48,16 46,8 C 43,3 38,3 37,7"/>
+        <!-- Neck connecting head to body -->
+        <line x1="36" y1="17" x2="36" y2="27"/>
+        <line x1="44" y1="17" x2="44" y2="27"/>
+        <!-- Body outline: rounded rectangle -->
+        <path d="M 20,27 C 20,24 26,22 40,22 C 54,22 60,24 60,27 L 60,70 C 60,73 54,75 40,75 C 26,75 20,73 20,70 Z"/>
+        <!-- Horizontal lattice lines inside body -->
+        <line x1="20" y1="35" x2="60" y2="35"/>
+        <line x1="20" y1="46" x2="60" y2="46"/>
+        <line x1="20" y1="57" x2="60" y2="57"/>
+        <line x1="20" y1="66" x2="60" y2="66"/>
+        <!-- Vertical lattice lines inside body -->
+        <line x1="31" y1="22" x2="31" y2="75"/>
+        <line x1="40" y1="22" x2="40" y2="75"/>
+        <line x1="49" y1="22" x2="49" y2="75"/>
+        <!-- Corner loop details at body edges -->
+        <path d="M 20,35 C 14,32 12,38 18,40"/>
+        <path d="M 60,35 C 66,32 68,38 62,40"/>
+        <path d="M 20,57 C 14,60 12,54 18,52"/>
+        <path d="M 60,57 C 66,60 68,54 62,52"/>
+        <!-- Small loops at grid intersections (chick body texture) -->
+        <path d="M 31,35 C 28,31 24,31 24,35 C 24,39 28,39 31,35"/>
+        <path d="M 49,35 C 52,31 56,31 56,35 C 56,39 52,39 49,35"/>
+        <path d="M 31,66 C 28,70 24,70 24,66 C 24,62 28,62 31,66"/>
+        <path d="M 49,66 C 52,70 56,70 56,66 C 56,62 52,62 49,66"/>
+        <!-- Hanging tails -->
+        <line x1="35" y1="75" x2="35" y2="93"/>
+        <line x1="45" y1="75" x2="45" y2="93"/>
       </svg>
-      <!-- Pattern B1: Gukwa maedeup (국화 매듭, 300x300px, right side between CHAPTER 02 and CHAPTER 03) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; top: 32%; right: -100px;" viewBox="0 0 70 70" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -3)">
-          <rect x="25" y="25" width="20" height="20" />
-          <path d="M 25,30 H 45 M 25,35 H 45 M 25,40 H 45" />
-          <path d="M 30,25 V 45 M 35,25 V 45 M 40,25 V 45" />
-          <path d="M 30,25 C 30,12 40,12 40,25" />
-          <path d="M 30,45 C 30,58 40,58 40,45" />
-          <path d="M 25,30 C 12,30 12,40 25,40" />
-          <path d="M 45,30 C 58,30 58,40 45,40" />
-          <path d="M 28,28 C 18,18 28,12 35,25" />
-          <path d="M 42,28 C 52,18 42,12 35,25" />
-          <path d="M 28,42 C 18,52 28,58 35,45" />
-          <path d="M 42,42 C 52,52 42,58 35,45" />
-          <path d="M 32,45 L 32,68 M 38,45 L 38,68" />
-        </g>
-      </svg>
-      <!-- Pattern A1: Wave arch (파도 아치, 320x160px, bottom-left of CHAPTER 03 margin) -->
-      <svg class="bg-pattern" style="width: 320px; height: 160px; top: 45%; left: -80px;" viewBox="0 0 140 70" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 5,70 A 65,65 0 0,1 135,70" />
-        <path d="M 25,70 A 45,45 0 0,1 115,70" />
-        <path d="M 45,70 A 25,25 0 0,1 95,70" />
-      </svg>
-      <!-- Pattern B4: Saengjjok maedeup (생쪽 매듭, 320x240px, left margin mid-CHAPTER 03) -->
-      <svg class="bg-pattern" style="width: 320px; height: 240px; top: 60%; left: -80px;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -3)">
-          <circle cx="40" cy="30" r="6" />
-          <path d="M 32,30 C 12,15 12,45 32,30" />
-          <path d="M 48,30 C 68,15 68,45 48,30" />
-          <path d="M 40,22 C 30,2 50,2 40,22" />
-          <path d="M 37,30 L 37,55 M 43,30 L 43,55" />
-        </g>
-      </svg>
-      <!-- Mountain Pattern 2: peaks with waves (450x250px, between Chapter 03 and Chapter 04 left edge) -->
-      <svg class="bg-pattern" style="width: 450px; height: 250px; top: 52%; left: -150px;" viewBox="0 0 500 280" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="380" cy="60" r="22" />
-        <path d="M 40,50 H 150 M 90,65 H 200" />
-        <!-- Main Peaks -->
-        <path d="M 150,230 L 250,50 L 350,230" />
-        <path d="M 180,230 L 250,85 L 320,230" />
-        <path d="M 210,230 L 250,120 L 290,230" />
-        <!-- Left Peak -->
-        <path d="M 70,230 L 150,90 L 230,230" />
-        <path d="M 95,230 L 150,120 L 205,230" />
-        <path d="M 120,230 L 150,150 L 180,230" />
-        <!-- Right Peak -->
-        <path d="M 270,230 L 350,80 L 430,230" />
-        <path d="M 295,230 L 350,110 L 405,230" />
-        <path d="M 320,230 L 350,140 L 380,230" />
-        <!-- Concentric traditional waves -->
-        <path d="M 30,230 A 25,12 0 0,0 80,230 A 25,12 0 0,0 130,230 A 25,12 0 0,0 180,230 A 25,12 0 0,0 230,230 A 25,12 0 0,0 280,230 A 25,12 0 0,0 330,230 A 25,12 0 0,0 380,230 A 25,12 0 0,0 430,230 A 25,12 0 0,0 480,230" />
-        <path d="M 5,235 A 25,12 0 0,0 55,235 A 25,12 0 0,0 105,235 A 25,12 0 0,0 155,235 A 25,12 0 0,0 205,235 A 25,12 0 0,0 255,235 A 25,12 0 0,0 305,235 A 25,12 0 0,0 355,235 A 25,12 0 0,0 405,235 A 25,12 0 0,0 455,235" />
-        <!-- Flow waves -->
-        <path d="M 50,240 Q 100,260 250,245 T 450,250" />
-        <path d="M 20,250 Q 150,275 300,255 T 480,260" />
-        <path d="M 80,260 Q 200,285 350,265" />
-      </svg>
-      <!-- Pattern Yeonbong: Yeonbong (연봉 매듭, lotus bud, 300x300px, right margin of CHAPTER 04) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; top: 72%; right: -120px;" viewBox="0 0 80 100" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(40, 50)">
-          <!-- Upper loop - left side of cross -->
-          <path d="M 0,0 C -10,-5 -15,-18 -8,-22 C -3,-25 3,-22 0,-15" />
-          <path d="M 0,0 C -12,-3 -18,-15 -12,-20 C -7,-23 -1,-18 0,-10" />
-          <!-- Upper loop - right side of cross -->
-          <path d="M 0,0 C 10,-5 15,-18 8,-22 C 3,-25 -3,-22 0,-15" />
-          <path d="M 0,0 C 12,-3 18,-15 12,-20 C 7,-23 1,-18 0,-10" />
-          <!-- Center knot body -->
-          <ellipse cx="0" cy="0" rx="7" ry="9" />
-          <path d="M -5,-4 C -8,0 -8,4 -5,8" />
-          <path d="M 5,-4 C 8,0 8,4 5,8" />
-          <path d="M -3,-6 H 3" />
-          <path d="M -3,10 H 3" />
-          <!-- Lower loop - left side -->
-          <path d="M -4,9 C -14,14 -18,26 -10,30 C -4,33 2,28 0,20" />
-          <path d="M -3,9 C -12,13 -16,24 -8,27 C -3,30 3,24 0,18" />
-          <!-- Lower loop - right side -->
-          <path d="M 4,9 C 14,14 18,26 10,30 C 4,33 -2,28 0,20" />
-          <path d="M 3,9 C 12,13 16,24 8,27 C 3,30 -3,24 0,18" />
-          <!-- Hanging tails -->
-          <path d="M -3,30 L -3,45 M 3,30 L 3,45" />
-        </g>
-      </svg>
-      <!-- Pattern A4: Scale/fan arch pattern (부채꼴 비늘문, 300x150px, bottom of CHAPTER 02 right side) -->
-      <svg class="bg-pattern" style="width: 300px; height: 150px; bottom: 5%; right: -80px;" viewBox="0 0 160 80" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -10)">
-          <path d="M 12,35 A 8,8 0 0,1 28,35" />
-          <path d="M 6,35 A 14,14 0 0,1 34,35" />
-          <path d="M 0,35 A 20,20 0 0,1 40,35" />
-          <path d="M 52,35 A 8,8 0 0,1 68,35" />
-          <path d="M 46,35 A 14,14 0 0,1 74,35" />
-          <path d="M 40,35 A 20,20 0 0,1 80,35" />
-          <path d="M 92,35 A 8,8 0 0,1 108,35" />
-          <path d="M 86,35 A 14,14 0 0,1 114,35" />
-          <path d="M 80,35 A 20,20 0 0,1 120,35" />
-          <path d="M 132,35 A 8,8 0 0,1 148,35" />
-          <path d="M 126,35 A 14,14 0 0,1 154,35" />
-          <path d="M 120,35 A 20,20 0 0,1 160,35" />
-        </g>
-        <g transform="translate(0, 15)">
-          <path d="M -8,35 A 8,8 0 0,1 8,35" />
-          <path d="M -14,35 A 14,14 0 0,1 14,35" />
-          <path d="M -20,35 A 20,20 0 0,1 20,35" />
-          <path d="M 32,35 A 8,8 0 0,1 48,35" />
-          <path d="M 26,35 A 14,14 0 0,1 54,35" />
-          <path d="M 20,35 A 20,20 0 0,1 60,35" />
-          <path d="M 72,35 A 8,8 0 0,1 88,35" />
-          <path d="M 66,35 A 14,14 0 0,1 94,35" />
-          <path d="M 60,35 A 20,20 0 0,1 100,35" />
-          <path d="M 112,35 A 8,8 0 0,1 128,35" />
-          <path d="M 106,35 A 14,14 0 0,1 134,35" />
-          <path d="M 100,35 A 20,20 0 0,1 140,35" />
-          <path d="M 152,35 A 8,8 0 0,1 168,35" />
-          <path d="M 146,35 A 14,14 0 0,1 174,35" />
-          <path d="M 140,35 A 20,20 0 0,1 180,35" />
-        </g>
-      </svg>
-      <!-- Pattern B1: Gukwa maedeup (국화 매듭, 300x300px, left side between CHAPTER 04 and CHAPTER 05) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; bottom: 3%; left: -100px;" viewBox="0 0 70 70" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -3)">
-          <rect x="25" y="25" width="20" height="20" />
-          <path d="M 25,30 H 45 M 25,35 H 45 M 25,40 H 45" />
-          <path d="M 30,25 V 45 M 35,25 V 45 M 40,25 V 45" />
-          <path d="M 30,25 C 30,12 40,12 40,25" />
-          <path d="M 30,45 C 30,58 40,58 40,45" />
-          <path d="M 25,30 C 12,30 12,40 25,40" />
-          <path d="M 45,30 C 58,30 58,40 45,40" />
-          <path d="M 28,28 C 18,18 28,12 35,25" />
-          <path d="M 42,28 C 52,18 42,12 35,25" />
-          <path d="M 28,42 C 18,52 28,58 35,45" />
-          <path d="M 42,42 C 52,52 42,58 35,45" />
-          <path d="M 32,45 L 32,68 M 38,45 L 38,68" />
-        </g>
-      </svg>
-      
       <div class="story-container">
         
         <!-- INTRO -->
@@ -1840,75 +1739,40 @@
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section">
       <!-- Background Patterns -->
-      <!-- Pattern A1: Wave arch (파도 아치, 320x160px, top-right of CHAPTER 05) -->
-      <svg class="bg-pattern" style="width: 320px; height: 160px; top: 4%; right: -80px;" viewBox="0 0 140 70" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 5,70 A 65,65 0 0,1 135,70" />
-        <path d="M 25,70 A 45,45 0 0,1 115,70" />
-        <path d="M 45,70 A 25,25 0 0,1 95,70" />
+      <!-- Maehwa maedeup (매화 매듭) — 4-petal flower knot, bottom-left area, ~180px -->
+      <svg
+        style="position:absolute; width:180px; height:216px; bottom:5%; left:-38px; pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 80 96"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Top petal: elongated oval loop pointing upward -->
+        <path d="M 36,40 C 28,20 52,20 44,40"/>
+        <path d="M 37,40 C 31,24 49,24 43,40"/>
+        <!-- Left petal: elongated oval loop pointing left -->
+        <path d="M 38,42 C 18,34 18,54 38,48"/>
+        <path d="M 38,43 C 20,37 20,51 38,47"/>
+        <!-- Right petal: elongated oval loop pointing right -->
+        <path d="M 42,42 C 62,34 62,54 42,48"/>
+        <path d="M 42,43 C 60,37 60,51 42,47"/>
+        <!-- Bottom petal: elongated oval loop pointing downward -->
+        <path d="M 36,48 C 28,68 52,68 44,48"/>
+        <path d="M 37,48 C 31,64 49,64 43,48"/>
+        <!-- Center knot ring -->
+        <ellipse cx="40" cy="45" rx="4" ry="5"/>
+        <!-- Inner petal connection arcs -->
+        <path d="M 36,40 C 38,38 42,38 44,40"/>
+        <path d="M 36,48 C 38,50 42,50 44,48"/>
+        <path d="M 38,42 C 38,40 38,48 38,48"/>
+        <path d="M 42,42 C 42,40 42,48 42,48"/>
+        <!-- Hanging tails -->
+        <line x1="37" y1="68" x2="37" y2="86"/>
+        <line x1="43" y1="68" x2="43" y2="86"/>
       </svg>
-      <!-- Pattern A4: Scale/fan arch pattern (부채꼴 비늘문, 320x160px, top of CHAPTER 05 left side) -->
-      <svg class="bg-pattern" style="width: 320px; height: 160px; top: 4%; left: -80px;" viewBox="0 0 160 80" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -10)">
-          <path d="M 12,35 A 8,8 0 0,1 28,35" />
-          <path d="M 6,35 A 14,14 0 0,1 34,35" />
-          <path d="M 0,35 A 20,20 0 0,1 40,35" />
-          <path d="M 52,35 A 8,8 0 0,1 68,35" />
-          <path d="M 46,35 A 14,14 0 0,1 74,35" />
-          <path d="M 40,35 A 20,20 0 0,1 80,35" />
-          <path d="M 92,35 A 8,8 0 0,1 108,35" />
-          <path d="M 86,35 A 14,14 0 0,1 114,35" />
-          <path d="M 80,35 A 20,20 0 0,1 120,35" />
-          <path d="M 132,35 A 8,8 0 0,1 148,35" />
-          <path d="M 126,35 A 14,14 0 0,1 154,35" />
-          <path d="M 120,35 A 20,20 0 0,1 160,35" />
-        </g>
-        <g transform="translate(0, 15)">
-          <path d="M -8,35 A 8,8 0 0,1 8,35" />
-          <path d="M -14,35 A 14,14 0 0,1 14,35" />
-          <path d="M -20,35 A 20,20 0 0,1 20,35" />
-          <path d="M 32,35 A 8,8 0 0,1 48,35" />
-          <path d="M 26,35 A 14,14 0 0,1 54,35" />
-          <path d="M 20,35 A 20,20 0 0,1 60,35" />
-          <path d="M 72,35 A 8,8 0 0,1 88,35" />
-          <path d="M 66,35 A 14,14 0 0,1 94,35" />
-          <path d="M 60,35 A 20,20 0 0,1 100,35" />
-          <path d="M 112,35 A 8,8 0 0,1 128,35" />
-          <path d="M 106,35 A 14,14 0 0,1 134,35" />
-          <path d="M 100,35 A 20,20 0 0,1 140,35" />
-          <path d="M 152,35 A 8,8 0 0,1 168,35" />
-          <path d="M 146,35 A 14,14 0 0,1 174,35" />
-          <path d="M 140,35 A 20,20 0 0,1 180,35" />
-        </g>
-      </svg>
-      <!-- Pattern B2: Dongsimgyeol (동심결, 320x240px, right margin mid-CHAPTER 05) -->
-      <svg class="bg-pattern" style="width: 320px; height: 240px; bottom: 15%; right: -80px;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(0, -3)">
-          <rect x="32" y="22" width="16" height="16" />
-          <path d="M 32,22 L 48,38 M 32,38 L 48,22" />
-          <path d="M 32,30 C 12,15 12,45 32,30" />
-          <path d="M 48,30 C 68,15 68,45 48,30" />
-          <path d="M 40,22 C 30,2 50,2 40,22" />
-          <path d="M 37,38 L 37,58 M 43,38 L 43,58" />
-        </g>
-      </svg>
-
-      <!-- Mountain Pattern 3: rounded peaks with waves & sun (450x250px, Chapter 05 bottom right edge) -->
-      <svg class="bg-pattern" style="width: 450px; height: 250px; bottom: 8%; right: -150px;" viewBox="0 0 500 280" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="280" cy="110" r="30" />
-        <!-- Mountains -->
-        <path d="M 30,220 Q 100,100 180,180 T 320,120 Q 380,160 450,220" />
-        <path d="M 50,220 Q 100,130 160,190" />
-        <path d="M 70,220 Q 100,160 140,200" />
-        <path d="M 150,220 Q 220,130 280,190 T 400,220" />
-        <path d="M 180,220 Q 220,160 260,195" />
-        <path d="M 300,220 Q 350,150 420,220" />
-        <!-- Base waves -->
-        <path d="M 10,220 C 100,210 200,250 300,230 S 400,210 490,220" />
-        <path d="M 10,230 C 120,220 220,260 320,240 S 420,220 490,230" />
-        <path d="M 20,240 C 150,230 250,270 350,250 S 450,230 480,245" />
-        <path d="M 50,255 C 180,245 280,280 380,260 T 460,260" />
-      </svg>
-      
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal">
         <div class="divider-line"></div>
@@ -1983,80 +1847,6 @@
     <!-- POSTER ELEMENT DESCRIPTIONS -->
     <div class="poster-elements-container reveal">
       <!-- Background Patterns -->
-      <!-- Pattern Maehwa: Maehwa maedeup (매화 매듭, apricot flower, 300x300px, right side near poster section) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; top: 2%; right: -120px;" viewBox="0 0 80 100" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(40, 45)">
-          <!-- Five petal loops radiating from center -->
-          <!-- Petal top -->
-          <path d="M -4,-5 C -12,-22 0,-34 8,-26 C 14,-20 8,-8 0,-5" />
-          <path d="M -2,-5 C -8,-20 2,-30 8,-24 C 13,-18 7,-8 0,-5" />
-          <!-- Petal upper-right -->
-          <path d="M 4,-3 C 20,-8 28,6 20,12 C 13,16 4,8 4,2" />
-          <path d="M 4,-2 C 18,-6 25,7 18,12 C 12,15 4,7 4,1" />
-          <!-- Petal lower-right -->
-          <path d="M 3,5 C 16,18 12,32 4,30 C -3,28 -4,18 0,10" />
-          <path d="M 2,5 C 14,17 10,29 3,28 C -3,26 -3,17 0,10" />
-          <!-- Petal lower-left -->
-          <path d="M -3,5 C -16,18 -12,32 -4,30 C 3,28 4,18 0,10" />
-          <path d="M -2,5 C -14,17 -10,29 -3,28 C 3,26 3,17 0,10" />
-          <!-- Petal upper-left -->
-          <path d="M -4,-3 C -20,-8 -28,6 -20,12 C -13,16 -4,8 -4,2" />
-          <path d="M -4,-2 C -18,-6 -25,7 -18,12 C -12,15 -4,7 -4,1" />
-          <!-- Center ring -->
-          <circle cx="0" cy="3" r="4" />
-          <!-- Hanging tails -->
-          <path d="M -3,30 L -3,46 M 3,30 L 3,46" />
-        </g>
-      </svg>
-      <!-- Pattern A2: Flower rosette (꽃 로제트, 300x300px, left margin near the poster section) -->
-      <svg class="bg-pattern" style="width: 300px; height: 300px; top: 10%; left: -100px;" viewBox="0 0 80 80" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="38" />
-        <circle cx="40" cy="40" r="12" />
-        <g transform="translate(40, 40)">
-          <circle cx="10" cy="0" r="16" />
-          <circle cx="7.07" cy="7.07" r="16" />
-          <circle cx="0" cy="10" r="16" />
-          <circle cx="-7.07" cy="7.07" r="16" />
-          <circle cx="-10" cy="0" r="16" />
-          <circle cx="-7.07" cy="-7.07" r="16" />
-          <circle cx="0" cy="-10" r="16" />
-          <circle cx="7.07" cy="-7.07" r="16" />
-        </g>
-      </svg>
-      <!-- Pattern A3: Interlocking diamond knot (320x240px, left margin of CHAPTER 06) -->
-      <svg class="bg-pattern" style="width: 320px; height: 240px; bottom: 10%; left: -80px;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="15" y="20" width="20" height="20" transform="rotate(45 25 30)" />
-        <rect x="30" y="20" width="20" height="20" transform="rotate(45 40 30)" />
-        <rect x="45" y="20" width="20" height="20" transform="rotate(45 55 30)" />
-      </svg>
-      <!-- Pattern Samjeongja: Samjeongja maedeup (삼정자 매듭, three #-shaped, 240x320px, right edge of CHAPTER 06) -->
-      <svg class="bg-pattern" style="width: 240px; height: 320px; bottom: 10%; right: -90px;" viewBox="0 0 80 100" stroke="currentColor" stroke-width="1" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(10, 10)">
-          <!-- Top horizontal bar with loops -->
-          <path d="M 10,18 H 50" />
-          <path d="M 10,28 H 50" />
-          <!-- Left vertical bar with loops -->
-          <path d="M 18,10 V 60" />
-          <path d="M 28,10 V 60" />
-          <!-- Loops at four intersections -->
-          <!-- Top-left loop -->
-          <path d="M 18,18 C 8,8 2,12 6,18 C 10,24 18,22 18,18" />
-          <path d="M 18,18 C 8,10 4,14 8,20 C 11,25 18,23 18,18" />
-          <!-- Top-right loop -->
-          <path d="M 50,18 C 60,8 66,12 62,18 C 58,24 50,22 50,18" />
-          <path d="M 50,18 C 60,10 64,14 60,20 C 57,25 50,23 50,18" />
-          <!-- Bottom-left loop -->
-          <path d="M 18,60 C 8,70 2,66 6,60 C 10,54 18,56 18,60" />
-          <path d="M 18,60 C 8,68 4,64 8,58 C 11,53 18,55 18,60" />
-          <!-- Bottom-right loop -->
-          <path d="M 50,60 C 60,70 66,66 62,60 C 58,54 50,56 50,60" />
-          <path d="M 50,60 C 60,68 64,64 60,58 C 57,53 50,55 50,60" />
-          <!-- Top tails -->
-          <path d="M 18,10 L 18,2 M 28,10 L 28,2" />
-          <!-- Bottom tails -->
-          <path d="M 18,60 L 18,78 M 28,60 L 28,78" />
-        </g>
-      </svg>
       
       <!-- ENTRY 1 -->
       <div class="poster-element-entry">
