@@ -1211,7 +1211,7 @@
     .bg-pattern {
       position: absolute;
       pointer-events: none;
-      z-index: 1;
+      z-index: -1;
       color: #c8bfb0; /* warm desaturated off-white tone */
       opacity: 0.06;  /* opacity between 4% and 10% */
       stroke-linecap: round;
@@ -1417,13 +1417,61 @@
     <!-- SECTION 2: INTRODUCTION -->
     <section id="chapter-1" class="intro-section reveal">
       <!-- Background Patterns -->
-      <!-- Chrysanthemum Rosette (Group B, medium) -->
-      <svg class="bg-pattern pattern-medium pos-br" viewBox="0 0 100 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="50" cy="50" rx="6" ry="35" />
-        <ellipse cx="50" cy="50" rx="6" ry="35" transform="rotate(45 50 50)" />
-        <ellipse cx="50" cy="50" rx="6" ry="35" transform="rotate(90 50 50)" />
-        <ellipse cx="50" cy="50" rx="6" ry="35" transform="rotate(135 50 50)" />
-        <circle cx="50" cy="50" r="5" fill="none" />
+      <!-- Pattern 1: Sansuwa Mountains (Type 1, large, right edge) -->
+      <svg class="bg-pattern pattern-large pos-tr" style="top: 10%;" viewBox="0 0 320 180" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="40" r="7" fill="currentColor" stroke="none" />
+        <path d="M 40,30 Q 55,25 70,30 T 100,30" stroke-dasharray="4,4" />
+        <path d="M 220,40 Q 235,35 250,40 T 280,40" stroke-dasharray="4,4" />
+        <path d="M 20,140 C 40,110 65,70 80,70 C 95,70 120,110 140,140" />
+        <path d="M 30,140 C 47,113 68,80 80,80 C 92,80 113,113 130,140" />
+        <path d="M 40,140 C 54,116 71,90 80,90 C 89,90 106,116 120,140" />
+        <path d="M 50,140 C 61,119 74,100 80,100 C 86,100 99,119 110,140" />
+        <path d="M 200,140 C 215,120 235,90 250,90 C 265,90 285,120 300,140" />
+        <path d="M 210,140 C 221,122 238,100 250,100 C 262,100 279,122 290,140" />
+        <path d="M 220,140 C 227,124 241,110 250,110 C 259,110 273,124 280,140" />
+        <path d="M 90,140 C 120,110 150,45 170,45 C 190,45 220,110 250,140" />
+        <path d="M 100,140 C 127,113 153,55 170,55 C 187,55 213,113 240,140" />
+        <path d="M 110,140 C 134,116 156,65 170,65 C 184,65 206,116 230,140" />
+        <path d="M 120,140 C 141,119 159,75 170,75 C 181,75 199,119 220,140" />
+        <line x1="10" y1="140" x2="310" y2="140" />
+        <path d="M 10,148 Q 85,140 160,148 Q 235,156 310,148" />
+        <path d="M 10,155 Q 85,163 160,155 Q 235,147 310,155" />
+        <path d="M 10,162 Q 85,154 160,162 Q 235,170 310,162" />
+        <path d="M 10,169 Q 85,177 160,169 Q 235,161 310,169" />
+      </svg>
+      <!-- Pattern 2: Flower Medallion Rosette (Type 3, medium, left margin) -->
+      <svg class="bg-pattern pattern-medium pos-tl" style="top: 25%;" viewBox="0 0 90 90" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="38" />
+        <circle cx="45" cy="45" r="5" />
+        <g transform="translate(45, 45)">
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(45)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(90)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(135)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(180)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(225)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(270)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(315)" />
+        </g>
+      </svg>
+      <!-- Pattern 3: Changsal lattice (Type 4, medium, bottom-right) -->
+      <svg class="bg-pattern pattern-medium pos-br" style="bottom: 5%;" viewBox="0 0 80 80" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="14" height="14" /> <rect x="10" y="10" width="6" height="6" />
+        <rect x="24" y="6" width="14" height="14" /> <rect x="28" y="10" width="6" height="6" />
+        <rect x="42" y="6" width="14" height="14" /> <rect x="46" y="10" width="6" height="6" />
+        <rect x="60" y="6" width="14" height="14" /> <rect x="64" y="10" width="6" height="6" />
+        <rect x="6" y="24" width="14" height="14" /> <rect x="10" y="28" width="6" height="6" />
+        <rect x="24" y="24" width="14" height="14" /> <rect x="28" y="28" width="6" height="6" />
+        <rect x="42" y="24" width="14" height="14" /> <rect x="46" y="28" width="6" height="6" />
+        <rect x="60" y="24" width="14" height="14" /> <rect x="64" y="28" width="6" height="6" />
+        <rect x="6" y="42" width="14" height="14" /> <rect x="10" y="46" width="6" height="6" />
+        <rect x="24" y="42" width="14" height="14" /> <rect x="28" y="46" width="6" height="6" />
+        <rect x="42" y="42" width="14" height="14" /> <rect x="46" y="46" width="6" height="6" />
+        <rect x="60" y="42" width="14" height="14" /> <rect x="64" y="46" width="6" height="6" />
+        <rect x="6" y="60" width="14" height="14" /> <rect x="10" y="64" width="6" height="6" />
+        <rect x="24" y="60" width="14" height="14" /> <rect x="28" y="64" width="6" height="6" />
+        <rect x="42" y="60" width="14" height="14" /> <rect x="46" y="64" width="6" height="6" />
+        <rect x="60" y="60" width="14" height="14" /> <rect x="64" y="64" width="6" height="6" />
       </svg>
       
       <div class="intro-container">
@@ -1457,113 +1505,127 @@
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
     <section id="chapter-2" class="story-section">
       <!-- Background Patterns -->
-      <!-- Sansuwa Mountains (Group A, large) -->
-      <svg class="bg-pattern pattern-large pos-tr" viewBox="0 0 200 120" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="120" cy="25" r="8" fill="none" />
-        <path d="M 10 100 L 40 40 L 70 100" />
-        <path d="M 18 100 L 40 47 L 62 100" />
-        <path d="M 26 100 L 40 55 L 54 100" />
-        <path d="M 50 100 L 95 20 L 150 100" />
-        <path d="M 60 100 L 95 30 L 140 100" />
-        <path d="M 70 100 L 95 40 L 130 100" />
-        <path d="M 80 100 L 95 50 L 120 100" />
-        <path d="M 130 100 L 160 50 L 190 100" />
-        <path d="M 138 100 L 160 58 L 182 100" />
-        <path d="M 20 30 L 50 30" />
-        <path d="M 140 35 L 175 35" />
-        <path d="M 0 103 L 200 103" />
-        <path d="M 10 107 L 190 107" />
-        <path d="M 30 111 L 170 111" />
+      <!-- Pattern 4: Dancheong Wave Arch (Type 2, medium, CHAPTER 02 top-right) -->
+      <svg class="bg-pattern pattern-medium pos-tr" style="top: 3%;" viewBox="0 0 180 60" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 16,56 A 12,12 0 0,1 40,56" />
+        <path d="M 8,56 A 20,20 0 0,1 48,56" />
+        <path d="M 0,56 A 28,28 0 0,1 56,56" />
+        <path d="M 78,56 A 12,12 0 0,1 102,56" />
+        <path d="M 70,56 A 20,20 0 0,1 110,56" />
+        <path d="M 62,56 A 28,28 0 0,1 118,56" />
+        <path d="M 140,56 A 12,12 0 0,1 164,56" />
+        <path d="M 132,56 A 20,20 0 0,1 172,56" />
+        <path d="M 124,56 A 28,28 0 0,1 180,56" />
       </svg>
-      <!-- Seungmu Wave Arch (Group B, medium) -->
-      <svg class="bg-pattern pattern-medium pos-tl" style="top: 20%;" viewBox="0 0 100 60" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 5 50 Q 25 20 45 50" />
-        <path d="M 10 50 Q 25 27 40 50" />
-        <path d="M 15 50 Q 25 34 35 50" />
-        <path d="M 20 50 Q 25 41 30 50" />
-        <path d="M 35 50 Q 55 20 75 50" />
-        <path d="M 40 50 Q 55 27 70 50" />
-        <path d="M 45 50 Q 55 34 65 50" />
-        <path d="M 50 50 Q 55 41 60 50" />
-        <path d="M 55 50 Q 75 20 95 50" />
-        <path d="M 60 50 Q 75 27 90 50" />
-        <path d="M 65 50 Q 75 34 85 50" />
-        <path d="M 70 50 Q 75 41 80 50" />
+      <!-- Pattern 5: Flower Medallion Rosette (Type 3, medium, CHAPTER 02 right margin) -->
+      <svg class="bg-pattern pattern-medium pos-tr" style="top: 15%;" viewBox="0 0 90 90" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="38" />
+        <circle cx="45" cy="45" r="5" />
+        <g transform="translate(45, 45)">
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(45)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(90)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(135)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(180)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(225)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(270)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(315)" />
+        </g>
       </svg>
-      <!-- Dorae Maedeup (Group C, small) -->
-      <svg class="bg-pattern pattern-small pos-tr" style="top: 30%;" viewBox="0 0 60 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30,10 C15,10 15,40 30,40 C45,40 45,10 30,10 Z" />
-        <path d="M22,40 C22,35 38,35 38,40 M22,46 C22,41 38,41 38,46" fill="none" />
-        <rect x="20" y="40" width="20" height="15" rx="3" fill="none" />
-        <path d="M25,55 L25,90 M35,55 L35,90" />
+      <!-- Pattern 6: Sansuwa Mountains (Type 1, large, CHAPTER 02 and 03 left transition) -->
+      <svg class="bg-pattern pattern-large pos-tl" style="top: 26%;" viewBox="0 0 320 180" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="40" r="7" fill="currentColor" stroke="none" />
+        <path d="M 40,30 Q 55,25 70,30 T 100,30" stroke-dasharray="4,4" />
+        <path d="M 220,40 Q 235,35 250,40 T 280,40" stroke-dasharray="4,4" />
+        <path d="M 20,140 C 40,110 65,70 80,70 C 95,70 120,110 140,140" />
+        <path d="M 30,140 C 47,113 68,80 80,80 C 92,80 113,113 130,140" />
+        <path d="M 40,140 C 54,116 71,90 80,90 C 89,90 106,116 120,140" />
+        <path d="M 50,140 C 61,119 74,100 80,100 C 86,100 99,119 110,140" />
+        <path d="M 200,140 C 215,120 235,90 250,90 C 265,90 285,120 300,140" />
+        <path d="M 210,140 C 221,122 238,100 250,100 C 262,100 279,122 290,140" />
+        <path d="M 220,140 C 227,124 241,110 250,110 C 259,110 273,124 280,140" />
+        <path d="M 90,140 C 120,110 150,45 170,45 C 190,45 220,110 250,140" />
+        <path d="M 100,140 C 127,113 153,55 170,55 C 187,55 213,113 240,140" />
+        <path d="M 110,140 C 134,116 156,65 170,65 C 184,65 206,116 230,140" />
+        <path d="M 120,140 C 141,119 159,75 170,75 C 181,75 199,119 220,140" />
+        <line x1="10" y1="140" x2="310" y2="140" />
+        <path d="M 10,148 Q 85,140 160,148 Q 235,156 310,148" />
+        <path d="M 10,155 Q 85,163 160,155 Q 235,147 310,155" />
+        <path d="M 10,162 Q 85,154 160,162 Q 235,170 310,162" />
+        <path d="M 10,169 Q 85,177 160,169 Q 235,161 310,169" />
       </svg>
-      <!-- Dongsimgyeol Knot (Group C, medium) -->
-      <svg class="bg-pattern pattern-medium pos-tl" style="top: 50%;" viewBox="0 0 80 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 40 5 C 30 5, 30 25, 40 25 C 50 25, 50 5, 40 5 Z" />
-        <rect x="25" y="30" width="30" height="30" rx="4" fill="none" />
-        <rect x="25" y="30" width="30" height="30" rx="4" transform="rotate(45 40 45)" fill="none" />
-        <path d="M 25 45 C 10 35, 10 55, 25 45 Z" />
-        <path d="M 55 45 C 70 35, 70 55, 55 45 Z" />
-        <path d="M 37 60 L 37 95 M 43 60 L 43 95" />
+      <!-- Pattern 7: Dorae Knot (Type 5, small, CHAPTER 02 and 03 right transition) -->
+      <svg class="bg-pattern pattern-small pos-tr" style="top: 32%;" viewBox="0 0 60 80" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(30, 28)">
+          <ellipse cx="-12" cy="0" rx="14" ry="18" />
+          <ellipse cx="12" cy="0" rx="14" ry="18" />
+          <path d="M -4,-4 L 4,4 M 4,-4 L -4,4" />
+          <path d="M -3,18 L -3,38 M 3,18 L 3,38" />
+        </g>
       </svg>
-      <!-- Flower Medallion (Group B, large) -->
-      <svg class="bg-pattern pattern-large pos-tr" style="top: 65%;" viewBox="0 0 100 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="30" fill="none" />
-        <circle cx="50" cy="35" r="15" fill="none" />
-        <circle cx="50" cy="65" r="15" fill="none" />
-        <circle cx="35" cy="50" r="15" fill="none" />
-        <circle cx="65" cy="50" r="15" fill="none" />
-        <circle cx="39.4" cy="39.4" r="15" fill="none" />
-        <circle cx="60.6" cy="39.4" r="15" fill="none" />
-        <circle cx="39.4" cy="60.6" r="15" fill="none" />
-        <circle cx="60.6" cy="60.6" r="15" fill="none" />
-        <circle cx="50" cy="50" r="6" fill="none" />
+      <!-- Pattern 8: Dancheong Wave Arch (Type 2, medium, CHAPTER 03 bottom-left) -->
+      <svg class="bg-pattern pattern-medium pos-bl" style="top: 48%;" viewBox="0 0 180 60" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 16,56 A 12,12 0 0,1 40,56" />
+        <path d="M 8,56 A 20,20 0 0,1 48,56" />
+        <path d="M 0,56 A 28,28 0 0,1 56,56" />
+        <path d="M 78,56 A 12,12 0 0,1 102,56" />
+        <path d="M 70,56 A 20,20 0 0,1 110,56" />
+        <path d="M 62,56 A 28,28 0 0,1 118,56" />
+        <path d="M 140,56 A 12,12 0 0,1 164,56" />
+        <path d="M 132,56 A 20,20 0 0,1 172,56" />
+        <path d="M 124,56 A 28,28 0 0,1 180,56" />
       </svg>
-      <!-- Sansuwa Mountains (Group A, large) -->
-      <svg class="bg-pattern pattern-large pos-tr" style="top: 80%;" viewBox="0 0 200 120" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="80" cy="30" r="10" fill="none" />
-        <path d="M 100 100 L 130 20 L 170 100" />
-        <path d="M 108 100 L 130 30 L 162 100" />
-        <path d="M 116 100 L 130 40 L 154 100" />
-        <path d="M 20 100 L 55 45 L 90 100" />
-        <path d="M 28 100 L 55 55 L 82 100" />
-        <path d="M 0 102 C 30 98, 60 106, 90 102 C 120 98, 150 106, 200 102" />
-        <path d="M 0 106 C 30 102, 60 110, 90 106 C 120 102, 150 110, 200 106" />
+      <!-- Pattern 9: Dongsimgyeol (Type 6, medium, CHAPTER 03 left mid-section) -->
+      <svg class="bg-pattern pattern-medium pos-tl" style="top: 56%;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="16" width="28" height="28" rx="6" transform="rotate(45 28 30)" />
+        <rect x="38" y="16" width="28" height="28" rx="6" transform="rotate(45 52 30)" />
+        <path d="M 37,30 L 43,30 M 40,27 L 40,33" />
       </svg>
-      <!-- Gukwa Maedeup (Group C, medium) -->
-      <svg class="bg-pattern pattern-medium pos-tl" style="top: 88%;" viewBox="0 0 80 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40,5 C30,5 30,20 40,20 C50,20 50,5 40,5 Z" />
-        <circle cx="40" cy="40" r="18" fill="none" />
-        <path d="M22,40 C10,30 10,50 22,40 Z" />
-        <path d="M58,40 C70,30 70,50 58,40 Z" />
-        <path d="M40,22 C30,10 50,10 40,22 Z" />
-        <path d="M40,58 C30,70 50,70 40,58 Z" />
-        <circle cx="40" cy="40" r="8" fill="none" />
-        <path d="M36,58 L36,95 M44,58 L44,95" />
+      <!-- Pattern 10: Flower Medallion Rosette (Type 3, medium, CHAPTER 04 left margin) -->
+      <svg class="bg-pattern pattern-medium pos-tl" style="top: 76%;" viewBox="0 0 90 90" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="38" />
+        <circle cx="45" cy="45" r="5" />
+        <g transform="translate(45, 45)">
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(45)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(90)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(135)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(180)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(225)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(270)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(315)" />
+        </g>
       </svg>
-      <!-- Changsal Lattice (Group B, medium) -->
-      <svg class="bg-pattern pattern-medium pos-tr" style="top: 92%;" viewBox="0 0 100 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="15" y="15" width="70" height="70" fill="none" />
-        <rect x="23" y="23" width="54" height="54" fill="none" />
-        <path d="M15,35 L85,35 M15,50 L85,50 M15,65 L85,65 M35,15 L35,85 M50,15 L50,85 M65,15 L65,85" />
+      <!-- Pattern 11: Sansuwa Mountains (Type 1, large, CHAPTER 04 end right edge) -->
+      <svg class="bg-pattern pattern-large pos-br" style="bottom: 12%;" viewBox="0 0 320 180" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="110" cy="40" r="7" fill="currentColor" stroke="none" />
+        <path d="M 40,30 Q 55,25 70,30 T 100,30" stroke-dasharray="4,4" />
+        <path d="M 220,40 Q 235,35 250,40 T 280,40" stroke-dasharray="4,4" />
+        <path d="M 20,140 C 40,110 65,70 80,70 C 95,70 120,110 140,140" />
+        <path d="M 30,140 C 47,113 68,80 80,80 C 92,80 113,113 130,140" />
+        <path d="M 40,140 C 54,116 71,90 80,90 C 89,90 106,116 120,140" />
+        <path d="M 50,140 C 61,119 74,100 80,100 C 86,100 99,119 110,140" />
+        <path d="M 200,140 C 215,120 235,90 250,90 C 265,90 285,120 300,140" />
+        <path d="M 210,140 C 221,122 238,100 250,100 C 262,100 279,122 290,140" />
+        <path d="M 220,140 C 227,124 241,110 250,110 C 259,110 273,124 280,140" />
+        <path d="M 90,140 C 120,110 150,45 170,45 C 190,45 220,110 250,140" />
+        <path d="M 100,140 C 127,113 153,55 170,55 C 187,55 213,113 240,140" />
+        <path d="M 110,140 C 134,116 156,65 170,65 C 184,65 206,116 230,140" />
+        <path d="M 120,140 C 141,119 159,75 170,75 C 181,75 199,119 220,140" />
+        <line x1="10" y1="140" x2="310" y2="140" />
+        <path d="M 10,148 Q 85,140 160,148 Q 235,156 310,148" />
+        <path d="M 10,155 Q 85,163 160,155 Q 235,147 310,155" />
+        <path d="M 10,162 Q 85,154 160,162 Q 235,170 310,162" />
+        <path d="M 10,169 Q 85,177 160,169 Q 235,161 310,169" />
       </svg>
-      <!-- Sansuwa Mountains (Group A, large) -->
-      <svg class="bg-pattern pattern-large pos-br" viewBox="0 0 200 120" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="120" cy="25" r="8" fill="none" />
-        <path d="M 10 100 L 40 40 L 70 100" />
-        <path d="M 18 100 L 40 47 L 62 100" />
-        <path d="M 26 100 L 40 55 L 54 100" />
-        <path d="M 50 100 L 95 20 L 150 100" />
-        <path d="M 60 100 L 95 30 L 140 100" />
-        <path d="M 70 100 L 95 40 L 130 100" />
-        <path d="M 80 100 L 95 50 L 120 100" />
-        <path d="M 130 100 L 160 50 L 190 100" />
-        <path d="M 138 100 L 160 58 L 182 100" />
-        <path d="M 20 30 L 50 30" />
-        <path d="M 140 35 L 175 35" />
-        <path d="M 0 103 L 200 103" />
-        <path d="M 10 107 L 190 107" />
-        <path d="M 30 111 L 170 111" />
+      <!-- Pattern 12: Dorae Knot (Type 5, small, CHAPTER 04 and 05 left transition) -->
+      <svg class="bg-pattern pattern-small pos-bl" style="bottom: 3%;" viewBox="0 0 60 80" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(30, 28)">
+          <ellipse cx="-12" cy="0" rx="14" ry="18" />
+          <ellipse cx="12" cy="0" rx="14" ry="18" />
+          <path d="M -4,-4 L 4,4 M 4,-4 L -4,4" />
+          <path d="M -3,18 L -3,38 M 3,18 L 3,38" />
+        </g>
       </svg>
       
       <div class="story-container">
@@ -1777,25 +1839,38 @@
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section">
       <!-- Background Patterns -->
-      <!-- Sansuwa Mountains (Group A, large) -->
-      <svg class="bg-pattern pattern-large pos-tl" viewBox="0 0 200 120" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="80" cy="30" r="10" fill="none" />
-        <path d="M 100 100 L 130 20 L 170 100" />
-        <path d="M 108 100 L 130 30 L 162 100" />
-        <path d="M 116 100 L 130 40 L 154 100" />
-        <path d="M 20 100 L 55 45 L 90 100" />
-        <path d="M 28 100 L 55 55 L 82 100" />
-        <path d="M 0 102 C 30 98, 60 106, 90 102 C 120 98, 150 106, 200 102" />
-        <path d="M 0 106 C 30 102, 60 110, 90 106 C 120 102, 150 110, 200 106" />
+      <!-- Pattern 13: Dancheong Wave Arch (Type 2, medium, CHAPTER 05 top-right) -->
+      <svg class="bg-pattern pattern-medium pos-tr" style="top: 4%;" viewBox="0 0 180 60" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 16,56 A 12,12 0 0,1 40,56" />
+        <path d="M 8,56 A 20,20 0 0,1 48,56" />
+        <path d="M 0,56 A 28,28 0 0,1 56,56" />
+        <path d="M 78,56 A 12,12 0 0,1 102,56" />
+        <path d="M 70,56 A 20,20 0 0,1 110,56" />
+        <path d="M 62,56 A 28,28 0 0,1 118,56" />
+        <path d="M 140,56 A 12,12 0 0,1 164,56" />
+        <path d="M 132,56 A 20,20 0 0,1 172,56" />
+        <path d="M 124,56 A 28,28 0 0,1 180,56" />
       </svg>
-      <!-- Dongsimgyeol Knot (Group C, small) -->
-      <svg class="bg-pattern pattern-small pos-br" viewBox="0 0 80 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 40 5 C 30 5, 30 25, 40 25 C 50 25, 50 5, 40 5 Z" />
-        <rect x="25" y="30" width="30" height="30" rx="4" fill="none" />
-        <rect x="25" y="30" width="30" height="30" rx="4" transform="rotate(45 40 45)" fill="none" />
-        <path d="M 25 45 C 10 35, 10 55, 25 45 Z" />
-        <path d="M 55 45 C 70 35, 70 55, 55 45 Z" />
-        <path d="M 37 60 L 37 95 M 43 60 L 43 95" />
+      <!-- Pattern 14: Dongsimgyeol (Type 6, medium, CHAPTER 05 right edge) -->
+      <svg class="bg-pattern pattern-medium pos-br" style="bottom: 15%;" viewBox="0 0 80 60" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="16" width="28" height="28" rx="6" transform="rotate(45 28 30)" />
+        <rect x="38" y="16" width="28" height="28" rx="6" transform="rotate(45 52 30)" />
+        <path d="M 37,30 L 43,30 M 40,27 L 40,33" />
+      </svg>
+      <!-- Pattern 15: Flower Medallion Rosette (Type 3, medium, CHAPTER 05-06 right margin) -->
+      <svg class="bg-pattern pattern-medium pos-br" style="bottom: 2%;" viewBox="0 0 90 90" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="45" r="38" />
+        <circle cx="45" cy="45" r="5" />
+        <g transform="translate(45, 45)">
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(45)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(90)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(135)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(180)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(225)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(270)" />
+          <path d="M 0,0 C -7,-5 -7,-25 0,-30 C 7,-25 7,-5 0,0 Z" transform="rotate(315)" />
+        </g>
       </svg>
       
       <!-- Decorative Diamond Divider -->
@@ -1872,24 +1947,33 @@
     <!-- POSTER ELEMENT DESCRIPTIONS -->
     <div class="poster-elements-container reveal">
       <!-- Background Patterns -->
-      <!-- Changsal Lattice (Group B, medium) -->
-      <svg class="bg-pattern pattern-medium pos-tr" viewBox="0 0 100 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="15" y="15" width="70" height="70" fill="none" />
-        <rect x="23" y="23" width="54" height="54" fill="none" />
-        <path d="M15,35 L85,35 M15,50 L85,50 M15,65 L85,65 M35,15 L35,85 M50,15 L50,85 M65,15 L65,85" />
+      <!-- Pattern 16: Dorae Knot (Type 5, small, near poster preview right side) -->
+      <svg class="bg-pattern pattern-small pos-tr" style="top: 2%;" viewBox="0 0 60 80" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(30, 28)">
+          <ellipse cx="-12" cy="0" rx="14" ry="18" />
+          <ellipse cx="12" cy="0" rx="14" ry="18" />
+          <path d="M -4,-4 L 4,4 M 4,-4 L -4,4" />
+          <path d="M -3,18 L -3,38 M 3,18 L 3,38" />
+        </g>
       </svg>
-      <!-- Flower Medallion (Group B, large) -->
-      <svg class="bg-pattern pattern-large pos-bl" viewBox="0 0 100 100" stroke="currentColor" stroke-width="0.8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="30" fill="none" />
-        <circle cx="50" cy="35" r="15" fill="none" />
-        <circle cx="50" cy="65" r="15" fill="none" />
-        <circle cx="35" cy="50" r="15" fill="none" />
-        <circle cx="65" cy="50" r="15" fill="none" />
-        <circle cx="39.4" cy="39.4" r="15" fill="none" />
-        <circle cx="60.6" cy="39.4" r="15" fill="none" />
-        <circle cx="39.4" cy="60.6" r="15" fill="none" />
-        <circle cx="60.6" cy="60.6" r="15" fill="none" />
-        <circle cx="50" cy="50" r="6" fill="none" />
+      <!-- Pattern 17: Changsal lattice (Type 4, medium, CHAPTER 06 top-left) -->
+      <svg class="bg-pattern pattern-medium pos-tl" style="top: 15%;" viewBox="0 0 80 80" stroke="currentColor" stroke-width="1.0" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="14" height="14" /> <rect x="10" y="10" width="6" height="6" />
+        <rect x="24" y="6" width="14" height="14" /> <rect x="28" y="10" width="6" height="6" />
+        <rect x="42" y="6" width="14" height="14" /> <rect x="46" y="10" width="6" height="6" />
+        <rect x="60" y="6" width="14" height="14" /> <rect x="64" y="10" width="6" height="6" />
+        <rect x="6" y="24" width="14" height="14" /> <rect x="10" y="28" width="6" height="6" />
+        <rect x="24" y="24" width="14" height="14" /> <rect x="28" y="28" width="6" height="6" />
+        <rect x="42" y="24" width="14" height="14" /> <rect x="46" y="28" width="6" height="6" />
+        <rect x="60" y="24" width="14" height="14" /> <rect x="64" y="28" width="6" height="6" />
+        <rect x="6" y="42" width="14" height="14" /> <rect x="10" y="46" width="6" height="6" />
+        <rect x="24" y="42" width="14" height="14" /> <rect x="28" y="46" width="6" height="6" />
+        <rect x="42" y="42" width="14" height="14" /> <rect x="46" y="46" width="6" height="6" />
+        <rect x="60" y="42" width="14" height="14" /> <rect x="64" y="46" width="6" height="6" />
+        <rect x="6" y="60" width="14" height="14" /> <rect x="10" y="64" width="6" height="6" />
+        <rect x="24" y="60" width="14" height="14" /> <rect x="28" y="64" width="6" height="6" />
+        <rect x="42" y="60" width="14" height="14" /> <rect x="46" y="64" width="6" height="6" />
+        <rect x="60" y="60" width="14" height="14" /> <rect x="64" y="64" width="6" height="6" />
       </svg>
       
       <!-- ENTRY 1 -->
