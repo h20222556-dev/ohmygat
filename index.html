@@ -29,6 +29,7 @@
       cursor: none; /* Hide default cursor on desktop */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-weight: 500;
     }
     
     /* Scrollbar Styling - Silver/Pearl gradient thumb on dark track */
@@ -307,20 +308,20 @@
     
     .intro-body {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1.1rem;
+      font-size: 1.225rem;
       line-height: 1.9;
       color: #e0e0e0;
       margin-bottom: 25px;
-      font-weight: 300;
+      font-weight: 500;
       word-break: keep-all;
     }
     
     .intro-body-sub {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.95rem;
+      font-size: 1.075rem;
       line-height: 1.8;
       color: #888888;
-      font-weight: 300;
+      font-weight: 500;
       word-break: keep-all;
     }
     
@@ -420,11 +421,11 @@
     
     .card-desc {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.95rem;
+      font-size: 1.075rem;
       line-height: 1.8;
       color: #b0bec5;
       margin-bottom: 40px;
-      font-weight: 300;
+      font-weight: 500;
       word-break: keep-all;
     }
     
@@ -496,6 +497,7 @@
       max-width: 900px;
       margin: 0 auto;
       width: 100%;
+      position: relative;
     }
     
     /* Diamond Divider Knot */
@@ -559,11 +561,11 @@
     
     .analysis-body {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       line-height: 1.85;
       color: #b0bec5;
       margin: 0;
-      font-weight: 300;
+      font-weight: 500;
       word-break: keep-all;
     }
     
@@ -612,17 +614,17 @@
       font-style: italic;
       color: #ffffff;
       margin-bottom: 25px;
-      font-weight: 300;
+      font-weight: 500;
       line-height: 1.25;
       letter-spacing: 0.01em;
     }
     
     .closing-quote-ko {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1.3rem;
+      font-size: 1.425rem;
       color: #cfd8dc;
       margin: 0;
-      font-weight: 300;
+      font-weight: 500;
       letter-spacing: 0.08em;
     }
     
@@ -635,11 +637,11 @@
     
     .closing-credits {
       font-family: 'Noto Serif KR', serif;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: #888888;
       letter-spacing: 0.05em;
       margin: 0;
-      font-weight: 300;
+      font-weight: 500;
     }
     
     /* --------------------------------------------------
@@ -793,10 +795,10 @@
     
     .story-desc {
       font-family: 'Noto Serif KR', serif;
-      font-size: 1rem;
+      font-size: 1.125rem;
       line-height: 1.9;
       color: #cfd8dc;
-      font-weight: 300;
+      font-weight: 500;
       word-break: keep-all;
     }
     
@@ -1157,6 +1159,132 @@
       background-color: rgba(255, 255, 255, 0.02);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     }
+
+    /* Poster Preview & Element Sections */
+    .poster-preview-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px 50px 20px;
+      background-color: #0a0a0a;
+    }
+    
+    .poster-preview-link {
+      display: block;
+      max-width: 400px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      background-color: #000000;
+    }
+    
+    .poster-preview-link:hover {
+      transform: scale(1.04);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+    
+    .poster-preview-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .poster-elements-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px 20px 100px 20px;
+      background-color: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+    
+    .poster-element-entry {
+      border-left: 1.5px solid rgba(192, 57, 43, 0.3);
+      padding-left: 30px;
+    }
+
+    /* Decorative Traditional Patterns */
+    .bg-pattern {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+      color: #c8bfb0; /* warm desaturated off-white tone */
+      opacity: 0.07;  /* opacity on the SVG element: 0.07 */
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity 0.5s ease;
+    }
+    
+    .pattern-large {
+      width: 320px;
+      height: auto;
+    }
+    
+    .pattern-medium {
+      width: 180px;
+      height: auto;
+    }
+    
+    .pattern-small {
+      width: 80px;
+      height: auto;
+    }
+    
+    .pos-tl {
+      top: 40px;
+      left: 40px;
+    }
+    
+    .pos-tr {
+      top: 40px;
+      right: 40px;
+    }
+    
+    .pos-bl {
+      bottom: 40px;
+      left: 40px;
+    }
+    
+    .pos-br {
+      bottom: 40px;
+      right: 40px;
+    }
+    
+    @media (max-width: 768px) {
+      .bg-pattern {
+        opacity: 0.04; /* slightly lower on mobile */
+      }
+      .pattern-large {
+        width: 160px;
+      }
+      .pattern-medium {
+        width: 90px;
+      }
+      .pattern-small {
+        width: 45px;
+      }
+      .pos-tl {
+        top: 20px;
+        left: 20px;
+      }
+      .pos-tr {
+        top: 20px;
+        right: 20px;
+      }
+      .pos-bl {
+        bottom: 20px;
+        left: 20px;
+      }
+      .pos-br {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1289,6 +1417,46 @@
 
     <!-- SECTION 2: INTRODUCTION -->
     <section id="chapter-1" class="intro-section reveal">
+      <!-- Background Patterns -->
+      <!-- Dongsimgyeol maedeup (동심결 매듭) — cross/eternity knot, top-right corner, ~240px -->
+      <svg
+        style="position:absolute; width:240px; height:290px; top:5%; right:-55px; pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 100 121"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Upper vertical arm: two parallel lines -->
+        <line x1="43" y1="4" x2="43" y2="43"/>
+        <line x1="57" y1="4" x2="57" y2="43"/>
+        <!-- Lower vertical arm: two parallel lines -->
+        <line x1="43" y1="77" x2="43" y2="117"/>
+        <line x1="57" y1="77" x2="57" y2="117"/>
+        <!-- Left horizontal arm: two parallel lines -->
+        <line x1="4" y1="43" x2="37" y2="43"/>
+        <line x1="4" y1="57" x2="37" y2="57"/>
+        <!-- Right horizontal arm: two parallel lines -->
+        <line x1="63" y1="43" x2="96" y2="43"/>
+        <line x1="63" y1="57" x2="96" y2="57"/>
+        <!-- Center body: the woven knot rectangle -->
+        <rect x="37" y="43" width="26" height="34" rx="2"/>
+        <!-- Inner crossing lines showing the weave -->
+        <line x1="43" y1="43" x2="43" y2="77"/>
+        <line x1="57" y1="43" x2="57" y2="77"/>
+        <line x1="37" y1="53" x2="63" y2="53"/>
+        <line x1="37" y1="67" x2="63" y2="67"/>
+        <!-- Top-left loop at arm junction -->
+        <path d="M 37,43 C 32,37 26,37 26,43 C 26,49 32,49 37,49"/>
+        <!-- Top-right loop at arm junction -->
+        <path d="M 63,43 C 68,37 74,37 74,43 C 74,49 68,49 63,49"/>
+        <!-- Bottom-left loop at arm junction -->
+        <path d="M 37,77 C 32,83 26,83 26,77 C 26,71 32,71 37,71"/>
+        <!-- Bottom-right loop at arm junction -->
+        <path d="M 63,77 C 68,83 74,83 74,77 C 74,71 68,71 63,71"/>
+      </svg>
       <div class="intro-container">
         <!-- Large Decorative Bracket Corners -->
         <div class="bracket tl"></div>
@@ -1302,10 +1470,10 @@
           <p class="intro-subtitle">Reclaiming the Korean Image</p>
           <div class="intro-divider"></div>
           <p class="intro-body">
-            한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 전통 요소를 현대적 감각으로 탈환한 두 가지 선도적 사례를 분석합니다.
+            한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 <strong>전통</strong> 요소를 현대적 감각으로 <strong>탈환</strong>한 두 가지 선도적 사례를 분석합니다.
           </p>
           <p class="intro-body-sub">
-            전통은 박물관의 유리창 너머에 박제된 정적인 유산이 아닙니다. 오늘날의 아티스트들은 이를 탈취하여 생동하는 무대 위에서 가장 역동적인 미학으로 재창조해 내고 있습니다. 본 전시는 애니메이션과 스트릿 댄스라는 전혀 다른 현대 매체 속에서 살아 숨 쉬는 우리 문화의 뿌리를 조명합니다.
+            <strong>전통</strong>은 박물관의 유리창 너머에 박제된 정적인 유산이 아닙니다. 오늘날의 아티스트들은 이를 탈취하여 생동하는 무대 위에서 가장 역동적인 미학으로 재창조해 내고 있습니다. 본 전시는 <strong>애니메이션</strong>과 <strong>스트릿 댄스</strong>라는 전혀 다른 현대 매체 속에서 살아 숨 쉬는 우리 문화의 뿌리를 조명합니다.
           </p>
         </div>
       </div>
@@ -1319,14 +1487,56 @@
 
 <!-- SECTION 4.5: STORYTELLING SECTION (CHAPTER 02) -->
     <section id="chapter-2" class="story-section">
+      <!-- Background Patterns -->
+      <!-- Byeongari maedeup (병아리 매듭) — chick/woven body knot, middle-right edge, ~130px -->
+      <svg
+        style="position:absolute; width:130px; height:163px; top:50%; right:-28px; transform:translateY(-50%); pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 80 100"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Top head loop -->
+        <path d="M 37,7 C 28,3 26,14 34,17 C 39,19 48,16 46,8 C 43,3 38,3 37,7"/>
+        <!-- Neck connecting head to body -->
+        <line x1="36" y1="17" x2="36" y2="27"/>
+        <line x1="44" y1="17" x2="44" y2="27"/>
+        <!-- Body outline: rounded rectangle -->
+        <path d="M 20,27 C 20,24 26,22 40,22 C 54,22 60,24 60,27 L 60,70 C 60,73 54,75 40,75 C 26,75 20,73 20,70 Z"/>
+        <!-- Horizontal lattice lines inside body -->
+        <line x1="20" y1="35" x2="60" y2="35"/>
+        <line x1="20" y1="46" x2="60" y2="46"/>
+        <line x1="20" y1="57" x2="60" y2="57"/>
+        <line x1="20" y1="66" x2="60" y2="66"/>
+        <!-- Vertical lattice lines inside body -->
+        <line x1="31" y1="22" x2="31" y2="75"/>
+        <line x1="40" y1="22" x2="40" y2="75"/>
+        <line x1="49" y1="22" x2="49" y2="75"/>
+        <!-- Corner loop details at body edges -->
+        <path d="M 20,35 C 14,32 12,38 18,40"/>
+        <path d="M 60,35 C 66,32 68,38 62,40"/>
+        <path d="M 20,57 C 14,60 12,54 18,52"/>
+        <path d="M 60,57 C 66,60 68,54 62,52"/>
+        <!-- Small loops at grid intersections (chick body texture) -->
+        <path d="M 31,35 C 28,31 24,31 24,35 C 24,39 28,39 31,35"/>
+        <path d="M 49,35 C 52,31 56,31 56,35 C 56,39 52,39 49,35"/>
+        <path d="M 31,66 C 28,70 24,70 24,66 C 24,62 28,62 31,66"/>
+        <path d="M 49,66 C 52,70 56,70 56,66 C 56,62 52,62 49,66"/>
+        <!-- Hanging tails -->
+        <line x1="35" y1="75" x2="35" y2="93"/>
+        <line x1="45" y1="75" x2="45" y2="93"/>
+      </svg>
       <div class="story-container">
         
         <!-- INTRO -->
         <div class="section-title-container reveal" style="margin-bottom: 120px; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
           <span class="section-tag">CHAPTER 02</span>
           <h2 class="section-title" style="font-size: 2.8rem; margin-bottom: 30px; font-family: 'Noto Serif KR', serif; font-weight: 300;">전통의 탈환</h2>
-          <p class="story-desc" style="font-size: 1.1rem; line-height: 1.95; color: #cfd8dc; font-weight: 300; word-break: keep-all;">
-            드라마로 시작된 한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 전통 요소를 디자인과 몸짓을 통해 현대적 감각으로 '탈환'한 두 가지 선도적 사례를 분석해 전통의 현대적 공존 가능성을 모색하고자 한다.
+          <p class="story-desc" style="font-size: 1.225rem; line-height: 1.95; color: #cfd8dc; font-weight: 500; word-break: keep-all;">
+            드라마로 시작된 한국의 문화가 전 세계의 주목을 받는 지금, 지루하고 고루한 고정관념에 갇혀 있던 <strong>전통</strong> 요소를 디자인과 몸짓을 통해 현대적 감각으로 <strong>'탈환'</strong>한 두 가지 선도적 사례를 분석해 <strong>전통</strong>의 현대적 공존 가능성을 모색하고자 한다.
           </p>
         </div>
         <!-- Introductory Cards (moved from comparison-section) -->
@@ -1341,7 +1551,7 @@
               <span class="card-medium">스트릿 우먼 파이터 2</span>
             </div>
             <p class="card-desc" style="margin-bottom: 0;">
-              서브컬처 스트릿 댄서들이 대규모 군무를 통해 한국 무속 신앙(굿)의 신성한 에너지와 전통 연희의 풍자적 해학을 압도적인 무대 예술로 정립해 낸 퍼포먼스적 이정표입니다.
+              서브컬처 <strong>스트릿 댄서</strong>들이 대규모 군무를 통해 한국 <strong>무속 신앙(굿)</strong>의 신성한 에너지와 <strong>전통 연희</strong>의 풍자적 해학을 압도적인 무대 예술로 정립해 낸 퍼포먼스적 이정표입니다.
             </p>
           </div>
 
@@ -1355,7 +1565,7 @@
               <span class="card-medium">넷플릭스 애니메이션</span>
             </div>
             <p class="card-desc" style="margin-bottom: 0;">
-              글로벌 스트리밍 플랫폼에서 시도된 퓨전 동양 판타지로, 한국 전통 미술과 공예 요소가 네온 컬러의 일러스트 및 미래적 그래픽 디자인과 어떻게 공존할 수 있는지를 보여줍니다.
+              글로벌 스트리밍 플랫폼에서 시도된 <strong>퓨전 동양 판타지</strong>로, 한국 <strong>전통 미술</strong>과 <strong>공예</strong> 요소가 네온 컬러의 일러스트 및 미래적 그래픽 디자인과 어떻게 공존할 수 있는지를 보여줍니다.
             </p>
           </div>
         </div>
@@ -1365,7 +1575,7 @@
         <div id="chapter-3" class="story-subsection-header reveal" style="margin-top: 100px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 03</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">범접 (Beomjeob)</h3>
-          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">스트릿 댄서 특유의 독창적이고 파격적인 에너지로 한국적 요소를 무대 위에 녹여냈습니다.</p>
+          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500;"><strong>스트릿 댄서</strong> 특유의 독창적이고 파격적인 에너지로 <strong>한국적 요소</strong>를 무대 위에 녹여냈습니다.</p>
         </div>
 
         <!-- Item A-1 -->
@@ -1376,7 +1586,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">미션</h4>
             <p class="story-desc">
-              스우파2에서 범접이 받은 미션은 춤으로 자신의 나라를 표현하는 것이었다.
+              <strong>스우파2</strong>에서 <strong>범접</strong>이 받은 <strong>미션</strong>은 춤으로 <strong>자신의 나라를 표현</strong>하는 것이었습니다. 한국의 <strong>전통 이미지</strong>를 퍼포먼스 언어로 변환하는 출발점이 된 과제입니다.
             </p>
           </div>
         </div>
@@ -1389,7 +1599,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">갓</h4>
             <p class="story-desc">
-              범접 무대에서 가장 인상적으로 드러나는 전통 요소입니다. 저승사자 콘셉트와 결합되어 한국적인 분위기를 강하게 형성합니다.
+              <strong>범접</strong> 무대에서 가장 인상적으로 드러나는 <strong>전통 요소</strong>이자 <strong>갓(GAT)</strong>입니다. <strong>저승사자 콘셉트</strong>와 결합되어 한국적인 분위기를 강하게 형성합니다.
             </p>
           </div>
         </div>
@@ -1402,7 +1612,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">저승사자 콘셉트</h4>
             <p class="story-desc">
-              한국 전통 설화 속 사후 세계 이미지를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 서사적인 몰입감을 높이는 역할을 합니다.
+              한국 <strong>전통 설화</strong> 속 <strong>사후 세계 이미지</strong>와 <strong>저승사자</strong>를 활용한 설정입니다. 단순한 퍼포먼스를 넘어 <strong>서사적인 몰입감</strong>을 높이는 역할을 합니다.
             </p>
           </div>
         </div>
@@ -1415,7 +1625,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">부채와 소품 활용</h4>
             <p class="story-desc">
-              전통 춤에서 자주 사용되는 소품의 감각을 안무에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
+              <strong>전통 춤</strong>에서 자주 사용되는 <strong>부채</strong>와 소품의 감각을 <strong>안무</strong>에 반영했습니다. 동작의 흐름과 장면의 완성도를 더욱 풍부하게 만들어 줍니다.
             </p>
           </div>
         </div>
@@ -1428,7 +1638,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">전통적 군무 구성</h4>
             <p class="story-desc">
-              여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 전통 공연에서 느껴지는 집단미와 정교함을 현대적으로 재해석한 방식입니다.
+              여러 명이 호흡을 맞춰 움직이는 장면이 돋보입니다. 한국 <strong>전통 공연</strong>에서 느껴지는 <strong>집단미</strong>와 <strong>정교함</strong>을 현대적으로 재해석한 방식입니다.
             </p>
           </div>
         </div>
@@ -1441,7 +1651,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무속적 분위기</h4>
             <p class="story-desc">
-              음악, 조명, 의상 전반에서 무속적 긴장감이 표현됩니다. 전통 신앙의 이미지를 현대 퍼포먼스로 확장한 사례로 볼 수 있습니다.
+              음악, 조명, 의상 전반에서 <strong>무속적 긴장감</strong>이 표현됩니다. <strong>전통 신앙</strong>의 이미지를 <strong>현대 퍼포먼스</strong>로 확장한 사례로 볼 수 있습니다.
             </p>
           </div>
         </div>
@@ -1450,7 +1660,7 @@
         <div id="chapter-4" class="story-subsection-header reveal" style="margin-top: 150px; margin-bottom: 80px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 20px;">
           <span class="section-tag">CHAPTER 04</span>
           <h3 class="story-subsection-title" style="font-family: 'Noto Serif KR', serif; font-size: 2.2rem; color: #ffffff; margin-top: 10px; margin-bottom: 15px; font-weight: 400;">케이팝데몬헌터스 (KDH)</h3>
-          <p class="story-desc" style="font-size: 1.05rem; color: #888888; font-weight: 300;">글로벌 트렌드 속에서 한국의 정체성을 가장 효과적이고 세련되게 시각화한 그래픽/디자인 아트를 선보입니다.</p>
+          <p class="story-desc" style="font-size: 1.175rem; color: #888888; font-weight: 500;">글로벌 트렌드 속에서 한국의 <strong>정체성</strong>을 가장 효과적이고 세련되게 시각화한 <strong>그래픽/디자인 아트</strong>를 선보입니다.</p>
         </div>
 
         <!-- Item B-1 (New) -->
@@ -1461,7 +1671,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무기 — 전통의 형상</h4>
             <p class="story-desc">
-              루미의 무기는 사인검으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 벽사용 도검이다. 조이의 무기는 무당이 굿을 할 때 사용하는 대신칼에서 따온 소형 칼이다. 미라의 무기는 가야 때 월도를 모티브로 제작되었다. 고대 헌터들의 무기는 석장, 쌍검, 각궁으로 각각 깊은 역사와 전통적 맥락을 담고 있다.
+              <strong>루미</strong>의 무기는 <strong>사인검</strong>으로, 사령을 다스리는 호랑이 4방위를 상징하는 조선왕조의 <strong>벽사</strong>용 도검이다. <strong>조이</strong>의 무기는 무당이 <strong>굿</strong>을 할 때 사용하는 <strong>대신칼</strong>에서 따온 소형 칼이다. <strong>미라</strong>의 무기는 가야 때 <strong>월도</strong>를 모티브로 제작되었다. 고대 헌터들의 무기는 <strong>석장</strong>, <strong>쌍검</strong>, <strong>각궁</strong>으로 각각 깊은 역사와 <strong>전통</strong>적 맥락을 담고 있다.
             </p>
           </div>
         </div>
@@ -1474,7 +1684,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">까치호랑이 민화</h4>
             <p class="story-desc">
-              한국 민화 특유의 상징성과 해학을 보여주는 요소입니다. 호랑이와 까치의 조합을 통해 전통 미감을 자연스럽게 드러냅니다.
+              <strong>한국 민화</strong> 특유의 상징성과 해학을 보여주는 <strong>까치호랑이 민화</strong> 요소입니다. <strong>호랑이</strong>와 <strong>까치</strong>의 조합을 통해 <strong>전통 미감</strong>을 자연스럽게 드러냅니다.
             </p>
           </div>
         </div>
@@ -1487,7 +1697,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">노리개 — 방울과 매듭</h4>
             <p class="story-desc">
-              헌트릭스에게 달려있는 노리개는 무당의 상징인 방울들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. 루미, 미라, 조이의 노리개에는 도래 매듭, 가락지 매듭, 국화 매듭 등 다양한 전통 매듭이 사용되었다.
+              <strong>헌트릭스</strong>에게 달려있는 <strong>노리개</strong>는 <strong>무당</strong>의 상징인 <strong>방울</strong>들을 달아 악령을 내쫓는 헌터들에게 잘 어울리는 장신구가 되었다. <strong>루미</strong>, <strong>미라</strong>, <strong>조이</strong>의 노리개에는 <strong>도래 매듭</strong>, <strong>가락지 매듭</strong>, <strong>국화 매듭</strong> 등 다양한 <strong>전통 매듭</strong>이 사용되었다.
             </p>
           </div>
         </div>
@@ -1500,7 +1710,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">무속·퇴마 설정</h4>
             <p class="story-desc">
-              악령을 상대하는 이야기 구조가 한국 무속 신앙과 연결되어 있습니다. 전통 설화를 기반으로 한 독창적인 판타지 세계관을 형성합니다.
+              악령을 상대하는 이야기 구조가 한국 <strong>무속</strong> 신앙과 연결되어 있습니다. <strong>전통 설화</strong>를 기반으로 한 독창적인 <strong>판타지 세계관</strong>을 형성합니다.
             </p>
           </div>
         </div>
@@ -1513,7 +1723,7 @@
           <div class="story-text-wrap">
             <h4 class="story-title">전통 건축과 미장센</h4>
             <p class="story-desc">
-              한옥의 분위기, 단청 색감, 전통 문양 등 시각적 요소가 활용됩니다. 배경 자체가 한국 전통문화의 정서를 전달하는 역할을 합니다.
+              <strong>한옥의 분위기</strong>, <strong>단청</strong> 색감, <strong>전통 문양</strong> 등 시각적 요소가 활용됩니다. 배경 자체가 <strong>한국 전통문화의 정서</strong>를 전달하는 역할을 합니다.
             </p>
           </div>
         </div>
@@ -1529,6 +1739,41 @@
 
 <!-- SECTION 4: ANALYSIS: WHY IT WORKS -->
     <section id="chapter-5" class="analysis-section">
+      <!-- Background Patterns -->
+      <!-- Maehwa maedeup (매화 매듭) — 4-petal flower knot, bottom-left area, ~180px -->
+      <svg
+        style="position:absolute; width:180px; height:216px; bottom:5%; left:-38px; pointer-events:none; z-index:-1; overflow:visible;"
+        viewBox="0 0 80 96"
+        stroke="rgba(255,255,255,0.10)"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Top petal: elongated oval loop pointing upward -->
+        <path d="M 36,40 C 28,20 52,20 44,40"/>
+        <path d="M 37,40 C 31,24 49,24 43,40"/>
+        <!-- Left petal: elongated oval loop pointing left -->
+        <path d="M 38,42 C 18,34 18,54 38,48"/>
+        <path d="M 38,43 C 20,37 20,51 38,47"/>
+        <!-- Right petal: elongated oval loop pointing right -->
+        <path d="M 42,42 C 62,34 62,54 42,48"/>
+        <path d="M 42,43 C 60,37 60,51 42,47"/>
+        <!-- Bottom petal: elongated oval loop pointing downward -->
+        <path d="M 36,48 C 28,68 52,68 44,48"/>
+        <path d="M 37,48 C 31,64 49,64 43,48"/>
+        <!-- Center knot ring -->
+        <ellipse cx="40" cy="45" rx="4" ry="5"/>
+        <!-- Inner petal connection arcs -->
+        <path d="M 36,40 C 38,38 42,38 44,40"/>
+        <path d="M 36,48 C 38,50 42,50 44,48"/>
+        <path d="M 38,42 C 38,40 38,48 38,48"/>
+        <path d="M 42,42 C 42,40 42,48 42,48"/>
+        <!-- Hanging tails -->
+        <line x1="37" y1="68" x2="37" y2="86"/>
+        <line x1="43" y1="68" x2="43" y2="86"/>
+      </svg>
       <!-- Decorative Diamond Divider -->
       <div class="analysis-divider-container reveal">
         <div class="divider-line"></div>
@@ -1551,7 +1796,7 @@
           <div class="analysis-content">
             <h3 class="analysis-title">이미지 탈환</h3>
             <p class="analysis-body">
-              과거의 전통 요소가 단지 '낡고 지루한 것'으로 치부되던 고정관념에서 벗어났습니다. 자개, 산수화, 굿 등 고착화되었던 전통 기법들을 네온 비주얼과 압도적인 100인 군무 등 현대적 감각의 외형과 융합하여 주체적이고 힙한 미적 자산으로 완전히 탈환해 냈습니다.
+              과거의 <strong>전통</strong> 요소가 단지 '낡고 지루한 것'으로 치부되던 고정관념에서 벗어났습니다. <strong>자개</strong>, <strong>산수화</strong>, <strong>굿</strong> 등 고착화되었던 전통 기법들을 네온 비주얼과 압도적인 100인 군무 등 현대적 감각의 외형과 융합하여 주체적이고 힙한 미적 자산으로 완전히 <strong>탈환</strong>해 냈습니다.
             </p>
           </div>
         </div>
@@ -1562,7 +1807,7 @@
           <div class="analysis-content">
             <h3 class="analysis-title">매체의 다양성</h3>
             <p class="analysis-body">
-              전통의 재해석은 특정 장르에 머물지 않습니다. 넷플릭스 2D 애니메이션이라는 '디지털 영상 미디어'와 스트릿 우먼 파이터 2라는 '라이브 댄스 퍼포먼스'라는 전혀 다른 두 축을 통해 시너지를 내며, 전 세계 대중들에게 다양한 채널을 통해 입체적이고 다각적인 영감을 불어넣고 있습니다.
+              <strong>전통의 재해석</strong>은 특정 장르에 머물지 않습니다. 넷플릭스 2D 애니메이션이라는 '디지털 영상 미디어'와 <strong>스트릿 우먼 파이터 2</strong>라는 '라이브 댄스 퍼포먼스'라는 전혀 다른 두 축을 통해 시너지를 내며, 전 세계 대중들에게 다양한 채널을 통해 입체적이고 다각적인 영감을 불어넣고 있습니다.
             </p>
           </div>
         </div>
@@ -1573,7 +1818,7 @@
           <div class="analysis-content">
             <h3 class="analysis-title">글로벌 공명</h3>
             <p class="analysis-body">
-              가장 한국적인 것이 가장 세계적인 것임을 증명합니다. 단순한 민속적 요소의 나열을 넘어, 굿의 격동적인 샤머니즘적 분출과 자개의 영롱한 퓨처리즘적 광택은 전 세계 누구나 시각적&middot;청각적 카타르시스를 느낄 수 있는 보편적 예술 언어로 확장되어 큰 울림을 전달합니다.
+              가장 한국적인 것이 가장 세계적인 것임을 증명합니다. 단순한 민속적 요소의 나열을 넘어, <strong>굿</strong>의 격동적인 샤머니즘적 분출과 <strong>자개</strong>의 영롱한 퓨처리즘적 광택은 전 세계 누구나 시각적&middot;청각적 카타르시스를 느낄 수 있는 보편적 예술 언어로 확장되어 큰 울림을 전달합니다.
             </p>
           </div>
         </div>
@@ -1591,6 +1836,64 @@
     <!-- VIEW POSTER BUTTON -->
     <div class="view-poster-container reveal">
       <a href="poster.html" class="view-poster-btn">VIEW POSTER</a>
+    </div>
+
+    <!-- POSTER PREVIEW -->
+    <div class="poster-preview-container reveal">
+      <a href="poster.html" class="poster-preview-link">
+        <img src="images/poster.png" alt="OH MY GAT Poster Preview" class="poster-preview-img">
+      </a>
+    </div>
+
+    <!-- POSTER ELEMENT DESCRIPTIONS -->
+    <div class="poster-elements-container reveal">
+      <!-- Background Patterns -->
+      
+      <!-- ENTRY 1 -->
+      <div class="poster-element-entry">
+        <span class="section-tag">TITLE</span>
+        <h3 class="analysis-title">OH MY GAT</h3>
+        <p class="analysis-body">
+          영어 감탄사 'Oh my God'의 발음을 빌려, God 자리에 조선시대 전통 모자 <strong>갓(GAT)</strong>을 넣은 언어유희다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 <strong>'전통의 재해석'</strong>을 첫 글자부터 담아낸다.
+        </p>
+      </div>
+
+      <!-- ENTRY 2 -->
+      <div class="poster-element-entry">
+        <span class="section-tag">BACKGROUND</span>
+        <h3 class="analysis-title">자개 일월오봉도</h3>
+        <p class="analysis-body">
+          조선 왕실의 상징인 <strong>일월오봉도</strong>를 배경으로 사용했다. 원본의 채색화 형식 대신 <strong>나전칠기(자개)</strong> 특유의 광택과 흑백 톤으로 재해석해, 전통 소재를 현대적 감각으로 새롭게 표현했다.
+        </p>
+      </div>
+
+      <!-- ENTRY 3 -->
+      <div class="poster-element-entry">
+        <span class="section-tag">SYMBOL</span>
+        <h3 class="analysis-title">韓魂 — 한혼</h3>
+        <p class="analysis-body">
+          한국 한(韓)과 넋 혼(魂)을 결합한 조어로, <strong>'한국의 영혼'</strong>을 뜻한다. 한류가 단순한 유행이 아닌 오랜 문화적 감수성에서 비롯되었다는 의미를 담았다. 전통에서 벽사와 생명력을 상징하는 <strong>붉은색</strong>으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었다.
+        </p>
+      </div>
+
+      <!-- ENTRY 4 -->
+      <div class="poster-element-entry">
+        <span class="section-tag">SUBTITLE</span>
+        <h3 class="analysis-title">TRADITION REWRITTEN</h3>
+        <p class="analysis-body">
+          포스터의 부제이자 프로젝트 전체의 논지를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 <strong>매 시대의 언어로 끊임없이 다시 쓰인다</strong>.
+        </p>
+      </div>
+
+      <!-- ENTRY 5 -->
+      <div class="poster-element-entry">
+        <span class="section-tag">DETAIL</span>
+        <h3 class="analysis-title">모서리 장식 — 창살 문양</h3>
+        <p class="analysis-body">
+          한국 전통 건축의 <strong>창살 문양</strong>에서 착안한 프레임 장식이다. 시선을 자연스럽게 중앙으로 유도하는 동시에, 전통 공예의 섬세함을 레이아웃 안에 녹여내는 역할을 한다.
+        </p>
+      </div>
+
     </div>
 
     <!-- SECTION 5: CLOSING STATEMENT -->
