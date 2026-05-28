@@ -747,6 +747,7 @@
       transform: translateY(40px);
       transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       transition-delay: 0.3s;
+      background: transparent; /* Explicitly ensure transparency for overlapping backgrounds */
     }
     
     .story-meta-header {
@@ -1233,6 +1234,8 @@
       opacity: 0.12; /* faint watermark */
       user-select: none;
       transition: opacity 0.5s ease;
+      mix-blend-mode: screen; /* Remove dark rectangle background by screening it */
+      background: transparent !important; /* Explicitly set transparent background */
     }
     
     @media (max-width: 768px) {
@@ -1555,7 +1558,7 @@
 
 
         <!-- SECTION 3 (CHAPTER 03) WRAPPER -->
-        <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
+        <div id="chapter-3-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
           <!-- Decorative PNG Pattern 4 -->
           <img src="images2/Gemini_Generated_Image_ebvs1cebvs1cebvs.png" class="bg-pattern-png" aria-hidden="true" style="left:10px; top:10px; width:130px; height:auto;" />
 
@@ -1735,7 +1738,7 @@
         </div>
 
         <!-- SECTION 4 (CHAPTER 04) WRAPPER -->
-        <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%;">
+        <div id="chapter-4-wrapper" style="position: relative; overflow: hidden; padding-bottom: 50px; width: 100%; background: transparent;">
           <!-- Decorative PNG Pattern 6 -->
           <img src="images2/Gemini_Generated_Image_pzpojppzpojppzpo.png" class="bg-pattern-png" aria-hidden="true" style="right:10px; top:120px; width:150px; height:auto;" />
 
