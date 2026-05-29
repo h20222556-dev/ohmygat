@@ -23,16 +23,13 @@
       color: #ffffff;
       font-family: 'Noto Serif KR', serif;
       overflow-x: hidden;
-      cursor: none;
+      cursor: none; /* Hide default cursor on desktop */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
       font-weight: 500;
     }
     
-    /* Scrollbar Styling */
+    /* Scrollbar Styling - Silver/Pearl gradient thumb on dark track */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -47,6 +44,7 @@
       background: #ffffff;
     }
     
+    /* SVG Noise Grain Overlay - Covers page at all times */
     .grain-overlay {
       position: fixed;
       top: 0;
@@ -59,7 +57,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
     
-    /* Custom Cursor */
+    /* Custom Cursor - Smooth lag (lerp) */
     .cursor-dot {
       width: 6px;
       height: 6px;
@@ -90,6 +88,11 @@
       transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     }
     
+    .side-panel:hover ~ .cursor-dot,
+    .side-panel:hover ~ .cursor-ring {
+      opacity: 0 !important;
+    }
+    
     @media (hover: none) and (pointer: coarse) {
       body {
         cursor: auto;
@@ -99,8 +102,13 @@
       }
     }
     
-    /* Navbar styling matching index.html */
+    /* --------------------------------------------------
+       FIXED NAVIGATION BAR
+       -------------------------------------------------- */
     .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 60px;
       background-color: rgba(10, 10, 10, 0.75);
@@ -109,7 +117,6 @@
       z-index: 9998;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
     
     .navbar-inner {
@@ -117,9 +124,18 @@
       max-width: 1440px;
       margin: 0 auto;
       padding: 0 40px;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
+    }
+    
+    .navbar-left {
+      /* Empty */
+    }
+    
+    .navbar-center {
+      display: flex;
+      justify-content: center;
     }
     
     .navbar-logo {
@@ -136,32 +152,160 @@
       color: #C0392B;
     }
     
-    .back-link {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
-      color: #cfd8dc;
-      text-decoration: none;
-      letter-spacing: 0.2em;
-      transition: color 0.3s ease;
+    .navbar-right {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
+    }
+    
+    .menu-toggle {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10000;
+    }
+    
+    .hamburger-bar {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Side Panel Styles */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100vh;
+      background-color: #070708;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10005;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 80px 30px 40px 30px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    
+    .side-panel.active {
+      transform: translateX(0);
+    }
+    
+    .panel-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+    
+    .panel-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+    
+    .side-panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .side-panel-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .panel-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .panel-item {
+      display: flex;
+      flex-direction: column;
       gap: 6px;
     }
     
-    .back-link:hover {
+    .panel-chapter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .panel-link {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      word-break: keep-all;
+      cursor: pointer;
+    }
+    
+    .panel-link:hover {
       color: #ffffff;
     }
     
-    /* Poster Container Layout */
+    /* --------------------------------------------------
+       POSTER PAGE LAYOUT
+       -------------------------------------------------- */
     .poster-container {
-      flex: 1;
+      display: flex;
       width: 100%;
-      margin: 0 auto;
-      padding: 80px 40px;
+      min-height: calc(100vh - 60px);
+      margin-top: 60px;
+      position: relative;
+    }
+    
+    .left-column {
+      width: 45%;
+      position: sticky;
+      top: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+    
+    .right-column {
+      width: 55%;
+      padding: 80px 60px 80px 40px;
+      display: flex;
+      flex-direction: column;
     }
     
     .page-title {
@@ -187,113 +331,9 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
     
-    /* Showcase Areas */
-    .showcase-grid {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      width: 100%;
-    }
-    
-    /* Standard vertical A2 height base is 480px on desktop */
-    .poster-area {
-      position: relative;
-      background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.03) 100%);
-      border-radius: 4px;
-      transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-    
-    .poster-area::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 1px solid transparent;
-      border-radius: 3px;
-      pointer-events: none;
-      transition: border-color 0.4s ease;
-    }
-    
-    .poster-area:hover {
-      border-color: rgba(192, 57, 43, 0.5);
-      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(192, 57, 43, 0.15);
-      transform: translateY(-5px);
-    }
-    
-    .poster-area:hover::before {
-      border-color: rgba(255, 255, 255, 0.05);
-    }
-    
-    /* Area 1: 1:1.414 (A2 Proportions) */
-    .area-vertical {
-      height: 100vh;
-      width: auto;
-      max-width: 100vw;
-    }
-    
-    .area-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      color: rgba(255, 255, 255, 0.2);
-      text-transform: uppercase;
-      pointer-events: none;
-      transition: color 0.4s ease;
-    }
-    
-    .poster-area:hover .area-label {
-      color: rgba(255, 255, 255, 0.4);
-    }
-    
-    /* Footer styling matching index.html */
-    .footer-section {
-      background-color: #000000;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: auto;
-    }
-    
-    .footer-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      color: #666666;
-      text-transform: uppercase;
-    }
-    
-    /* Responsive Styling */
-    @media (max-width: 1024px) {
-      .showcase-grid {
-        gap: 30px;
-      }
-    }
-    
-    @media (max-width: 900px) {
-      .showcase-grid {
-        flex-direction: column;
-        gap: 40px;
-      }
-    }
-    
-    .poster-img {
-      width: auto;
-      height: 100vh;
-      max-width: 100vw;
-      object-fit: contain;
-      display: block;
-    }
-
     .poster-display {
-      margin-bottom: 50px;
+      max-width: 400px;
+      width: 100%;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(192, 57, 43, 0.15);
       border-radius: 4px;
       overflow: hidden;
@@ -305,53 +345,129 @@
       transform: scale(1.02);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(192, 57, 43, 0.25);
     }
-
-    .poster-description {
-      max-width: 800px;
+    
+    .poster-display img {
       width: 100%;
-      margin-top: 20px;
-      background: rgba(10, 10, 10, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      border-radius: 4px;
-      padding: 40px;
+      height: auto;
+      display: block;
     }
-
+    
+    .poster-description {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    
     .poster-desc-item {
-      padding: 30px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: 1.5px solid rgba(192, 57, 43, 0.3);
+      padding-left: 30px;
       transition: transform 0.3s ease;
     }
-
-    .poster-desc-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .poster-desc-item:first-child {
-      padding-top: 0;
-    }
-
-    .poster-desc-item h3 {
-      font-family: 'Noto Serif KR', serif;
-      font-size: 1.35rem;
-      color: #ffffff;
+    
+    .section-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      display: block;
       margin-bottom: 12px;
+      text-transform: uppercase;
       font-weight: 600;
-      letter-spacing: 0.05em;
     }
-
-    .poster-desc-item p {
+    
+    .analysis-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.45rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+    
+    .analysis-body {
       font-family: 'Noto Serif KR', serif;
       font-size: 1.1rem;
       line-height: 1.85;
-      color: #cfd8dc;
+      color: #b0bec5;
+      margin: 0;
       font-weight: 500;
       word-break: keep-all;
     }
-
-    .poster-desc-item p strong {
+    
+    .analysis-body strong {
       color: #ffffff;
       font-weight: 700;
+    }
+    
+    /* Footer styling matching index.html */
+    .footer-section {
+      background-color: #000000;
+      padding: 50px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 3;
+    }
+    
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #666666;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    
+    /* Responsive media queries */
+    @media (max-width: 1024px) {
+      .navbar-inner {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .navbar-left {
+        display: none;
+      }
+      .right-column {
+        padding: 60px 40px 60px 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .side-panel {
+        width: 100%;
+        border-left: none;
+      }
+      
+      .poster-container {
+        flex-direction: column;
+        margin-top: 60px;
+        min-height: auto;
+      }
+      
+      .left-column {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 40px 20px 20px 20px;
+      }
+      
+      .right-column {
+        width: 100%;
+        padding: 40px 20px;
+      }
+      
+      .poster-display {
+        max-width: 100%;
+        width: 320px;
+        margin: 0 auto;
+      }
     }
   </style>
 </head>
@@ -360,55 +476,100 @@
   <!-- FIXED TOP NAVIGATION BAR -->
   <header class="navbar">
     <div class="navbar-inner">
-      <a href="index.html" class="navbar-logo">OH MY GAT</a>
-      <a href="index.html" class="back-link">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg); margin-right: 4px;">
-          <path d="M7 10l5 5 5-5"/>
-        </svg>
-        <span>BACK</span>
-      </a>
+      <div class="navbar-left"></div>
+      <div class="navbar-center">
+        <a href="index.html" class="navbar-logo" id="nav-logo">OH MY GAT</a>
+      </div>
+      <div class="navbar-right">
+        <button class="menu-toggle" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- SLIDE-IN SIDE PANEL MENU -->
+  <div class="side-panel-overlay" id="side-panel-overlay"></div>
+  <div class="side-panel" id="side-panel">
+    <button class="panel-close" id="panel-close" aria-label="메뉴 닫기">&times;</button>
+    <nav class="panel-nav">
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 01</span>
+        <a href="index.html#chapter-1" class="panel-link">고루함을 벗고 역동성을 입다</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 02</span>
+        <a href="index.html#chapter-2" class="panel-link">전통의 탈환</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 03</span>
+        <a href="index.html#chapter-3" class="panel-link">범접</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 04</span>
+        <a href="index.html#chapter-4" class="panel-link">케이팝데몬헌터스</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 05</span>
+        <a href="index.html#chapter-5" class="panel-link">전통이 작동하는 방식</a>
+      </div>
+
+      <div class="panel-item" style="margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px;">
+        <span class="panel-chapter">POSTER</span>
+        <a href="poster.html" class="panel-link" style="font-family: 'Cormorant Garamond', serif; letter-spacing: 0.15em; font-weight: 400;">POSTER</a>
+      </div>
+    </nav>
+  </div>
 
   <!-- Subtle Noise Grain Overlay -->
   <div class="grain-overlay"></div>
 
   <!-- MAIN POSTER DISPLAY -->
   <main class="poster-container">
-    <h1 class="page-title">POSTER</h1>
-    
-    <div class="poster-display">
-      <img src="images/poster.png" alt="OH MY GAT 포스터" style="width:400px; max-width:100%; display:block; margin:0 auto;" />
+    <div class="left-column">
+      <h1 class="page-title">POSTER</h1>
+      <div class="poster-display">
+        <img src="images/poster.png" alt="OH MY GAT 포스터" />
+      </div>
     </div>
 
-    <section class="poster-description">
+    <div class="right-column">
+      <section class="poster-description">
 
-      <div class="poster-desc-item">
-        <h3><strong>타이틀 — OH MY GAT</strong></h3>
-        <p>영어 감탄사 <strong>"Oh my God"</strong>의 발음을 빌려, God 자리에 조선시대 전통 모자 <strong>갓(GAT)</strong>을 넣은 <strong>언어유희</strong>입니다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 <strong>'전통의 재해석'</strong>을 첫 글자부터 담아냅니다.</p>
-      </div>
+        <div class="poster-desc-item">
+          <span class="section-tag">TITLE</span>
+          <h3 class="analysis-title"><strong>타이틀 — OH MY GAT</strong></h3>
+          <p class="analysis-body">영어 감탄사 <strong>"Oh my God"</strong>의 발음을 빌려, God 자리에 조선시대 전통 모자 <strong>갓(GAT)</strong>을 넣은 <strong>언어유희</strong>입니다. 낯익은 표현 안에 전통을 끼워 넣은 이 제목은, 프로젝트의 방향성인 <strong>'전통의 재해석'</strong>을 첫 글자부터 담아냅니다.</p>
+        </div>
 
-      <div class="poster-desc-item">
-        <h3><strong>배경 — 자개 일월오봉도</strong></h3>
-        <p>조선 왕실의 상징인 <strong>일월오봉도</strong>를 배경으로 사용했습니다. 원본의 채색화 형식 대신 <strong>나전칠기(자개)</strong> 특유의 <strong>광택과 흑백 톤</strong>으로 재해석해, 전통 소재를 <strong>현대적 감각</strong>으로 새롭게 표현했습니다.</p>
-      </div>
+        <div class="poster-desc-item">
+          <span class="section-tag">BACKGROUND</span>
+          <h3 class="analysis-title"><strong>배경 — 자개 일월오봉도</strong></h3>
+          <p class="analysis-body">조선 왕실의 상징인 <strong>일월오봉도</strong>를 배경으로 사용했습니다. 원본의 채색화 형식 대신 <strong>나전칠기(자개)</strong> 특유의 <strong>광택과 흑백 톤</strong>으로 재해석해, 전통 소재를 <strong>현대적 감각</strong>으로 새롭게 표현했습니다.</p>
+        </div>
 
-      <div class="poster-desc-item">
-        <h3><strong>韓魂 — 한혼</strong></h3>
-        <p>한국 <strong>한(韓)</strong>과 넋 <strong>혼(魂)</strong>을 결합한 조어로, <strong>'한국의 영혼'</strong>을 뜻합니다. <strong>한류</strong>가 단순한 유행이 아닌 오랜 <strong>문화적 감수성</strong>에서 비롯되었다는 의미를 담았습니다. 전통에서 <strong>벽사와 생명력</strong>을 상징하는 <strong>붉은색</strong>으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었습니다.</p>
-      </div>
+        <div class="poster-desc-item">
+          <span class="section-tag">SYMBOL</span>
+          <h3 class="analysis-title"><strong>韓魂 — 한혼</strong></h3>
+          <p class="analysis-body">한국 <strong>한(韓)</strong>과 넋 <strong>혼(魂)</strong>을 결합한 조어로, <strong>'한국의 영혼'</strong>을 뜻합니다. <strong>한류</strong>가 단순한 유행이 아닌 오랜 <strong>문화적 감수성</strong>에서 비롯되었다는 의미를 담았습니다. 전통에서 <strong>벽사와 생명력</strong>을 상징하는 <strong>붉은색</strong>으로 표기해, 검은 배경 위에서 시각적 강조점을 만들었습니다.</p>
+        </div>
 
-      <div class="poster-desc-item">
-        <h3><strong>부제 — TRADITION REWRITTEN</strong></h3>
-        <p>포스터의 부제이자 <strong>프로젝트 전체의 논지</strong>를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 <strong>매 시대의 언어</strong>로 끊임없이 <strong>다시 쓰입니다</strong>.</p>
-      </div>
+        <div class="poster-desc-item">
+          <span class="section-tag">SUBTITLE</span>
+          <h3 class="analysis-title"><strong>부제 — TRADITION REWRITTEN</strong></h3>
+          <p class="analysis-body">포스터의 부제이자 <strong>프로젝트 전체의 논지</strong>를 압축한 한 문장. 전통은 과거에 고정된 것이 아니라 <strong>매 시대의 언어</strong>로 끊임없이 <strong>다시 쓰입니다</strong>.</p>
+        </div>
 
-      <div class="poster-desc-item">
-        <h3><strong>모서리 장식 — 창살 문양</strong></h3>
-        <p>한국 전통 건축의 <strong>창살 문양</strong>에서 착안한 <strong>프레임 장식</strong>입니다. 시선을 자연스럽게 <strong>중앙으로 유도</strong>하는 동시에, 전통 공예의 <strong>섬세함</strong>을 레이아웃 안에 녹여내는 역할을 합니다.</p>
-      </div>
+        <div class="poster-desc-item">
+          <span class="section-tag">DETAIL</span>
+          <h3 class="analysis-title"><strong>모서리 장식 — 창살 문양</strong></h3>
+          <p class="analysis-body">한국 전통 건축의 <strong>창살 문양</strong>에서 착안한 <strong>프레임 장식</strong>입니다. 시선을 자연스럽게 <strong>중앙으로 유도</strong>하는 동시에, 전통 공예의 <strong>섬세함</strong>을 레이아웃 안에 녹여내는 역할을 합니다.</p>
+        </div>
 
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- FOOTER -->
@@ -479,7 +640,7 @@
     requestAnimationFrame(tickCursor);
 
     // Bind interactive elements to cursor scaling
-    document.querySelectorAll('a, .poster-display').forEach(el => {
+    document.querySelectorAll('a, .poster-display, .menu-toggle, .panel-close, .panel-link').forEach(el => {
       el.addEventListener('mouseenter', () => {
         scale = 1.5;
         cursorRing.style.borderColor = '#C0392B';
@@ -491,6 +652,66 @@
         cursorRing.style.backgroundColor = 'transparent';
       });
     });
+
+    // 2. NAVBAR, SIDE MENU, & SCROLL & INTERACTION CODE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidePanel = document.getElementById('side-panel');
+    const sidePanelOverlay = document.getElementById('side-panel-overlay');
+    const panelClose = document.getElementById('panel-close');
+    const panelLinks = document.querySelectorAll('.panel-link');
+
+    function openSideMenu() {
+      sidePanel.classList.add('active');
+      sidePanelOverlay.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeSideMenu() {
+      sidePanel.classList.remove('active');
+      sidePanelOverlay.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Toggle click listeners
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        if (sidePanel.classList.contains('active')) {
+          closeSideMenu();
+        } else {
+          openSideMenu();
+        }
+      });
+    }
+
+    if (panelClose) {
+      panelClose.addEventListener('click', closeSideMenu);
+    }
+
+    if (sidePanelOverlay) {
+      sidePanelOverlay.addEventListener('click', closeSideMenu);
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSideMenu();
+      }
+    });
+
+    // Handle logo scroll/navigation
+    const navLogo = document.getElementById('nav-logo');
+    if (navLogo) {
+      navLogo.addEventListener('click', (e) => {
+        if (navLogo.getAttribute('href') === '#') {
+          e.preventDefault();
+          closeSideMenu();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>
