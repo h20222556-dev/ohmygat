@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OH MY GAT: REFLECTIONS">
+  <title>OH MY GAT - Reflections</title>
+  
+  <!-- Google Fonts Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Noto Serif KR', serif;
+      overflow-x: hidden;
+      cursor: none; /* Hide default cursor on desktop */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 500;
+    }
+    
+    strong {
+      color: #d4cfc9;
+    }
+    
+    /* Scrollbar Styling - Silver/Pearl gradient thumb on dark track */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff;
+    }
+    
+    /* SVG Noise Grain Overlay - Covers page at all times */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    /* Custom Cursor - Smooth lag (lerp) */
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #C0392B;
+      border-radius: 50%;
+      position: fixed;
+      top: -3px;
+      left: -3px;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 0 10px rgba(192, 57, 43, 0.8);
+    }
+    
+    .cursor-ring {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      top: -14px;
+      left: -14px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      background-color: transparent;
+      transition: opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .side-panel:hover ~ .cursor-dot,
+    .side-panel:hover ~ .cursor-ring {
+      opacity: 0 !important;
+    }
+    
+    @media (hover: none) and (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+    
+    /* --------------------------------------------------
+       FIXED NAVIGATION BAR
+       -------------------------------------------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+    
+    .navbar-left {
+      /* Empty */
+    }
+    
+    .navbar-center {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .navbar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      color: #C0392B;
+    }
+    
+    .navbar-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    
+    .menu-toggle {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10000;
+    }
+    
+    .hamburger-bar {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Side Panel Styles */
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100vh;
+      background-color: #070708;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10005;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 80px 30px 40px 30px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    
+    .side-panel.active {
+      transform: translateX(0);
+    }
+    
+    .panel-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+    
+    .panel-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+    
+    .side-panel-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .side-panel-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .panel-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .panel-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .panel-chapter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #C0392B;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .panel-link {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #cfd8dc;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      word-break: keep-all;
+      cursor: pointer;
+    }
+    
+    .panel-link:hover {
+      color: #ffffff;
+    }
+    
+    /* --------------------------------------------------
+       REFLECTIONS PAGE LAYOUT
+       -------------------------------------------------- */
+    .reflection-container {
+      max-width: 800px;
+      width: 100%;
+      padding: 80px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .page-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 5px;
+      text-align: center;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+    
+    .page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: #C0392B;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .page-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .page-description {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      color: #888888;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 60px;
+      font-weight: 400;
+    }
+    
+    .reflection-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+    }
+    
+    .reflection-card {
+      display: flex;
+      border-left: 1.5px solid rgba(192, 57, 43, 0.3);
+      padding-left: 30px;
+      transition: transform 0.3s ease, border-left-color 0.3s ease;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    
+    .reflection-card:hover {
+      transform: translateX(5px);
+      border-left-color: #C0392B;
+    }
+    
+    .member-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 120px;
+    }
+    
+    .member-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: #C0392B;
+      font-weight: 600;
+    }
+    
+    .member-name {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      color: #ffffff;
+      font-weight: 400;
+      margin: 0;
+    }
+    
+    .reflection-text {
+      flex: 1;
+    }
+    
+    .reflection-text p {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #b0bec5;
+      margin: 0;
+      font-weight: 500;
+      word-break: keep-all;
+    }
+    
+    /* Footer styling matching index.html */
+    .footer-section {
+      background-color: #000000;
+      padding: 50px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 3;
+    }
+    
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #666666;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    
+    /* Responsive media queries */
+    @media (max-width: 1024px) {
+      .navbar-inner {
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .navbar-left {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .side-panel {
+        width: 100%;
+        border-left: none;
+      }
+      .reflection-container {
+        margin-top: 80px;
+        padding: 40px 20px;
+      }
+      .reflection-card {
+        flex-direction: column;
+        gap: 15px;
+        padding-left: 20px;
+      }
+      .member-info {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-left"></div>
+      <div class="navbar-center">
+        <a href="index.html" class="navbar-logo" id="nav-logo">OH MY GAT</a>
+      </div>
+      <div class="navbar-right">
+        <button class="menu-toggle" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SLIDE-IN SIDE PANEL MENU -->
+  <div class="side-panel-overlay" id="side-panel-overlay"></div>
+  <div class="side-panel" id="side-panel">
+    <button class="panel-close" id="panel-close" aria-label="메뉴 닫기">&times;</button>
+    <nav class="panel-nav">
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 01</span>
+        <a href="index.html#chapter-1" class="panel-link">고루함을 벗고 역동성을 입다</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 02</span>
+        <a href="index.html#chapter-2" class="panel-link">전통의 탈환</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 03</span>
+        <a href="index.html#chapter-3" class="panel-link">범접</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 04</span>
+        <a href="index.html#chapter-4" class="panel-link">케이팝데몬헌터스</a>
+      </div>
+      <div class="panel-item">
+        <span class="panel-chapter">CHAPTER 05</span>
+        <a href="index.html#chapter-5" class="panel-link">전통이 작동하는 방식</a>
+      </div>
+
+      <div class="panel-item" style="margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px;">
+        <span class="panel-chapter">POSTER</span>
+        <a href="poster.html" class="panel-link" style="font-family: 'Cormorant Garamond', serif; letter-spacing: 0.15em; font-weight: 400;">POSTER</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Subtle Noise Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- MAIN CONTENT AREA -->
+  <main style="min-height: calc(100vh - 60px); margin-top: 60px; display: flex; justify-content: center; width: 100%;">
+    <div class="reflection-container">
+      <h1 class="page-title">소회</h1>
+      <p class="page-subtitle">REFLECTIONS</p>
+      <p class="page-description">프로젝트를 마치며</p>
+
+      <div class="reflection-list">
+        <!-- 1. 황도명 -->
+        <div class="reflection-card">
+          <div class="member-info">
+            <span class="member-num">01</span>
+            <h3 class="member-name">황도명</h3>
+          </div>
+          <div class="reflection-text">
+            <p>소회 내용을 입력해주세요.</p>
+          </div>
+        </div>
+
+        <!-- 2. 이동재 -->
+        <div class="reflection-card">
+          <div class="member-info">
+            <span class="member-num">02</span>
+            <h3 class="member-name">이동재</h3>
+          </div>
+          <div class="reflection-text">
+            <p>소회 내용을 입력해주세요.</p>
+          </div>
+        </div>
+
+        <!-- 3. 김서연 -->
+        <div class="reflection-card">
+          <div class="member-info">
+            <span class="member-num">03</span>
+            <h3 class="member-name">김서연</h3>
+          </div>
+          <div class="reflection-text">
+            <p>소회 내용을 입력해주세요.</p>
+          </div>
+        </div>
+
+        <!-- 4. 이화명 -->
+        <div class="reflection-card">
+          <div class="member-info">
+            <span class="member-num">04</span>
+            <h3 class="member-name">이화명</h3>
+          </div>
+          <div class="reflection-text">
+            <p>소회 내용을 입력해주세요.</p>
+          </div>
+        </div>
+
+        <!-- 5. 현나경 -->
+        <div class="reflection-card">
+          <div class="member-info">
+            <span class="member-num">05</span>
+            <h3 class="member-name">한나경</h3>
+          </div>
+          <div class="reflection-text">
+            <p>소회 내용을 입력해주세요.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-section">
+    <p class="footer-text">OH MY GAT &middot; TRADITION REWRITTEN</p>
+  </footer>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // 1. CUSTOM LERP CURSOR CODE
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let ringX = 0, ringY = 0;
+    let isMoving = false;
+    let scale = 1;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+        dotX = mouseX;
+        dotY = mouseY;
+        ringX = mouseX;
+        ringY = mouseY;
+        isMoving = true;
+      }
+    });
+
+    // Handle cursor leaving the window
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      if (isMoving) {
+        cursorDot.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+      }
+    });
+
+    function tickCursor() {
+      if (isMoving) {
+        // Dot follows cursor quickly (lerp: 0.25)
+        dotX += (mouseX - dotX) * 0.25;
+        dotY += (mouseY - dotY) * 0.25;
+        
+        // Outer ring follows cursor slowly (lerp: 0.12)
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+
+        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) scale(${scale})`;
+      }
+      
+      requestAnimationFrame(tickCursor);
+    }
+    requestAnimationFrame(tickCursor);
+
+    // Bind interactive elements to cursor scaling
+    document.querySelectorAll('a, .reflection-card, .menu-toggle, .panel-close, .panel-link').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        scale = 1.5;
+        cursorRing.style.borderColor = '#C0392B';
+        cursorRing.style.backgroundColor = 'rgba(192, 57, 43, 0.05)';
+      });
+      el.addEventListener('mouseleave', () => {
+        scale = 1;
+        cursorRing.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        cursorRing.style.backgroundColor = 'transparent';
+      });
+    });
+
+    // 2. NAVBAR, SIDE MENU, & SCROLL & INTERACTION CODE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidePanel = document.getElementById('side-panel');
+    const sidePanelOverlay = document.getElementById('side-panel-overlay');
+    const panelClose = document.getElementById('panel-close');
+
+    function openSideMenu() {
+      sidePanel.classList.add('active');
+      sidePanelOverlay.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeSideMenu() {
+      sidePanel.classList.remove('active');
+      sidePanelOverlay.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Toggle click listeners
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        if (sidePanel.classList.contains('active')) {
+          closeSideMenu();
+        } else {
+          openSideMenu();
+        }
+      });
+    }
+
+    if (panelClose) {
+      panelClose.addEventListener('click', closeSideMenu);
+    }
+
+    if (sidePanelOverlay) {
+      sidePanelOverlay.addEventListener('click', closeSideMenu);
+    }
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSideMenu();
+      }
+    });
+  </script>
+</body>
+</html>
